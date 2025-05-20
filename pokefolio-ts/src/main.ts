@@ -7,7 +7,7 @@ import { Application, Assets, Container, Sprite } from 'pixi.js';
           const grass = new Sprite(grassTexture);
           grass.scale.set(5);
   
-          grass.x = Math.floor((i % width) - (width / 2))  * 80;
+          grass.x = Math.floor((i % width) - (width / 2)) * 80;
           grass.y = Math.floor(Math.floor(i / width) - (height / 2)) * 80;
           container.addChild(grass);
       }
