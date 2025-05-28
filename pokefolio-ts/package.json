@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "howler": "^2.2.4",
     "typescript": "~5.8.3",
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "howler": "^2.2.4",
     "pixi.js": "^8.9.2"
   }
 }
