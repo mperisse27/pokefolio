@@ -1,8 +1,8 @@
 import { Howl, Howler } from 'howler';
 
 // Musique de fond (loopée)
-const bgm = new Howl({
-  src: ['assets/music.mp3'],
+export const bgm = new Howl({
+  src: ['src/assets/bgm.mp3'],
   loop: true,
   volume: 0.4,
 });
