@@ -1,5 +1,5 @@
 import { Application, Assets, Container, Sprite } from 'pixi.js';
-import { loadSprite } from './loader';
+import { loadSprite } from './utils/loader';
 import { Howl, Howler } from 'howler';
 import { bgm } from './sounds';
 import { Player } from './types/player';
