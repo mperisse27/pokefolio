@@ -1,5 +1,6 @@
-import type { Container, ContainerChild } from "pixi.js";
-import { loadSprite, loadTexture } from "./loader";
+import { Sprite, type Container, type ContainerChild } from "pixi.js";
+import { loadSprite, loadSpriteAndTexture, loadTexture } from "./loader";
+import { Direction } from "../types/player";
 
 export const createGridFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
   const grassTexture = await loadTexture('src/assets/tiles/grass.png');
@@ -30,4 +31,23 @@ export const createGridFromMatrix = async (matrix: number[][], container: Contai
       }
     });
   });
+}
+
+export const loadPlayerSprites = async (positionX: number, positionY: number) => {
+  const playerSpriteUp = await loadSpriteAndTexture(positionX, positionY, 'src/assets/player-up.png');
+  playerSpriteUp.zIndex = 1; // Ensure player is above other sprites
+  const playerSpriteDown = await loadSpriteAndTexture(positionX, positionY, 'src/assets/player-down.png');
+  playerSpriteDown.zIndex = 1; // Ensure player is above other sprites
+  const playerSpriteLeft = await loadSpriteAndTexture(positionX, positionY, 'src/assets/player-left.png');
+  playerSpriteLeft.zIndex = 1; // Ensure player is above other sprites
+  const playerSpriteRight = await loadSpriteAndTexture(positionX, positionY, 'src/assets/player-right.png');
+  playerSpriteRight.zIndex = 1; // Ensure player is above other sprites
+  const playerSprites: Record<Direction, Sprite> = {
+    [Direction.UP]: new Sprite(playerSpriteUp),
+    [Direction.DOWN]: new Sprite(playerSpriteDown),
+    [Direction.LEFT]: new Sprite(playerSpriteLeft),
+    [Direction.RIGHT]: new Sprite(playerSpriteRight),
+  };
+
+  return playerSprites;
 }

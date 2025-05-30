@@ -1,9 +1,9 @@
 import { Application, Assets, Container, Sprite } from 'pixi.js';
-import { loadMap, loadSprite, loadSpriteAndTexture, loadTexture } from './utils/loader';
+import { loadMap } from './utils/loader';
 import { bgm } from './sounds';
 import { Direction, Player } from './types/player';
 import { createPopup } from './components/popup';
-import { createGridFromMatrix } from './utils/sceneSetup';
+import { createGridFromMatrix, loadPlayerSprites } from './utils/sceneSetup';
 
 (async () =>
 {
@@ -38,9 +38,6 @@ import { createGridFromMatrix } from './utils/sceneSetup';
   const matrix = await loadMap();
   createGridFromMatrix(matrix, container);
 
-  const playerSprite = await loadSpriteAndTexture(400, 400, 'src/assets/player.png');
-  container.addChild(playerSprite);
-
   // Create Magnemite sprite
   const magnemiteTexture = await Assets.load('src/assets/magnemite.png');
   const magnemiteTexture2 = await Assets.load('src/assets/magnemite2.png');
@@ -54,14 +51,20 @@ import { createGridFromMatrix } from './utils/sceneSetup';
 
   const { textBox, message } = createPopup("Hiiiii", app);
 
-  const player = new Player('player1', playerSprite.x, playerSprite.y, playerSprite);
+  const playerSprites = await loadPlayerSprites(400, 400);
+
+  const player = new Player('player1', 400, 400, playerSprites);
+
+  app.stage.addChild(player.container);
+  player.container.position.x = app.screen.width / 2 - 40;
+  player.container.position.y = app.screen.height / 2 - 160;
 
   bgm.play();
 
   let texture = 0;
   // Listen for animate update
   let elapsed = 0;
-  app.ticker.add((time) =>
+  app.ticker.add((_) =>
   {
     elapsed += 1;
     if (elapsed >= 30) {
@@ -74,7 +77,9 @@ import { createGridFromMatrix } from './utils/sceneSetup';
       }
       elapsed = 0 // reset le timer
     }
-    player.applyMovement(container);
+    player.applyMovement();
+    container.position.x = -player.positionX + app.screen.width / 2 - 40;
+    container.position.y = -player.positionY + app.screen.height / 2 - 80;
     magnemite.x -= 1;
   });
   window.addEventListener('keydown', (event) =>
@@ -83,30 +88,22 @@ import { createGridFromMatrix } from './utils/sceneSetup';
       {
         case 'ArrowUp':
           if (!player.isMoving) {
-            if (matrix[Math.floor(player.positionY/80) - 1][Math.floor(player.positionX/80)] !== 11) {
-              player.move(Direction.UP);
-            }
+            player.move(Direction.UP, matrix);
           }
           break;
         case 'ArrowDown':
           if (!player.isMoving) {
-            if (matrix[Math.floor(player.positionY/80) + 1][Math.floor(player.positionX/80)] !== 11) {
-              player.move(Direction.DOWN);
-            }
+            player.move(Direction.DOWN, matrix);
           }
           break;
         case 'ArrowLeft':
           if (!player.isMoving) {
-            if (matrix[Math.floor(player.positionY/80)][Math.floor(player.positionX/80) - 1] !== 11) {
-              player.move(Direction.LEFT);
-            }
+            player.move(Direction.LEFT, matrix);
           }
           break;
         case 'ArrowRight':
           if (!player.isMoving) {
-            if (matrix[Math.floor(player.positionY/80)][Math.floor(player.positionX/80) + 1] !== 11) {
-              player.move(Direction.RIGHT);
-            }
+            player.move(Direction.RIGHT, matrix);
           }
           break;
         case 'Enter':

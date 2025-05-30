@@ -23,7 +23,7 @@ export const createPopup = (text: string, app: Application<Renderer>) => {
   });
   message.x = 20;
   message.y = app.screen.height - boxHeight + 20;
-  
+
   message.visible = false;
   app.stage.addChild(message);
 
