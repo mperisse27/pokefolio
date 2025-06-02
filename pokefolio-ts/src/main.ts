@@ -2,7 +2,7 @@ import { Application, Assets, Container, Sprite } from 'pixi.js';
 import { loadMap } from './utils/loader';
 import { bgm } from './sounds';
 import { Direction, Player } from './components/player';
-import { createGridFromMatrix, loadPlayerSprites, loadplayerAnimations } from './utils/sceneSetup';
+import { createGridFromMatrix, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { Popup } from './components/popup';
 import { handleKeyboardInput } from './utils/keyboardManager';
 
@@ -43,8 +43,8 @@ import { handleKeyboardInput } from './utils/keyboardManager';
   app.stage.addChild(popup.container);
 
   const playerSprites = await loadPlayerSprites();
-  const playerAnimations = await loadplayerAnimations();
-  const player = new Player('player1', 5, 5, playerSprites, playerAnimations);
+  const playerAnimations = await loadPlayerAnimations();
+  const player = new Player('player1', 21, 31, playerSprites, playerAnimations);
 
   app.stage.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
@@ -54,10 +54,30 @@ import { handleKeyboardInput } from './utils/keyboardManager';
 
   const messages = [
     {
-      text: "Bienvenue dans Pokéfolio !",
-      positionX: 400,
-      positionY: 400
+      text: ["Bienvenue dans Pokéfolio !"],
+      positionX: 1680,
+      positionY: 2400
     },
+    {
+      text: ["Ma chaîne Twitch :", "matt_la_menacee"],
+      positionX: 1360,
+      positionY: 1920
+    },
+    {
+      text: ["Mon LinkedIn :", "Matteo Perisse"],
+      positionX: 1600,
+      positionY: 1920
+    },
+    {
+      text: ["Mon GitHub :", "mperisse27"],
+      positionX: 1840,
+      positionY: 1920
+    },
+    {
+      text: ["Mon mail :", "matteo.perisse@gmail.com"],
+      positionX: 2080,
+      positionY: 1920
+    }
   ]
 
   app.ticker.add((_) =>

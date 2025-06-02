@@ -7,9 +7,15 @@ export const createGridFromMatrix = async (matrix: number[][], container: Contai
   const roadTexture = await loadTexture('src/assets/tiles/road.png');
   const waterTexture = await loadTexture('src/assets/tiles/water.png');
   const signTexture = await loadTexture('src/assets/tiles/sign.png');
+  const flowerTexture = await loadTexture('src/assets/tiles/flower.png');
   matrix.forEach((row, i) => {
     row.forEach(async (cell, j) => {
-      if (cell === 3) {
+      if (cell === 1) {
+        const flowers = loadSprite(j * 80, i * 80, flowerTexture);
+        flowers.zIndex = -1; // Ensure tree is above road
+        container.addChild(flowers);
+      }
+      else if (cell === 3) {
         const grass = loadSprite(j * 80, i * 80, grassTexture);
         grass.zIndex = -1; // Ensure grass is above road
         container.addChild(grass);
@@ -25,9 +31,9 @@ export const createGridFromMatrix = async (matrix: number[][], container: Contai
         container.addChild(sign);
       }
       else {
-        const tree = loadSprite(j * 80, i * 80, waterTexture);
-        tree.zIndex = -1; // Ensure tree is above grass
-        container.addChild(tree);
+        const water = loadSprite(j * 80, i * 80, waterTexture);
+        water.zIndex = -1; // Ensure tree is above grass
+        container.addChild(water);
       }
     });
   });
@@ -52,7 +58,7 @@ export const loadPlayerSprites = async () => {
   return playerSprites;
 }
 
-export const loadplayerAnimations = async () => {
+export const loadPlayerAnimations = async () => {
   const playerAnimationUp = await Promise.all([
     loadSpriteAndTexture(0, 0, 'src/assets/player/player-up.png'),
     loadSpriteAndTexture(0, 0, 'src/assets/player/player-up-walk1.png'),

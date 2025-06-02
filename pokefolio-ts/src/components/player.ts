@@ -20,6 +20,7 @@ export class Player {
   public facing: Direction = Direction.DOWN;
   public canMove: boolean = true;
   public moveFrame: number = 0;
+  spriteIndex: number;
 
   constructor(
     id: string,
@@ -34,6 +35,7 @@ export class Player {
     this.tilePosition = { x: positionX, y: positionY };
     this.sprites = sprites;
     this.animations = animations;
+    this.spriteIndex = 0;
 
     // Création du conteneur
     this.container = new Container();
@@ -63,59 +65,61 @@ export class Player {
     if (this.facing !== direction) {
       this.changeDirection(direction);
     }
-    else {
-      switch (direction) {
-        case Direction.RIGHT:
-          if (matrix[this.tilePosition.y][this.tilePosition.x + 1] !== 11) {
-            this.destination.x = this.position.x + 80;
-            this.tilePosition.x += 1;
-            this.canMove = false;
-          }
-          break;
-        case Direction.LEFT:
-          if (matrix[this.tilePosition.y][this.tilePosition.x - 1] !== 11) {
-            this.destination.x = this.position.x - 80;
-            this.tilePosition.x -= 1;
-            this.canMove = false;
-          }
-          break;
-        case Direction.UP:
-          if (matrix[this.tilePosition.y - 1][this.tilePosition.x] !== 11) {
-            this.destination.y = this.position.y - 80;
-            this.tilePosition.y -= 1;
-            this.canMove = false;
-          }
-          break;
-        case Direction.DOWN:
-          if (matrix[this.tilePosition.y + 1][this.tilePosition.x] !== 11) {
-            this.destination.y = this.position.y + 80;
-            this.tilePosition.y += 1;
-            this.canMove = false;
-          }
-          break;
-      }
+    switch (direction) {
+      case Direction.RIGHT:
+        if (matrix[this.tilePosition.y][this.tilePosition.x + 1] !== 11 && matrix[this.tilePosition.y][this.tilePosition.x + 1] !== 1) {
+          this.destination.x = this.position.x + 80;
+          this.tilePosition.x += 1;
+          this.canMove = false;
+        }
+        break;
+      case Direction.LEFT:
+        if (matrix[this.tilePosition.y][this.tilePosition.x - 1] !== 11 && matrix[this.tilePosition.y][this.tilePosition.x - 1] !== 1) {
+          this.destination.x = this.position.x - 80;
+          this.tilePosition.x -= 1;
+          this.canMove = false;
+        }
+        break;
+      case Direction.UP:
+        if (matrix[this.tilePosition.y - 1][this.tilePosition.x] !== 11 && matrix[this.tilePosition.y - 1][this.tilePosition.x] !== 1) {
+          this.destination.y = this.position.y - 80;
+          this.tilePosition.y -= 1;
+          this.canMove = false;
+        }
+        break;
+      case Direction.DOWN:
+        if (matrix[this.tilePosition.y + 1][this.tilePosition.x] !== 11 && matrix[this.tilePosition.y + 1][this.tilePosition.x] !== 1) {
+          this.destination.y = this.position.y + 80;
+          this.tilePosition.y += 1;
+          this.canMove = false;
+        }
+        break;
     }
   }
 
   public applyMovement() {
-    if (this.moveFrame == 8) {
+    if (this.moveFrame == 16) {
       this.canMove = true;
       this.moveFrame = 0;
     }
     else if (this.position.x !== this.destination.x || this.position.y !== this.destination.y) {
       switch (this.facing) {
         case Direction.RIGHT:
-          this.position.x += 10;
+          this.position.x += 5;
           break;
         case Direction.LEFT:
-          this.position.x -= 10;
+          this.position.x -= 5;
           break;
         case Direction.UP:
-          this.position.y -= 10;
+          this.position.y -= 5;
           break;
         case Direction.DOWN:
-          this.position.y += 10;
+          this.position.y += 5;
           break;
+      }
+      if (this.moveFrame % 8 === 0) {
+        this.spriteIndex = (this.spriteIndex + 1) % this.animations[this.facing].length;
+        this.sprite.texture = this.animations[this.facing][this.spriteIndex].texture;
       }
       this.moveFrame++;
     }
@@ -124,6 +128,7 @@ export class Player {
   private changeDirection(direction: Direction) {
     this.facing = direction;
     this.sprite = this.sprites[direction];
+    this.spriteIndex = 0;
 
     for (const dir in this.sprites) {
       this.sprites[dir as unknown as Direction].visible = false;

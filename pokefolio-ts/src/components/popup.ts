@@ -1,15 +1,18 @@
 import { Graphics, Container, Application, type Renderer, Text } from "pixi.js";
 import { Direction, type Player } from "./player";
+import type { PopupMessage } from "../types/popupMessage";
 
 export class Popup {
-  public message1: string;
-  public message2: string;
+  public message1: Text;
+  public message2: Text;
   public container: Container;
+  public text: string[] = [];
 
   constructor(app: Application<Renderer>) {
-    this.message1 = "";
-    this.message2 = "";
-    this.container = this.buildContainer(app);
+    const { container, message1, message2 } = this.buildContainer(app);
+    this.container = container;
+    this.message1 = message1;
+    this.message2 = message2;
   }
 
   buildContainer = (app: Application<Renderer>) => {
@@ -59,15 +62,15 @@ export class Popup {
     borderBottom.y = app.screen.height - boxHeight;
     container.addChild(borderBottom);
 
-    const message = new Text("lkl,l,l,l,l,", {
+    const message1 = new Text("", {
       fontSize: 24,
       fill: 0x000000,
     });
-    message.x = 16;
-    message.y = app.screen.height - boxHeight + 12;
-    container.addChild(message);
+    message1.x = 16;
+    message1.y = app.screen.height - boxHeight + 12;
+    container.addChild(message1);
   
-    const message2 = new Text("kokokko", {
+    const message2 = new Text("", {
       fontSize: 24,
       fill: 0x000000,
     });
@@ -77,14 +80,14 @@ export class Popup {
 
     container.visible = false;
 
-    return container;
+    return { container, message1, message2 };
   }
 
-  public getText(messages: {text: string, positionX: number, positionY: number}[], player: Player) {
+  public getText(messages: PopupMessage[], player: Player) {
     if (this.container.visible) {
       this.container.visible = false;
-      this.message1 = "";
-      this.message2 = "";
+      this.message1.text = "";
+      this.message2.text = "";
       return;
     }
     let targetX = player.position.x;
@@ -107,8 +110,10 @@ export class Popup {
     let messageFound = false;
     messages.forEach((message) => {
       if (message.positionX === targetX && message.positionY === targetY) {
-        this.message1 = message.text;
-        this.message2 = message.text;
+        this.text = message.text;
+
+        this.message1.text = this.text[0] || "";
+        this.message2.text = this.text[1] || "";
         this.container.visible = true;
         messageFound = true;
       }
