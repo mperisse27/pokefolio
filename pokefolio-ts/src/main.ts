@@ -2,8 +2,9 @@ import { Application, Assets, Container, Sprite } from 'pixi.js';
 import { loadMap } from './utils/loader';
 import { bgm } from './sounds';
 import { Direction, Player } from './types/player';
-import { createPopup } from './components/popup';
 import { createGridFromMatrix, loadPlayerSprites } from './utils/sceneSetup';
+import { Popup } from './components/popup';
+import { handleKeyboardInput } from './utils/keyboardManager';
 
 (async () =>
 {
@@ -49,10 +50,10 @@ import { createGridFromMatrix, loadPlayerSprites } from './utils/sceneSetup';
   magnemite.y = 400;
   container.addChild(magnemite);
 
-  const { textBox, message } = createPopup("Hiiiii", app);
+  const popup = new Popup(app);
+  app.stage.addChild(popup.container);
 
   const playerSprites = await loadPlayerSprites(400, 400);
-
   const player = new Player('player1', 400, 400, playerSprites);
 
   app.stage.addChild(player.container);
@@ -60,6 +61,14 @@ import { createGridFromMatrix, loadPlayerSprites } from './utils/sceneSetup';
   player.container.position.y = app.screen.height / 2 - 160;
 
   bgm.play();
+
+  const messages = [
+    {
+      text: "Bienvenue dans Pokéfolio !",
+      positionX: 400,
+      positionY: 400
+    },
+  ]
 
   let texture = 0;
   // Listen for animate update
@@ -84,33 +93,7 @@ import { createGridFromMatrix, loadPlayerSprites } from './utils/sceneSetup';
   });
   window.addEventListener('keydown', (event) =>
     {
-      switch (event.key)
-      {
-        case 'ArrowUp':
-          if (!player.isMoving) {
-            player.move(Direction.UP, matrix);
-          }
-          break;
-        case 'ArrowDown':
-          if (!player.isMoving) {
-            player.move(Direction.DOWN, matrix);
-          }
-          break;
-        case 'ArrowLeft':
-          if (!player.isMoving) {
-            player.move(Direction.LEFT, matrix);
-          }
-          break;
-        case 'ArrowRight':
-          if (!player.isMoving) {
-            player.move(Direction.RIGHT, matrix);
-          }
-          break;
-        case 'Enter':
-          textBox.visible = !textBox.visible;
-          message.visible = !message.visible;
-          break;
-      }
+      handleKeyboardInput(event, player, matrix, popup, messages);
     }
   );
 })();

@@ -18,6 +18,7 @@ export class Player {
   public sprite: Sprite;
   public isMoving: boolean = false;
   public facing: Direction = Direction.DOWN;
+  public canMove: boolean = true;
 
   constructor(
     id: string,
@@ -54,6 +55,9 @@ export class Player {
   }
 
   public move(direction: Direction, matrix: number[][]) {
+    if (!this.canMove) {
+      return;
+    }
     if (this.facing !== direction) {
       this.changeDirection(direction);
     } else {
