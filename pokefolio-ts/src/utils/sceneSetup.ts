@@ -1,6 +1,6 @@
 import { Sprite, type Container, type ContainerChild } from "pixi.js";
 import { loadSprite, loadSpriteAndTexture, loadTexture } from "./loader";
-import { Direction } from "../types/player";
+import { Direction } from "../components/player";
 
 export const createGridFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
   const grassTexture = await loadTexture('src/assets/tiles/grass.png');
@@ -33,14 +33,14 @@ export const createGridFromMatrix = async (matrix: number[][], container: Contai
   });
 }
 
-export const loadPlayerSprites = async (positionX: number, positionY: number) => {
-  const playerSpriteUp = await loadSpriteAndTexture(positionX, positionY, 'src/assets/player-up.png');
+export const loadPlayerSprites = async () => {
+  const playerSpriteUp = await loadSpriteAndTexture(0, 0, 'src/assets/player/player-up.png');
   playerSpriteUp.zIndex = 1; // Ensure player is above other sprites
-  const playerSpriteDown = await loadSpriteAndTexture(positionX, positionY, 'src/assets/player-down.png');
+  const playerSpriteDown = await loadSpriteAndTexture(0, 0, 'src/assets/player/player-down.png');
   playerSpriteDown.zIndex = 1; // Ensure player is above other sprites
-  const playerSpriteLeft = await loadSpriteAndTexture(positionX, positionY, 'src/assets/player-left.png');
+  const playerSpriteLeft = await loadSpriteAndTexture(0, 0, 'src/assets/player/player-left.png');
   playerSpriteLeft.zIndex = 1; // Ensure player is above other sprites
-  const playerSpriteRight = await loadSpriteAndTexture(positionX, positionY, 'src/assets/player-right.png');
+  const playerSpriteRight = await loadSpriteAndTexture(0, 0, 'src/assets/player/player-right.png');
   playerSpriteRight.zIndex = 1; // Ensure player is above other sprites
   const playerSprites: Record<Direction, Sprite> = {
     [Direction.UP]: new Sprite(playerSpriteUp),
@@ -50,4 +50,43 @@ export const loadPlayerSprites = async (positionX: number, positionY: number) =>
   };
 
   return playerSprites;
+}
+
+export const loadplayerAnimations = async () => {
+  const playerAnimationUp = await Promise.all([
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-up.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-up-walk1.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-up.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-up-walk2.png'),
+  ]);
+
+  const playerAnimationDown = await Promise.all([
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-down.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-down-walk1.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-down.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-down-walk2.png'),
+  ]);
+
+  const playerAnimationLeft = await Promise.all([
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-left.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-left-walk1.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-left.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-left-walk2.png'),
+  ]);
+
+  const playerAnimationRight = await Promise.all([
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-right.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-right-walk1.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-right.png'),
+    loadSpriteAndTexture(0, 0, 'src/assets/player/player-right-walk2.png'),
+  ]);
+
+  const playerAnimations: Record<Direction, Sprite[]> = {
+    [Direction.UP]: playerAnimationUp.map(sprite => new Sprite(sprite)),
+    [Direction.DOWN]: playerAnimationDown.map(sprite => new Sprite(sprite)),
+    [Direction.LEFT]: playerAnimationLeft.map(sprite => new Sprite(sprite)),
+    [Direction.RIGHT]: playerAnimationRight.map(sprite => new Sprite(sprite)),
+  };
+
+  return playerAnimations;
 }

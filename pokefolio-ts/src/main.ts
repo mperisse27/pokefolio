@@ -1,8 +1,8 @@
 import { Application, Assets, Container, Sprite } from 'pixi.js';
 import { loadMap } from './utils/loader';
 import { bgm } from './sounds';
-import { Direction, Player } from './types/player';
-import { createGridFromMatrix, loadPlayerSprites } from './utils/sceneSetup';
+import { Direction, Player } from './components/player';
+import { createGridFromMatrix, loadPlayerSprites, loadplayerAnimations } from './utils/sceneSetup';
 import { Popup } from './components/popup';
 import { handleKeyboardInput } from './utils/keyboardManager';
 
@@ -39,22 +39,12 @@ import { handleKeyboardInput } from './utils/keyboardManager';
   const matrix = await loadMap();
   createGridFromMatrix(matrix, container);
 
-  // Create Magnemite sprite
-  const magnemiteTexture = await Assets.load('src/assets/magnemite.png');
-  const magnemiteTexture2 = await Assets.load('src/assets/magnemite2.png');
-  magnemiteTexture.baseTexture.scaleMode = 'nearest';
-  magnemiteTexture2.baseTexture.scaleMode = 'nearest';
-  const magnemite = new Sprite(magnemiteTexture);
-  magnemite.scale.set(5);
-  magnemite.x = 600;
-  magnemite.y = 400;
-  container.addChild(magnemite);
-
   const popup = new Popup(app);
   app.stage.addChild(popup.container);
 
-  const playerSprites = await loadPlayerSprites(400, 400);
-  const player = new Player('player1', 400, 400, playerSprites);
+  const playerSprites = await loadPlayerSprites();
+  const playerAnimations = await loadplayerAnimations();
+  const player = new Player('player1', 5, 5, playerSprites, playerAnimations);
 
   app.stage.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
@@ -70,26 +60,11 @@ import { handleKeyboardInput } from './utils/keyboardManager';
     },
   ]
 
-  let texture = 0;
-  // Listen for animate update
-  let elapsed = 0;
   app.ticker.add((_) =>
   {
-    elapsed += 1;
-    if (elapsed >= 30) {
-      if (texture === 0) {
-        magnemite.texture = magnemiteTexture;
-        texture = 1
-      } else {
-        magnemite.texture = magnemiteTexture2;
-        texture = 0
-      }
-      elapsed = 0 // reset le timer
-    }
     player.applyMovement();
-    container.position.x = -player.positionX + app.screen.width / 2 - 40;
-    container.position.y = -player.positionY + app.screen.height / 2 - 80;
-    magnemite.x -= 1;
+    container.position.x = -player.position.x + app.screen.width / 2 - 40;
+    container.position.y = -player.position.y + app.screen.height / 2 - 80;
   });
   window.addEventListener('keydown', (event) =>
     {

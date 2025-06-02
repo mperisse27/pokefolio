@@ -1,4 +1,4 @@
-import { Direction, type Player } from "../types/player";
+import { Direction, type Player } from "../components/player";
 import type { PopupMessage } from "../types/popupMessage";
 import type { Popup } from "../components/popup";
 
@@ -6,22 +6,22 @@ export const handleKeyboardInput = (event: KeyboardEvent, player: Player, matrix
   switch (event.key)
     {
       case 'ArrowUp':
-        if (!player.isMoving) {
+        if (player.canMove) {
           player.move(Direction.UP, matrix);
         }
         break;
       case 'ArrowDown':
-        if (!player.isMoving) {
+        if (player.canMove) {
           player.move(Direction.DOWN, matrix);
         }
         break;
       case 'ArrowLeft':
-        if (!player.isMoving) {
+        if (player.canMove) {
           player.move(Direction.LEFT, matrix);
         }
         break;
       case 'ArrowRight':
-        if (!player.isMoving) {
+        if (player.canMove) {
           player.move(Direction.RIGHT, matrix);
         }
         break;

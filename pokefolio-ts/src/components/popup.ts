@@ -1,5 +1,5 @@
 import { Graphics, Container, Application, type Renderer, Text } from "pixi.js";
-import { Direction, type Player } from "../types/player";
+import { Direction, type Player } from "./player";
 
 export class Popup {
   public message1: string;
@@ -87,8 +87,8 @@ export class Popup {
       this.message2 = "";
       return;
     }
-    let targetX = player.positionX;
-    let targetY = player.positionY;
+    let targetX = player.position.x;
+    let targetY = player.position.y;
     switch (player.facing) {
       case Direction.UP:
         targetY -= 80;
