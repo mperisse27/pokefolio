@@ -1,4 +1,4 @@
-import { Application, Assets, Container, Sprite } from 'pixi.js';
+import { Application, Container } from 'pixi.js';
 import { loadMap } from './utils/loader';
 import { bgm } from './sounds';
 import { Direction, Player } from './components/player';
@@ -80,15 +80,38 @@ import { handleKeyboardInput } from './utils/keyboardManager';
     }
   ]
 
+  let activeKeys: Set<string> = new Set();
+  let popupDelayCounter = 0;
+
   app.ticker.add((_) =>
   {
     player.applyMovement();
     container.position.x = -player.position.x + app.screen.width / 2 - 40;
     container.position.y = -player.position.y + app.screen.height / 2 - 80;
-  });
-  window.addEventListener('keydown', (event) =>
-    {
-      handleKeyboardInput(event, player, matrix, popup, messages);
+
+    if (popupDelayCounter > 0) {
+      popupDelayCounter--;
     }
-  );
+
+    if (player.canMove) {
+      if (activeKeys.has("W") || activeKeys.has("w") || activeKeys.has("ArrowUp")) {
+        player.move(Direction.UP, matrix);
+      } else if (activeKeys.has("S") || activeKeys.has("s") || activeKeys.has("ArrowDown")) {
+        player.move(Direction.DOWN, matrix);
+      } else if (activeKeys.has("A") || activeKeys.has("a") || activeKeys.has("ArrowLeft")) {
+        player.move(Direction.LEFT, matrix);
+      } else if (activeKeys.has("D") || activeKeys.has("d") || activeKeys.has("ArrowRight")) {
+        player.move(Direction.RIGHT, matrix);
+      }
+    }
+
+    if ((activeKeys.has(" ") || activeKeys.has("Enter")) && popupDelayCounter <= 0) {
+      const popupAppeared = popup.getText(messages, player);
+      player.canMove = !popupAppeared;
+      popupDelayCounter = 30;
+    }
+  });
+
+  window.addEventListener('keydown', (event) => handleKeyboardInput(event, activeKeys));
+  window.addEventListener('keyup', (event) => handleKeyboardInput(event, activeKeys));
 })();

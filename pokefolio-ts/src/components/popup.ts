@@ -88,7 +88,7 @@ export class Popup {
       this.container.visible = false;
       this.message1.text = "";
       this.message2.text = "";
-      return;
+      return false;
     }
     let targetX = player.position.x;
     let targetY = player.position.y;
