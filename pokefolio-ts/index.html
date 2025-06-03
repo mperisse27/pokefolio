@@ -3,11 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link href="./styles.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Pokéfolio</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div id="app">
+      <div id="overlay" class="absolute top-0 left-0 z-10 w-full h-full">
+        <div class="flex justify-end w-full">
+          <button class="bg-[rgba(0,0,0,0.5)] m-[20px] p-[8px] rounded-xl w-16 h-16 flex justify-center items-center cursor-pointer" onclick="myFunction()">
+            <p class="text-4xl text-white">?</p>
+          </button>
+        </div>
+        <div class="flex justify-center items-center w-full h-full">
+          <button class="bg-[rgba(0,0,0,0.5)] m-[20px] p-[8px] rounded-xl w-16 h-16 flex justify-center items-center cursor-pointer" onclick="myFunction()">
+            <p class="text-4xl text-white">?</p>
+          </button>
+        </div>
+      </div>
+      <script type="module" src="/src/main.ts" style="position: absolute; top: 0px; left: 0px;"></script>
+    </div>
   </body>
 </html>

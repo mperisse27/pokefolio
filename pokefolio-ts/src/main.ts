@@ -1,10 +1,11 @@
-import { Application, Container } from 'pixi.js';
-import { loadMap } from './utils/loader';
+import { Application, Container, Graphics } from 'pixi.js';
+import { loadMap, loadSpriteAndTexture } from './utils/loader';
 import { bgm } from './components/sounds';
 import { Direction, Player } from './components/player';
 import { createGridFromMatrix, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { Popup } from './components/popup';
 import { handleKeyboardInput } from './utils/keyboardManager';
+import { OptionsMenu } from './components/options';
 
 (async () =>
 {
@@ -42,6 +43,12 @@ import { handleKeyboardInput } from './utils/keyboardManager';
   const popup = new Popup(app);
   app.stage.addChild(popup.container);
 
+  const franceFlag = await loadSpriteAndTexture(0, 0, '/france.png');
+  const ukFlag = await loadSpriteAndTexture(0, 0, '/uk.png');
+  const options = new OptionsMenu(app, franceFlag, ukFlag);
+  // app.stage.addChild(options.button);
+  app.stage.addChild(options.menu);
+
   const playerSprites = await loadPlayerSprites();
   const playerAnimations = await loadPlayerAnimations();
   const player = new Player('player1', 21, 31, playerSprites, playerAnimations);
@@ -49,6 +56,12 @@ import { handleKeyboardInput } from './utils/keyboardManager';
   app.stage.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
   player.container.position.y = app.screen.height / 2 - 160;
+
+  const fondBlanc = new Graphics() // For testing purposes
+    .rect(0, 0, app.screen.width, app.screen.height)
+    .fill(0xffffff);
+  fondBlanc.zIndex = 500;
+  app.stage.addChild(fondBlanc);
 
   bgm.play();
 
@@ -104,7 +117,6 @@ import { handleKeyboardInput } from './utils/keyboardManager';
         player.move(Direction.RIGHT, matrix);
       }
     }
-
     if ((activeKeys.has(" ") || activeKeys.has("Enter")) && popupDelayCounter <= 0) {
       const popupAppeared = popup.getText(messages, player);
       player.canMove = !popupAppeared;
