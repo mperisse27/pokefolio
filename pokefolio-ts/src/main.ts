@@ -1,6 +1,6 @@
 import { Application, Container } from 'pixi.js';
 import { loadMap } from './utils/loader';
-import { bgm } from './sounds';
+import { bgm } from './components/sounds';
 import { Direction, Player } from './components/player';
 import { createGridFromMatrix, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { Popup } from './components/popup';
