@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/pokeball-icon.png?v=1" />
+    <link rel="icon" type="image/png" href="/pokeball-icon.png" />
     <link href="./styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -71,38 +71,38 @@
     </div>
     <script type="module" src="/src/main.ts" style="position: absolute; top: 0px; left: 0px;"></script>
 
-  <script>
-    function openSettingsMenu() {
-      const menu = document.getElementById('settings-menu');
-      if (menu) {
-        menu.classList.toggle('hidden');
+    <script>
+      function openSettingsMenu() {
+        const menu = document.getElementById('settings-menu');
+        if (menu) {
+          menu.classList.toggle('hidden');
+        }
       }
-    }
-    function openHelpMenu() {
-      const menu = document.getElementById('help-menu');
-      if (menu) {
-        menu.classList.toggle('hidden');
+      function openHelpMenu() {
+        const menu = document.getElementById('help-menu');
+        if (menu) {
+          menu.classList.toggle('hidden');
+        }
       }
-    }
 
-    document.addEventListener('click', (event) => {
-      const settingsMenu = document.getElementById('settings-menu');
-      const helpMenu = document.getElementById('help-menu');
-      const settingsToggle = document.getElementById('settings-toggle');
-      const helpToggle = document.getElementById('help-toggle');
+      document.addEventListener('click', (event) => {
+        const settingsMenu = document.getElementById('settings-menu');
+        const helpMenu = document.getElementById('help-menu');
+        const settingsToggle = document.getElementById('settings-toggle');
+        const helpToggle = document.getElementById('help-toggle');
 
-      const isClickInsideSettings = settingsMenu && settingsMenu.contains(event.target);
-      const isClickInsideHelp = helpMenu && helpMenu.contains(event.target);
-      const isClickOnSettingsToggle = settingsToggle && settingsToggle.contains(event.target);
-      const isClickOnHelpToggle = helpToggle && helpToggle.contains(event.target);
+        const isClickInsideSettings = settingsMenu && settingsMenu.contains(event.target);
+        const isClickInsideHelp = helpMenu && helpMenu.contains(event.target);
+        const isClickOnSettingsToggle = settingsToggle && settingsToggle.contains(event.target);
+        const isClickOnHelpToggle = helpToggle && helpToggle.contains(event.target);
 
-      if (settingsMenu && !isClickInsideSettings && !isClickOnSettingsToggle) {
-        settingsMenu.classList.add('hidden');
-      }
-      if (helpMenu && !isClickInsideHelp && !isClickOnHelpToggle) {
-        helpMenu.classList.add('hidden');
-      }
-    });
-  </script>
+        if (settingsMenu && !isClickInsideSettings && !isClickOnSettingsToggle) {
+          settingsMenu.classList.add('hidden');
+        }
+        if (helpMenu && !isClickInsideHelp && !isClickOnHelpToggle) {
+          helpMenu.classList.add('hidden');
+        }
+      });
+    </script>
   </body>
 </html>

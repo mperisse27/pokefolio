@@ -1,4 +1,4 @@
-import { Application, Container, Graphics } from 'pixi.js';
+import { Application, Container } from 'pixi.js';
 import { loadMap } from './utils/loader';
 import { addEventToVolumeSlider, bgm } from './components/sounds';
 import { Direction, Player } from './components/player';
@@ -77,5 +77,5 @@ import { addFlagListeners } from './gui';
   window.addEventListener('keydown', (event) => handleKeyboardInput(event, activeKeys));
   window.addEventListener('keyup', (event) => handleKeyboardInput(event, activeKeys));
 
-  window.addEventListener('DOMContentLoaded', addEventToVolumeSlider);
+  addEventToVolumeSlider();
 })();
