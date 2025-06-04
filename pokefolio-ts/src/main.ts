@@ -1,39 +1,27 @@
 import { Application, Container } from 'pixi.js';
 import { loadMap } from './utils/loader';
-import { bgm } from './components/sounds';
+import { addEventToVolumeSlider, bgm } from './components/sounds';
 import { Direction, Player } from './components/player';
-import { createGridFromMatrix, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
+import { createGridFromMatrix, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { Popup } from './components/popup';
 import { handleKeyboardInput } from './utils/keyboardManager';
+import { addFlagListeners } from './gui';
 
 (async () =>
 {
-  // Create a new application
   const app = new Application();
-
-  // Initialize the application
-  await app.init({ background: '#1099bb', resizeTo: window });
+  await app.init({ background: '#fff', resizeTo: window });
 
   await loadMap();
 
-  // Remove default margins and padding from body
-  document.body.style.margin = '0';
-  document.body.style.padding = '0';
-  document.body.style.overflow = 'hidden';
-  
-  // Style the canvas to fill viewport completely
-  app.canvas.style.display = 'block';
-  app.canvas.style.width = '100vw';
-  app.canvas.style.height = '100vh';
+  let language: 'fr' | 'en' = 'fr';
+  addFlagListeners((lang: 'fr' | 'en') => {
+    language = lang;
+  });
 
-  // Append the application canvas to the document body
-  document.body.appendChild(app.canvas);
+  initializeApplication(app);
 
-  // Create and add a container to the stage
   const container = new Container();
-
-  app.renderer.resize(window.innerWidth, window.innerHeight);
-  
   app.stage.addChild(container);
 
   const matrix = await loadMap();
@@ -52,33 +40,8 @@ import { handleKeyboardInput } from './utils/keyboardManager';
 
   bgm.play();
 
-  const messages = [
-    {
-      text: ["Bienvenue dans Pokéfolio !"],
-      positionX: 1680,
-      positionY: 2400
-    },
-    {
-      text: ["Ma chaîne Twitch :", "matt_la_menacee"],
-      positionX: 1360,
-      positionY: 1920
-    },
-    {
-      text: ["Mon LinkedIn :", "Matteo Perisse"],
-      positionX: 1600,
-      positionY: 1920
-    },
-    {
-      text: ["Mon GitHub :", "mperisse27"],
-      positionX: 1840,
-      positionY: 1920
-    },
-    {
-      text: ["Mon mail :", "matteo.perisse@gmail.com"],
-      positionX: 2080,
-      positionY: 1920
-    }
-  ]
+  const messagesJson = await fetch('/messages.json');
+  const messages = await messagesJson.json();
 
   let activeKeys: Set<string> = new Set();
   let popupDelayCounter = 0;
@@ -104,9 +67,8 @@ import { handleKeyboardInput } from './utils/keyboardManager';
         player.move(Direction.RIGHT, matrix);
       }
     }
-
     if ((activeKeys.has(" ") || activeKeys.has("Enter")) && popupDelayCounter <= 0) {
-      const popupAppeared = popup.getText(messages, player);
+      const popupAppeared = popup.getText(messages, player, language);
       player.canMove = !popupAppeared;
       popupDelayCounter = 30;
     }
@@ -114,4 +76,6 @@ import { handleKeyboardInput } from './utils/keyboardManager';
 
   window.addEventListener('keydown', (event) => handleKeyboardInput(event, activeKeys));
   window.addEventListener('keyup', (event) => handleKeyboardInput(event, activeKeys));
+
+  addEventToVolumeSlider();
 })();

@@ -1,5 +1,6 @@
 export interface PopupMessage {
-  text: string[];
+  textFr: string[];
+  textEn: string[];
   positionX: number;
   positionY: number;
 }

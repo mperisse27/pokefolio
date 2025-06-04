@@ -1,0 +1,32 @@
+[
+  {
+    "textFr": ["Bienvenue dans Pokéfolio !"],
+    "textEn": ["Welcome to Pokéfolio!"],
+    "positionX": 1680,
+    "positionY": 2400
+  },
+  {
+    "textFr": ["Ma chaîne Twitch :", "matt_la_menacee"],
+    "textEn": ["My Twitch channel:", "matt_la_menacee"],
+    "positionX": 1360,
+    "positionY": 1920
+  },
+  {
+    "textFr": ["Mon LinkedIn :", "Matteo Perisse"],
+    "textEn": ["My LinkedIn:", "Matteo Perisse"],
+    "positionX": 1600,
+    "positionY": 1920
+  },
+  {
+    "textFr": ["Mon GitHub :", "mperisse27"],
+    "textEn": ["My GitHub:", "mperisse27"],
+    "positionX": 1840,
+    "positionY": 1920
+  },
+  {
+    "textFr": ["Mon mail :", "matteo.perisse@gmail.com"],
+    "textEn": ["My mail :", "matteo.perisse@gmail.com"],
+    "positionX": 2080,
+    "positionY": 1920
+  }
+]
