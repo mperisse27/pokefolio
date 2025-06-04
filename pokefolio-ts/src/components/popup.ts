@@ -52,11 +52,12 @@ export class Popup {
     container.addChild(message2);
 
     container.visible = false;
+    container.zIndex = 1000; // Ensure the popup is above other elements
 
     return { container, message1, message2 };
   }
 
-  public getText(messages: PopupMessage[], player: Player) {
+  public getText(messages: PopupMessage[], player: Player, language: "fr" | "en") {
     if (this.container.visible) {
       this.container.visible = false;
       this.message1.text = "";
@@ -83,10 +84,14 @@ export class Popup {
     let messageFound = false;
     messages.forEach((message) => {
       if (message.positionX === targetX && message.positionY === targetY) {
-        this.text = message.text;
-
-        this.message1.text = this.text[0] || "";
-        this.message2.text = this.text[1] || "";
+        if (language == "fr") {
+          this.text = message.textFr;
+        }
+        else {
+          this.text = message.textEn;
+        }
+        this.message1.text = this.text[0] ?? "";
+        this.message2.text = this.text[1] ?? "";
         this.container.visible = true;
         messageFound = true;
       }

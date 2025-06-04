@@ -2,26 +2,107 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/pokeball-icon.png?v=1" />
     <link href="./styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokéfolio</title>
   </head>
   <body>
-    <div id="app">
-      <div id="overlay" class="absolute top-0 left-0 z-10 w-full h-full">
-        <div class="flex justify-end w-full">
-          <button class="bg-[rgba(0,0,0,0.5)] m-[20px] p-[8px] rounded-xl w-16 h-16 flex justify-center items-center cursor-pointer" onclick="myFunction()">
-            <p class="text-4xl text-white">?</p>
-          </button>
-        </div>
-        <div class="flex justify-center items-center w-full h-full">
-          <button class="bg-[rgba(0,0,0,0.5)] m-[20px] p-[8px] rounded-xl w-16 h-16 flex justify-center items-center cursor-pointer" onclick="myFunction()">
-            <p class="text-4xl text-white">?</p>
-          </button>
-        </div>
+    <div id="overlay" class="absolute top-0 left-0 z-10 w-full h-full">
+      <div class="flex justify-end w-full p-[20px] space-x-4">
+        <button id="help-toggle" class="bg-[rgba(0,0,0,0.5)] rounded-xl w-16 h-16 flex justify-center items-center cursor-pointer" onclick="openHelpMenu()">
+          <p class="text-5xl text-white">?</p>
+        </button>
+        <button id="settings-toggle" class="bg-[rgba(0,0,0,0.5)] rounded-xl w-16 h-16 flex justify-center items-center cursor-pointer" onclick="openSettingsMenu()">
+          <i class="fa fa-cog text-white fa-2x" aria-hidden="true"></i>
+        </button>
       </div>
-      <script type="module" src="/src/main.ts" style="position: absolute; top: 0px; left: 0px;"></script>
+      <div class="flex justify-center items-start w-full h-full">
+        <section id="settings-menu" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-center items-center space-y-8">
+          <div class="flex justify-between w-full">
+            <h1 class="text-3xl">Paramètres</h1>
+            <button type="button" class="cursor-pointer" onclick="openSettingsMenu()">
+              <i class="fa fa-times fa-2x"></i>
+            </button>
+          </div>
+          <div class="flex justify-between w-full">
+            <i class="fa fa-volume-up fa-2x" aria-hidden="true"></i>
+            <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.4" class="w-[80%]" />
+          </div>
+          <fieldset class="flex justify-between w-[60%]">
+            <div class="flex flex-col justify-center items-center">
+              <button id="fr-button" type="button" class="language-btn cursor-pointer mb-4 rounded-md ring-2 ring-white">
+                <img src="/france.png" class="w-18 h-12 rounded-md" alt="French Flag" />
+              </button>
+              <label class="text-lg" for="fr-button">Français</label>
+            </div>
+            <div class="flex flex-col justify-center items-center">
+              <button id="en-button" type="button" class="language-btn cursor-pointer mb-4 rounded-md">
+                <img src="/uk.png" class="w-18 h-12 rounded-md" alt="UK Flag" />
+              </button>
+              <label class="text-lg" for="en-button">English</label>
+            </div>
+          </fieldset>
+        </section>
+        <section id="help-menu" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-start items-start space-y-8 font-my32bit">
+          <div class="flex justify-between w-full">
+            <h1 class="text-3xl">Aide</h1>
+            <button type="button" class="cursor-pointer" onclick="openHelpMenu()">
+              <i class="fa fa-times fa-2x"></i>
+            </button>
+          </div>
+          <div>
+            <p class="text-2xl mb-1">Le projet</p>
+            <p class="text-lg">Pokéfolio est un projet personnel de portfolio.</p>
+            <p class="text-lg">Le code est disponible <a href="https://github.com/mperisse27/pokefolio" target="_blank" rel="noopener noreferrer">ici</a></p>
+          </div>
+          <h2 class="text-xl">Comment jouer ?</h2>
+          <div class="text-lg">
+            <p>Appuyez sur :</p>
+            <li class="ml-4">Z ou ⬆️ pour vous déplacer vers le haut</li>
+            <li class="ml-4">Q ou ⬅️ pour vous déplacer vers la gauche</li>
+            <li class="ml-4">S ou ⬇️ pour vous déplacer vers le bas</li>
+            <li class="ml-4">D ou ➡️ pour vous déplacer vers la droite</li>
+            <li class="ml-4">Espace ou Entrée pour interagir</li>
+          </div>
+        </section>
+      </div>
     </div>
+    <script type="module" src="/src/main.ts" style="position: absolute; top: 0px; left: 0px;"></script>
+
+  <script>
+    function openSettingsMenu() {
+      const menu = document.getElementById('settings-menu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+      }
+    }
+    function openHelpMenu() {
+      const menu = document.getElementById('help-menu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+      }
+    }
+
+    document.addEventListener('click', (event) => {
+      const settingsMenu = document.getElementById('settings-menu');
+      const helpMenu = document.getElementById('help-menu');
+      const settingsToggle = document.getElementById('settings-toggle');
+      const helpToggle = document.getElementById('help-toggle');
+
+      const isClickInsideSettings = settingsMenu && settingsMenu.contains(event.target);
+      const isClickInsideHelp = helpMenu && helpMenu.contains(event.target);
+      const isClickOnSettingsToggle = settingsToggle && settingsToggle.contains(event.target);
+      const isClickOnHelpToggle = helpToggle && helpToggle.contains(event.target);
+
+      if (settingsMenu && !isClickInsideSettings && !isClickOnSettingsToggle) {
+        settingsMenu.classList.add('hidden');
+      }
+      if (helpMenu && !isClickInsideHelp && !isClickOnHelpToggle) {
+        helpMenu.classList.add('hidden');
+      }
+    });
+  </script>
   </body>
 </html>

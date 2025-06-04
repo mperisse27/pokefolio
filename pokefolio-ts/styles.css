@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'my32bit';
+  src: url('/fonts/my32bit.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

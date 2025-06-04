@@ -1,4 +1,4 @@
-import { Sprite, type Container, type ContainerChild } from "pixi.js";
+import { Application, Sprite, type Container, type ContainerChild } from "pixi.js";
 import { loadSprite, loadSpriteAndTexture, loadTexture } from "./loader";
 import { Direction } from "../components/player";
 
@@ -95,4 +95,18 @@ export const loadPlayerAnimations = async () => {
   };
 
   return playerAnimations;
+}
+
+export const initializeApplication = (app: Application) => {
+  document.body.style.margin = '0';
+  document.body.style.padding = '0';
+  document.body.style.overflow = 'hidden';
+
+  app.canvas.style.display = 'block';
+  app.canvas.style.width = '100vw';
+  app.canvas.style.height = '100vh';
+
+  app.renderer.resize(window.innerWidth, window.innerHeight);
+
+  document.body.appendChild(app.canvas);
 }
