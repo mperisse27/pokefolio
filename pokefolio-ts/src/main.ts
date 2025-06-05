@@ -4,7 +4,7 @@ import { addEventToVolumeSlider, bgm } from './components/sounds';
 import { Direction, Player } from './components/player';
 import { createGridFromMatrix, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { Popup } from './components/popup';
-import { handleKeyboardInput } from './utils/keyboardManager';
+import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
 import { addFlagListeners } from './gui';
 
 (async () =>
@@ -22,7 +22,7 @@ import { addFlagListeners } from './gui';
   initializeApplication(app);
 
   const container = new Container();
-  app.stage.addChild(container);
+  //app.stage.addChild(container);
 
   const matrix = await loadMap();
   createGridFromMatrix(matrix, container);
@@ -34,7 +34,7 @@ import { addFlagListeners } from './gui';
   const playerAnimations = await loadPlayerAnimations();
   const player = new Player('player1', 21, 31, playerSprites, playerAnimations);
 
-  app.stage.addChild(player.container);
+  //app.stage.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
   player.container.position.y = app.screen.height / 2 - 160;
 
@@ -56,18 +56,28 @@ import { addFlagListeners } from './gui';
       popupDelayCounter--;
     }
 
+    const playerAction = getActionFromKey(activeKeys);
+
     if (player.canMove) {
-      if (activeKeys.has("W") || activeKeys.has("w") || activeKeys.has("ArrowUp")) {
-        player.move(Direction.UP, matrix);
-      } else if (activeKeys.has("S") || activeKeys.has("s") || activeKeys.has("ArrowDown")) {
-        player.move(Direction.DOWN, matrix);
-      } else if (activeKeys.has("A") || activeKeys.has("a") || activeKeys.has("ArrowLeft")) {
-        player.move(Direction.LEFT, matrix);
-      } else if (activeKeys.has("D") || activeKeys.has("d") || activeKeys.has("ArrowRight")) {
-        player.move(Direction.RIGHT, matrix);
+      switch (playerAction)
+      {
+        case "UP":
+          player.move(Direction.UP, matrix);
+          break;
+        case "DOWN":
+          player.move(Direction.DOWN, matrix);
+          break;
+        case "LEFT":
+          player.move(Direction.LEFT, matrix);
+          break;
+        case "RIGHT":
+          player.move(Direction.RIGHT, matrix);
+          break;
+        default:
+          break;
       }
     }
-    if ((activeKeys.has(" ") || activeKeys.has("Enter")) && popupDelayCounter <= 0) {
+    if (playerAction == "INTERACT" && popupDelayCounter <= 0) {
       const popupAppeared = popup.getText(messages, player, language);
       player.canMove = !popupAppeared;
       popupDelayCounter = 30;

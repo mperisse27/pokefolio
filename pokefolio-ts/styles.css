@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'my32bit';
-  src: url('/fonts/my32bit.ttf') format('truetype');
+  src: url('/fonts/pokemon-emerald.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }

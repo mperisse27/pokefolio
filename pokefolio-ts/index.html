@@ -19,9 +19,9 @@
         </button>
       </div>
       <div class="flex justify-center items-start w-full h-full">
-        <section id="settings-menu" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-center items-center space-y-8">
-          <div class="flex justify-between w-full">
-            <h1 class="text-3xl">Paramètres</h1>
+        <section id="settings-menu"  style="font-family: 'my32bit';" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-center items-center space-y-8">
+          <div class="flex justify-between object-center w-full">
+            <h1 class="text-6xl">Paramètres</h1>
             <button type="button" class="cursor-pointer" onclick="openSettingsMenu()">
               <i class="fa fa-times fa-2x"></i>
             </button>
@@ -35,30 +35,30 @@
               <button id="fr-button" type="button" class="language-btn cursor-pointer mb-4 rounded-md ring-2 ring-white">
                 <img src="/france.png" class="w-18 h-12 rounded-md" alt="French Flag" />
               </button>
-              <label class="text-lg" for="fr-button">Français</label>
+              <label class="text-3xl" for="fr-button">Français</label>
             </div>
             <div class="flex flex-col justify-center items-center">
               <button id="en-button" type="button" class="language-btn cursor-pointer mb-4 rounded-md">
                 <img src="/uk.png" class="w-18 h-12 rounded-md" alt="UK Flag" />
               </button>
-              <label class="text-lg" for="en-button">English</label>
+              <label class="text-3xl" for="en-button">English</label>
             </div>
           </fieldset>
         </section>
-        <section id="help-menu" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-start items-start space-y-8 font-my32bit">
+        <section id="help-menu" style="font-family: 'my32bit';" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-start items-start space-y-8 font-my32bit">
           <div class="flex justify-between w-full">
-            <h1 class="text-3xl">Aide</h1>
+            <h1 class="text-6xl">Aide</h1>
             <button type="button" class="cursor-pointer" onclick="openHelpMenu()">
               <i class="fa fa-times fa-2x"></i>
             </button>
           </div>
           <div>
-            <p class="text-2xl mb-1">Le projet</p>
-            <p class="text-lg">Pokéfolio est un projet personnel de portfolio.</p>
-            <p class="text-lg">Le code est disponible <a href="https://github.com/mperisse27/pokefolio" target="_blank" rel="noopener noreferrer">ici</a></p>
+            <p class="text-4xl mb-1 font-bold">Le projet</p>
+            <p class="text-2xl">Pokéfolio est un projet personnel de portfolio.</p>
+            <p class="text-2xl">Le code est disponible <a href="https://github.com/mperisse27/pokefolio" target="_blank" rel="noopener noreferrer" class="text-blue-500 font-bold underline">ici</a>.</p>
           </div>
-          <h2 class="text-xl">Comment jouer ?</h2>
-          <div class="text-lg">
+          <h2 class="text-4xl mb-1 font-bold">Comment jouer ?</h2>
+          <div class="text-2xl">
             <p>Appuyez sur :</p>
             <li class="ml-4">Z ou ⬆️ pour vous déplacer vers le haut</li>
             <li class="ml-4">Q ou ⬅️ pour vous déplacer vers la gauche</li>
