@@ -19,10 +19,10 @@
         </button>
       </div>
       <div class="flex justify-center items-start w-full h-full">
-        <section id="settings-menu"  style="font-family: 'my32bit';" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-center items-center space-y-8">
+        <section id="settings-menu" style="font-family: 'my32bit';" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-center items-center space-y-8">
           <div class="flex justify-between object-center w-full">
             <h1 class="text-6xl">Paramètres</h1>
-            <button type="button" class="cursor-pointer" onclick="openSettingsMenu()">
+            <button id="close-settings" type="button" class="cursor-pointer">
               <i class="fa fa-times fa-2x"></i>
             </button>
           </div>
@@ -48,7 +48,7 @@
         <section id="help-menu" style="font-family: 'my32bit';" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-start items-start space-y-8 font-my32bit">
           <div class="flex justify-between w-full">
             <h1 class="text-6xl">Aide</h1>
-            <button type="button" class="cursor-pointer" onclick="openHelpMenu()">
+            <button id="close-help" type="button" class="cursor-pointer">
               <i class="fa fa-times fa-2x"></i>
             </button>
           </div>
@@ -70,39 +70,5 @@
       </div>
     </div>
     <script type="module" src="/src/main.ts" style="position: absolute; top: 0px; left: 0px;"></script>
-
-    <script>
-      function openSettingsMenu() {
-        const menu = document.getElementById('settings-menu');
-        if (menu) {
-          menu.classList.toggle('hidden');
-        }
-      }
-      function openHelpMenu() {
-        const menu = document.getElementById('help-menu');
-        if (menu) {
-          menu.classList.toggle('hidden');
-        }
-      }
-
-      document.addEventListener('click', (event) => {
-        const settingsMenu = document.getElementById('settings-menu');
-        const helpMenu = document.getElementById('help-menu');
-        const settingsToggle = document.getElementById('settings-toggle');
-        const helpToggle = document.getElementById('help-toggle');
-
-        const isClickInsideSettings = settingsMenu && settingsMenu.contains(event.target);
-        const isClickInsideHelp = helpMenu && helpMenu.contains(event.target);
-        const isClickOnSettingsToggle = settingsToggle && settingsToggle.contains(event.target);
-        const isClickOnHelpToggle = helpToggle && helpToggle.contains(event.target);
-
-        if (settingsMenu && !isClickInsideSettings && !isClickOnSettingsToggle) {
-          settingsMenu.classList.add('hidden');
-        }
-        if (helpMenu && !isClickInsideHelp && !isClickOnHelpToggle) {
-          helpMenu.classList.add('hidden');
-        }
-      });
-    </script>
   </body>
 </html>

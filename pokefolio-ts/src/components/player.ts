@@ -1,12 +1,7 @@
 import { Container, Sprite } from "pixi.js";
 import type { Position } from "../types/position";
-
-export enum Direction {
-  RIGHT,
-  LEFT,
-  UP,
-  DOWN
-}
+import { Direction } from "../types/direction";
+import type { NPC } from "./npc";
 
 export class Player {
   public position: Position;
@@ -37,10 +32,11 @@ export class Player {
     this.animations = animations;
     this.spriteIndex = 0;
 
-    // Création du conteneur
     this.container = new Container();
+    this.container.x = this.position.x;
+    this.container.y = this.position.y;
+    this.container.zIndex = 10;
 
-    // Positionner tous les sprites et les ajouter au container
     for (const dir in sprites) {
       const sprite = sprites[dir as unknown as Direction];
       sprite.x = 0;
@@ -49,16 +45,11 @@ export class Player {
       this.container.addChild(sprite);
     }
 
-    // Sprite actif initialement
     this.sprite = sprites[Direction.DOWN];
     this.sprite.visible = true;
-
-    // Positionner le container
-    this.container.x = this.position.x;
-    this.container.y = this.position.y;
   }
 
-  public move(direction: Direction, matrix: number[][]) {
+  public move(direction: Direction, matrix: number[][], interactiveElements: {position: Position;object: NPC;}[]) {
     if (!this.canMove) {
       return;
     }
@@ -67,28 +58,28 @@ export class Player {
     }
     switch (direction) {
       case Direction.RIGHT:
-        if (matrix[this.tilePosition.y][this.tilePosition.x + 1] !== 11 && matrix[this.tilePosition.y][this.tilePosition.x + 1] !== 1) {
+        if (this.isWalkableTile(matrix, this.tilePosition.x + 1, this.tilePosition.y, interactiveElements)) {
           this.destination.x = this.position.x + 80;
           this.tilePosition.x += 1;
           this.canMove = false;
         }
         break;
       case Direction.LEFT:
-        if (matrix[this.tilePosition.y][this.tilePosition.x - 1] !== 11 && matrix[this.tilePosition.y][this.tilePosition.x - 1] !== 1) {
+        if (this.isWalkableTile(matrix, this.tilePosition.x - 1, this.tilePosition.y, interactiveElements)) {
           this.destination.x = this.position.x - 80;
           this.tilePosition.x -= 1;
           this.canMove = false;
         }
         break;
       case Direction.UP:
-        if (matrix[this.tilePosition.y - 1][this.tilePosition.x] !== 11 && matrix[this.tilePosition.y - 1][this.tilePosition.x] !== 1) {
+        if (this.isWalkableTile(matrix, this.tilePosition.x, this.tilePosition.y - 1, interactiveElements)) {
           this.destination.y = this.position.y - 80;
           this.tilePosition.y -= 1;
           this.canMove = false;
         }
         break;
       case Direction.DOWN:
-        if (matrix[this.tilePosition.y + 1][this.tilePosition.x] !== 11 && matrix[this.tilePosition.y + 1][this.tilePosition.x] !== 1) {
+        if (this.isWalkableTile(matrix, this.tilePosition.x, this.tilePosition.y + 1, interactiveElements)) {
           this.destination.y = this.position.y + 80;
           this.tilePosition.y += 1;
           this.canMove = false;
@@ -134,5 +125,11 @@ export class Player {
       this.sprites[dir as unknown as Direction].visible = false;
     }
     this.sprite.visible = true;
+  }
+
+  private isWalkableTile(matrix: number[][], x: number, y: number, interactiveElements: {position: Position;object: NPC;}[]): boolean {
+    return matrix[y][x] !== 11 && matrix[y][x] !== 1 && !interactiveElements.some(element =>
+      element.position.x === x && element.position.y === y
+    );
   }
 }

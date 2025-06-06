@@ -1,6 +1,7 @@
 import { Graphics, Container, Application, type Renderer, Text } from "pixi.js";
-import { Direction, type Player } from "./player";
 import type { PopupMessage } from "../types/popupMessage";
+import type { Player } from "./player";
+import { Direction } from "../types/direction";
 
 export class Popup {
   public message1: Text;

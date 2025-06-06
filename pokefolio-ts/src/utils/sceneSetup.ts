@@ -1,6 +1,6 @@
 import { Application, Sprite, type Container, type ContainerChild } from "pixi.js";
 import { loadSprite, loadSpriteAndTexture, loadTexture } from "./loader";
-import { Direction } from "../components/player";
+import { Direction } from "../types/direction";
 
 export const createGridFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
   const grassTexture = await loadTexture('/tiles/grass.png');

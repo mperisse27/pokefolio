@@ -1,11 +1,14 @@
 import { Application, Container } from 'pixi.js';
 import { loadMap } from './utils/loader';
-import { addEventToVolumeSlider, bgm } from './components/sounds';
-import { Direction, Player } from './components/player';
+import { bgm } from './components/sounds';
+import { Player } from './components/player';
 import { createGridFromMatrix, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { Popup } from './components/popup';
 import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
-import { addFlagListeners } from './gui';
+import { addFlagListeners, setupGui } from './gui';
+import { Direction } from './types/direction';
+import { NPC } from './components/npc';
+import type { Position } from './types/position';
 
 (async () =>
 {
@@ -22,7 +25,7 @@ import { addFlagListeners } from './gui';
   initializeApplication(app);
 
   const container = new Container();
-  //app.stage.addChild(container);
+  app.stage.addChild(container);
 
   const matrix = await loadMap();
   createGridFromMatrix(matrix, container);
@@ -34,14 +37,31 @@ import { addFlagListeners } from './gui';
   const playerAnimations = await loadPlayerAnimations();
   const player = new Player('player1', 21, 31, playerSprites, playerAnimations);
 
-  //app.stage.addChild(player.container);
+  app.stage.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
   player.container.position.y = app.screen.height / 2 - 160;
+
+  const npcSprites = await loadPlayerSprites();
+  const npc = new NPC('NPC1', 22, 32, npcSprites, Direction.LEFT);
+  container.addChild(npc.container);
 
   bgm.play();
 
   const messagesJson = await fetch('/messages.json');
   const messages = await messagesJson.json();
+  const interactiveElements: { position: Position, object: NPC }[] = [];
+  interactiveElements.push(
+    {
+      position: { x: 22, y: 32 },
+      object: npc,
+    }
+  )
+  // messages.forEach((message: any) => {
+  //   interactiveElements.push({
+  //     position: message.position,
+  //     object: message.text,
+  //   });
+  // });
 
   let activeKeys: Set<string> = new Set();
   let popupDelayCounter = 0;
@@ -62,16 +82,16 @@ import { addFlagListeners } from './gui';
       switch (playerAction)
       {
         case "UP":
-          player.move(Direction.UP, matrix);
+          player.move(Direction.UP, matrix, interactiveElements);
           break;
         case "DOWN":
-          player.move(Direction.DOWN, matrix);
+          player.move(Direction.DOWN, matrix, interactiveElements);
           break;
         case "LEFT":
-          player.move(Direction.LEFT, matrix);
+          player.move(Direction.LEFT, matrix, interactiveElements);
           break;
         case "RIGHT":
-          player.move(Direction.RIGHT, matrix);
+          player.move(Direction.RIGHT, matrix, interactiveElements);
           break;
         default:
           break;
@@ -81,11 +101,17 @@ import { addFlagListeners } from './gui';
       const popupAppeared = popup.getText(messages, player, language);
       player.canMove = !popupAppeared;
       popupDelayCounter = 30;
+      interactiveElements.forEach((element) => {
+        console.log(element.position, player.tilePosition);
+        if (Math.abs(element.position.x - player.tilePosition.x) + Math.abs(element.position.y - player.tilePosition.y) === 1) {
+          element.object.speak(player);
+        }
+      });
     }
   });
 
   window.addEventListener('keydown', (event) => handleKeyboardInput(event, activeKeys));
   window.addEventListener('keyup', (event) => handleKeyboardInput(event, activeKeys));
 
-  addEventToVolumeSlider();
+  setupGui();
 })();
