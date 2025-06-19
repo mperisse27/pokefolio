@@ -1,6 +1,9 @@
 import { Application, Sprite, type Container, type ContainerChild } from "pixi.js";
 import { loadSprite, loadSpriteAndTexture, loadTexture } from "./loader";
 import { Direction } from "../types/direction";
+import type { InteractiveElement } from "../types/interactiveElement";
+import { NPC } from "../components/npc";
+import { Sign } from "../components/sign";
 
 export const createGridFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
   const grassTexture = await loadTexture('/tiles/grass.png');
@@ -109,4 +112,49 @@ export const initializeApplication = (app: Application) => {
   app.renderer.resize(window.innerWidth, window.innerHeight);
 
   document.body.appendChild(app.canvas);
+}
+
+export const fetchInteractiveElements = async () => {
+  const messagesJson = await fetch('/messages.json');
+  const elements = await messagesJson.json();
+  const interactiveElements: InteractiveElement[] = [];
+
+  const npcSprites = await loadPlayerSprites(); //TODO: load NPC sprites from a different source
+
+  elements.forEach((element: any) => {
+    let newElement;
+    if (element.type === 'npc') {
+      newElement = new NPC(
+        element.name,
+        element.positionX,
+        element.positionY,
+        npcSprites,
+        Direction.LEFT,
+        {
+          en: element.textEn,
+          fr: element.textFr,
+        }
+      );
+    }
+    else if (element.type == 'sign') {
+      newElement = new Sign(
+        npcSprites[Direction.UP],
+        element.positionX,
+        element.positionY,
+        {
+          en: element.textEn,
+          fr: element.textFr,
+        }
+      );
+    }
+
+    if (newElement) {
+      interactiveElements.push({
+        position: { x: element.positionX, y: element.positionY },
+        object: newElement,
+        type: element.type,
+      });
+    }
+  });
+  return interactiveElements;
 }

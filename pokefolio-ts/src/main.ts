@@ -2,16 +2,18 @@ import { Application, Container } from 'pixi.js';
 import { loadMap } from './utils/loader';
 import { bgm } from './components/sounds';
 import { Player } from './components/player';
-import { createGridFromMatrix, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
+import { createGridFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { Popup } from './components/popup';
 import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
 import { addFlagListeners, setupGui } from './gui';
 import { Direction } from './types/direction';
 import { NPC } from './components/npc';
-import type { Position } from './types/position';
+import type { Sign } from './components/sign';
 
 (async () =>
 {
+  await document.fonts.ready;
+  
   const app = new Application();
   await app.init({ background: '#fff', resizeTo: window });
 
@@ -28,7 +30,7 @@ import type { Position } from './types/position';
   app.stage.addChild(container);
 
   const matrix = await loadMap();
-  createGridFromMatrix(matrix, container);
+  //createGridFromMatrix(matrix, container);
 
   const popup = new Popup(app);
   app.stage.addChild(popup.container);
@@ -41,27 +43,11 @@ import type { Position } from './types/position';
   player.container.position.x = app.screen.width / 2 - 40;
   player.container.position.y = app.screen.height / 2 - 160;
 
-  const npcSprites = await loadPlayerSprites();
-  const npc = new NPC('NPC1', 22, 32, npcSprites, Direction.LEFT);
-  container.addChild(npc.container);
-
   bgm.play();
-
-  const messagesJson = await fetch('/messages.json');
-  const messages = await messagesJson.json();
-  const interactiveElements: { position: Position, object: NPC }[] = [];
-  interactiveElements.push(
-    {
-      position: { x: 22, y: 32 },
-      object: npc,
-    }
-  )
-  // messages.forEach((message: any) => {
-  //   interactiveElements.push({
-  //     position: message.position,
-  //     object: message.text,
-  //   });
-  // });
+  const interactiveElements = await fetchInteractiveElements();
+  interactiveElements.forEach((element) => {
+    container.addChild(element.object.container);
+  });
 
   let activeKeys: Set<string> = new Set();
   let popupDelayCounter = 0;
@@ -98,15 +84,17 @@ import type { Position } from './types/position';
       }
     }
     if (playerAction == "INTERACT" && popupDelayCounter <= 0) {
-      const popupAppeared = popup.getText(messages, player, language);
-      player.canMove = !popupAppeared;
-      popupDelayCounter = 30;
-      interactiveElements.forEach((element) => {
-        console.log(element.position, player.tilePosition);
-        if (Math.abs(element.position.x - player.tilePosition.x) + Math.abs(element.position.y - player.tilePosition.y) === 1) {
-          element.object.speak(player);
-        }
+      const element = interactiveElements.find((element) => {
+        return Math.abs(element.position.x - player.tilePosition.x) + Math.abs(element.position.y - player.tilePosition.y) === 1;
       });
+      if (element) {
+        const popupHidden = element.type == 'npc' ?
+        (element.object as NPC).speak(player, popup, language) :
+        (element.object as Sign).speak(popup, language);
+
+        player.canMove = popupHidden;
+        popupDelayCounter = 30;
+      }
     }
   });
 

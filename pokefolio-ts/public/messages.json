@@ -2,31 +2,44 @@
   {
     "textFr": ["Bienvenue dans Pokéfolio !"],
     "textEn": ["Welcome to Pokéfolio!"],
-    "positionX": 1680,
-    "positionY": 2400
+    "positionX": 21,
+    "positionY": 30,
+    "type": "sign"
   },
   {
     "textFr": ["Ma chaîne Twitch :", "matt_la_menacee"],
     "textEn": ["My Twitch channel:", "matt_la_menacee"],
-    "positionX": 1360,
-    "positionY": 1920
+    "positionX": 17,
+    "positionY": 24,
+    "type": "sign"
   },
   {
     "textFr": ["Mon LinkedIn :", "Matteo Perisse"],
     "textEn": ["My LinkedIn:", "Matteo Perisse"],
-    "positionX": 1600,
-    "positionY": 1920
+    "positionX": 20,
+    "positionY": 24,
+    "type": "sign"
   },
   {
     "textFr": ["Mon GitHub :", "mperisse27"],
     "textEn": ["My GitHub:", "mperisse27"],
-    "positionX": 1840,
-    "positionY": 1920
+    "positionX": 23,
+    "positionY": 24,
+    "type": "sign"
   },
   {
     "textFr": ["Mon mail :", "matteo.perisse@gmail.com"],
     "textEn": ["My mail :", "matteo.perisse@gmail.com"],
-    "positionX": 2080,
-    "positionY": 1920
+    "positionX": 26,
+    "positionY": 24,
+    "type": "sign"
+  },
+  {
+    "textFr": ["Bonjour", "Bienvenue dans mon monde", "Explore et amuse-toi !"],
+    "textEn": ["Hello", "Welcome to my world", "Explore and have fun!"],
+    "positionX": 22,
+    "positionY": 32,
+    "type": "npc",
+    "name": "Matt"
   }
 ]

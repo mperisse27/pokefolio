@@ -19,14 +19,18 @@ export const addFlagListeners = (onLanguageChange: (lang: 'fr' | 'en') => void) 
   enButton.addEventListener('click', () => updateLanguageSelection('en'));
 }
 
-export function openSettingsMenu() {
+export function openSettingsMenu(event: MouseEvent) {
   const menu = document.getElementById('settings-menu');
   if (menu) menu.classList.toggle('hidden');
+  const button = event.currentTarget as HTMLButtonElement;
+  button.blur()
 }
 
-export function openHelpMenu() {
+export function openHelpMenu(event: MouseEvent) {
   const menu = document.getElementById('help-menu');
   if (menu) menu.classList.toggle('hidden');
+  const button = event.currentTarget as HTMLButtonElement;
+  button.blur()
 }
 
 export function setupMenuOutsideClickHandler() {
@@ -60,4 +64,10 @@ export const setupGui = () => {
   document.getElementById('close-settings')?.addEventListener('click', openSettingsMenu);
   document.getElementById('close-help')?.addEventListener('click', openHelpMenu);
   setupMenuOutsideClickHandler();
+
+  const hasVisited = localStorage.getItem("hasVisited");
+  if (!hasVisited) {
+    document.getElementById('help-menu')?.classList.remove("hidden");
+    localStorage.setItem("hasVisited", "true");
+  }
 }

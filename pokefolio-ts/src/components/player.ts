@@ -2,6 +2,8 @@ import { Container, Sprite } from "pixi.js";
 import type { Position } from "../types/position";
 import { Direction } from "../types/direction";
 import type { NPC } from "./npc";
+import type { Sign } from "./sign";
+import type { InteractiveElement } from "../types/interactiveElement";
 
 export class Player {
   public position: Position;
@@ -35,7 +37,7 @@ export class Player {
     this.container = new Container();
     this.container.x = this.position.x;
     this.container.y = this.position.y;
-    this.container.zIndex = 10;
+    this.container.zIndex = this.tilePosition.y;
 
     for (const dir in sprites) {
       const sprite = sprites[dir as unknown as Direction];
@@ -49,7 +51,7 @@ export class Player {
     this.sprite.visible = true;
   }
 
-  public move(direction: Direction, matrix: number[][], interactiveElements: {position: Position;object: NPC;}[]) {
+  public move(direction: Direction, matrix: number[][], interactiveElements: InteractiveElement[]) {
     if (!this.canMove) {
       return;
     }
@@ -76,6 +78,7 @@ export class Player {
           this.destination.y = this.position.y - 80;
           this.tilePosition.y -= 1;
           this.canMove = false;
+          this.container.zIndex = this.tilePosition.y;
         }
         break;
       case Direction.DOWN:
@@ -83,6 +86,7 @@ export class Player {
           this.destination.y = this.position.y + 80;
           this.tilePosition.y += 1;
           this.canMove = false;
+          this.container.zIndex = this.tilePosition.y;
         }
         break;
     }
@@ -127,7 +131,7 @@ export class Player {
     this.sprite.visible = true;
   }
 
-  private isWalkableTile(matrix: number[][], x: number, y: number, interactiveElements: {position: Position;object: NPC;}[]): boolean {
+  private isWalkableTile(matrix: number[][], x: number, y: number, interactiveElements:InteractiveElement[]): boolean {
     return matrix[y][x] !== 11 && matrix[y][x] !== 1 && !interactiveElements.some(element =>
       element.position.x === x && element.position.y === y
     );
