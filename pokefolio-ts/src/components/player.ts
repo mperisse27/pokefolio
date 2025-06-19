@@ -1,8 +1,6 @@
 import { Container, Sprite } from "pixi.js";
 import type { Position } from "../types/position";
 import { Direction } from "../types/direction";
-import type { NPC } from "./npc";
-import type { Sign } from "./sign";
 import type { InteractiveElement } from "../types/interactiveElement";
 
 export class Player {

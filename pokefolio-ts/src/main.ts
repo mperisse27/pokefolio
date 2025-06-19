@@ -13,7 +13,7 @@ import type { Sign } from './components/sign';
 (async () =>
 {
   await document.fonts.ready;
-  
+
   const app = new Application();
   await app.init({ background: '#fff', resizeTo: window });
 
@@ -30,7 +30,7 @@ import type { Sign } from './components/sign';
   app.stage.addChild(container);
 
   const matrix = await loadMap();
-  //createGridFromMatrix(matrix, container);
+  createGridFromMatrix(matrix, container);
 
   const popup = new Popup(app);
   app.stage.addChild(popup.container);
