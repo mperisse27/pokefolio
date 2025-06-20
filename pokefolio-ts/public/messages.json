@@ -2,46 +2,46 @@
   {
     "textFr": ["Bienvenue dans Pokéfolio !"],
     "textEn": ["Welcome to Pokéfolio!"],
-    "positionX": 21,
-    "positionY": 30,
+    "positionX": 16,
+    "positionY": 15,
     "type": "sign"
   },
   {
-    "textFr": ["Passez sur ma chaîne Twitch :", "matt_la_menacee"],
-    "textEn": ["Check out my Twitch channel:", "matt_la_menacee"],
-    "positionX": 17,
-    "positionY": 24,
+    "textFr": ["Passez sur ma chaîne Twitch :", "https://twitch.tv/matt_la_menacee"],
+    "textEn": ["Check out my Twitch channel:", "https://twitch.tv/matt_la_menacee"],
+    "positionX": 13,
+    "positionY": 10,
     "type": "sign",
     "url": "https://twitch.tv/matt_la_menacee"
   },
   {
     "textFr": ["Visitez mon LinkedIn :", "https://linkedin.com/in/matteo-perisse"],
     "textEn": ["Visit my LinkedIn:", "https://linkedin.com/in/matteo-perisse"],
-    "positionX": 20,
-    "positionY": 24,
+    "positionX": 15,
+    "positionY": 10,
     "type": "sign",
     "url": "https://linkedin.com/in/matteo-perisse"
   },
   {
-    "textFr": ["Faites un tour sur mon GitHub :", "mperisse27"],
-    "textEn": ["Check out my GitHub:", "mperisse27"],
-    "positionX": 23,
-    "positionY": 24,
+    "textFr": ["Faites un tour sur mon GitHub :", "https://github.com/mperisse27"],
+    "textEn": ["Check out my GitHub:", "https://github.com/mperisse27"],
+    "positionX": 17,
+    "positionY": 10,
     "type": "sign",
     "url": "https://github.com/mperisse27"
   },
   {
     "textFr": ["Pour m'envoyer un mail :", "matteo.perisse@gmail.com"],
     "textEn": ["To send me a mail:", "matteo.perisse@gmail.com"],
-    "positionX": 26,
-    "positionY": 24,
+    "positionX": 19,
+    "positionY": 10,
     "type": "sign"
   },
   {
     "textFr": ["Bonjour", "Bienvenue dans mon monde", "Explore et amuse-toi !"],
     "textEn": ["Hello", "Welcome to my world", "Explore and have fun!"],
     "positionX": 22,
-    "positionY": 32,
+    "positionY": 17,
     "type": "npc",
     "name": "Matt"
   }

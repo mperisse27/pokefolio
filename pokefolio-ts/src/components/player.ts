@@ -2,6 +2,7 @@ import { Container, Sprite } from "pixi.js";
 import type { Position } from "../types/position";
 import { Direction } from "../types/direction";
 import type { InteractiveElement } from "../types/interactiveElement";
+import type { Tile } from "../types/tile";
 
 export class Player {
   public position: Position;
@@ -50,16 +51,17 @@ export class Player {
     this.sprite.visible = true;
   }
 
-  public move(direction: Direction, matrix: number[][], interactiveElements: InteractiveElement[], sprint: boolean) {
+  public move(direction: Direction, matrix: number[][], interactiveElements: InteractiveElement[], sprint: boolean, allTiles: Tile[]) {
     if (!this.canMove) {
       return;
     }
     if (this.facing !== direction) {
       this.changeDirection(direction);
     }
+    console.log('ohe')
     switch (direction) {
       case Direction.RIGHT:
-        if (this.isWalkableTile(matrix, this.tilePosition.x + 1, this.tilePosition.y, interactiveElements)) {
+        if (this.isWalkableTile(matrix, this.tilePosition.x + 1, this.tilePosition.y, interactiveElements, allTiles)) {
           this.destination.x = this.position.x + 80;
           this.tilePosition.x += 1;
           this.canMove = false;
@@ -67,7 +69,7 @@ export class Player {
         }
         break;
       case Direction.LEFT:
-        if (this.isWalkableTile(matrix, this.tilePosition.x - 1, this.tilePosition.y, interactiveElements)) {
+        if (this.isWalkableTile(matrix, this.tilePosition.x - 1, this.tilePosition.y, interactiveElements, allTiles)) {
           this.destination.x = this.position.x - 80;
           this.tilePosition.x -= 1;
           this.canMove = false;
@@ -75,7 +77,7 @@ export class Player {
         }
         break;
       case Direction.UP:
-        if (this.isWalkableTile(matrix, this.tilePosition.x, this.tilePosition.y - 1, interactiveElements)) {
+        if (this.isWalkableTile(matrix, this.tilePosition.x, this.tilePosition.y - 1, interactiveElements, allTiles)) {
           this.destination.y = this.position.y - 80;
           this.tilePosition.y -= 1;
           this.canMove = false;
@@ -84,7 +86,7 @@ export class Player {
         }
         break;
       case Direction.DOWN:
-        if (this.isWalkableTile(matrix, this.tilePosition.x, this.tilePosition.y + 1, interactiveElements)) {
+        if (this.isWalkableTile(matrix, this.tilePosition.x, this.tilePosition.y + 1, interactiveElements, allTiles)) {
           this.destination.y = this.position.y + 80;
           this.tilePosition.y += 1;
           this.canMove = false;
@@ -136,8 +138,10 @@ export class Player {
     this.sprite.visible = true;
   }
 
-  public isWalkableTile(matrix: number[][], x: number, y: number, interactiveElements:InteractiveElement[]): boolean {
-    return matrix[y][x] !== 11 && matrix[y][x] !== 1 && !interactiveElements.some(element =>
+  public isWalkableTile(matrix: number[][], x: number, y: number, interactiveElements:InteractiveElement[], allTiles: Tile[]): boolean {
+    console.log('here', x, y, matrix.length, matrix[0].length);
+    if (y < 0 || y >= matrix.length || x < 0 || x >= matrix[0].length) return false;
+    return (allTiles.find(tile => tile.id == matrix[y][x])?.isWalkable ?? false) && !interactiveElements.some(element =>
       element.position.x === x && element.position.y === y
     );
   }

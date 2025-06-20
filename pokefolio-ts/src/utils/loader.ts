@@ -20,11 +20,11 @@ export const loadSpriteAndTexture = async (positionX: number, positionY: number,
 export const loadTexture = async (texturePath: string) => {
   const texture = await Assets.load(texturePath);
   texture.baseTexture.scaleMode = 'nearest';
-  return texture;
+  return texture as Texture;
 }
 
 export const loadMap = async () => {
-  const res = await fetch('/map.json');
+  const res = await fetch('/map2.json');
   const mapData = await res.json();
   const chunks = mapData.layers[0].chunks;
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;

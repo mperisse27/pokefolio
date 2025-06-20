@@ -1,22 +1,22 @@
-import type { TileType } from "./tileType";
+import type { Texture } from "pixi.js";
 
 export class Tile {
-  x: number;
-  y: number;
-  image: string;
-  type: TileType;
+  id: number;
+  name: string;
+  texture: Texture;
+  type: string;
   isWalkable: boolean;
 
   constructor(
-    x: number = 0,
-    y: number = 0,
-    image: string,
-    type: TileType,
-    isWalkable: boolean = true
+    id: number,
+    name: string,
+    type: string,
+    isWalkable: boolean,
+    texture: Texture
   ) {
-    this.x = x;
-    this.y = y;
-    this.image = image;
+    this.id = id;
+    this.name = name;
+    this.texture = texture;
     this.type = type;
     this.isWalkable = isWalkable;
   }

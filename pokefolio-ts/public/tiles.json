@@ -1,0 +1,195 @@
+[
+  {
+    "id": 81,
+    "name": "grass",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 51,
+    "name": "grass edge top",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 4,
+    "name": "flower2",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 5,
+    "name": "flower",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 83,
+    "name": "cliff left",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 85,
+    "name": "cliff right",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 88,
+    "name": "cliff bot left",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 89,
+    "name": "cliff bot",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 90,
+    "name": "cliff bot right",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 79,
+    "name": "cliff left join",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 84,
+    "name": "cliff right join",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 1,
+    "name": "road top left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 2,
+    "name": "road top",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 3,
+    "name": "road top right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 6,
+    "name": "road left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 7,
+    "name": "road",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 8,
+    "name": "road right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 11,
+    "name": "road bot left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 12,
+    "name": "road bot",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 13,
+    "name": "road bot right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 86,
+    "name": "road alone",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 14,
+    "name": "fence",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 15,
+    "name": "sign",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 9,
+    "name": "grass rock",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 17,
+    "name": "water top left",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
+    "id": 18,
+    "name": "water top",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
+    "id": 19,
+    "name": "water top right",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
+    "id": 27,
+    "name": "water top left join",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
+    "id": 48,
+    "name": "water right up",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
+    "id": 22,
+    "name": "water left",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
+    "id": 23,
+    "name": "water",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
+    "id": 24,
+    "name": "water right",
+    "type": "water",
+    "isWalkable": false
+  }
+
+]
