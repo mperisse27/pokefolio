@@ -144,7 +144,8 @@ export const fetchInteractiveElements = async () => {
         {
           en: element.textEn,
           fr: element.textFr,
-        }
+        },
+        element.url
       );
     }
 

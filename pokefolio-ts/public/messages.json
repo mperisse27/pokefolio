@@ -7,29 +7,32 @@
     "type": "sign"
   },
   {
-    "textFr": ["Ma chaîne Twitch :", "matt_la_menacee"],
-    "textEn": ["My Twitch channel:", "matt_la_menacee"],
+    "textFr": ["Passez sur ma chaîne Twitch :", "matt_la_menacee"],
+    "textEn": ["Check out my Twitch channel:", "matt_la_menacee"],
     "positionX": 17,
     "positionY": 24,
-    "type": "sign"
+    "type": "sign",
+    "url": "https://twitch.tv/matt_la_menacee"
   },
   {
-    "textFr": ["Mon LinkedIn :", "Matteo Perisse"],
-    "textEn": ["My LinkedIn:", "Matteo Perisse"],
+    "textFr": ["Visitez mon LinkedIn :", "https://linkedin.com/in/matteo-perisse"],
+    "textEn": ["Visit my LinkedIn:", "https://linkedin.com/in/matteo-perisse"],
     "positionX": 20,
     "positionY": 24,
-    "type": "sign"
+    "type": "sign",
+    "url": "https://linkedin.com/in/matteo-perisse"
   },
   {
-    "textFr": ["Mon GitHub :", "mperisse27"],
-    "textEn": ["My GitHub:", "mperisse27"],
+    "textFr": ["Faites un tour sur mon GitHub :", "mperisse27"],
+    "textEn": ["Check out my GitHub:", "mperisse27"],
     "positionX": 23,
     "positionY": 24,
-    "type": "sign"
+    "type": "sign",
+    "url": "https://github.com/mperisse27"
   },
   {
-    "textFr": ["Mon mail :", "matteo.perisse@gmail.com"],
-    "textEn": ["My mail :", "matteo.perisse@gmail.com"],
+    "textFr": ["Pour m'envoyer un mail :", "matteo.perisse@gmail.com"],
+    "textEn": ["To send me a mail:", "matteo.perisse@gmail.com"],
     "positionX": 26,
     "positionY": 24,
     "type": "sign"

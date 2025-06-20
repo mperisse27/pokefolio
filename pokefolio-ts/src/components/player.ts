@@ -14,8 +14,9 @@ export class Player {
   public sprite: Sprite;
   public facing: Direction = Direction.DOWN;
   public canMove: boolean = true;
-  public moveFrame: number = 0;
+  moveFrame: number = 0;
   spriteIndex: number;
+  sprinting: boolean = false;
 
   constructor(
     id: string,
@@ -49,7 +50,7 @@ export class Player {
     this.sprite.visible = true;
   }
 
-  public move(direction: Direction, matrix: number[][], interactiveElements: InteractiveElement[]) {
+  public move(direction: Direction, matrix: number[][], interactiveElements: InteractiveElement[], sprint: boolean) {
     if (!this.canMove) {
       return;
     }
@@ -62,6 +63,7 @@ export class Player {
           this.destination.x = this.position.x + 80;
           this.tilePosition.x += 1;
           this.canMove = false;
+          this.sprinting = sprint;
         }
         break;
       case Direction.LEFT:
@@ -69,6 +71,7 @@ export class Player {
           this.destination.x = this.position.x - 80;
           this.tilePosition.x -= 1;
           this.canMove = false;
+          this.sprinting = sprint;
         }
         break;
       case Direction.UP:
@@ -77,6 +80,7 @@ export class Player {
           this.tilePosition.y -= 1;
           this.canMove = false;
           this.container.zIndex = this.tilePosition.y;
+          this.sprinting = sprint;
         }
         break;
       case Direction.DOWN:
@@ -85,6 +89,7 @@ export class Player {
           this.tilePosition.y += 1;
           this.canMove = false;
           this.container.zIndex = this.tilePosition.y;
+          this.sprinting = sprint;
         }
         break;
     }
@@ -93,28 +98,30 @@ export class Player {
   public applyMovement() {
     if (this.moveFrame == 16) {
       this.canMove = true;
+      this.sprinting = false;
       this.moveFrame = 0;
     }
     else if (this.position.x !== this.destination.x || this.position.y !== this.destination.y) {
+      const delta = this.sprinting ? 10 : 5;
       switch (this.facing) {
         case Direction.RIGHT:
-          this.position.x += 5;
+          this.position.x += delta;
           break;
         case Direction.LEFT:
-          this.position.x -= 5;
+          this.position.x -= delta;
           break;
         case Direction.UP:
-          this.position.y -= 5;
+          this.position.y -= delta;
           break;
         case Direction.DOWN:
-          this.position.y += 5;
+          this.position.y += delta;
           break;
       }
       if (this.moveFrame % 8 === 0) {
         this.spriteIndex = (this.spriteIndex + 1) % this.animations[this.facing].length;
         this.sprite.texture = this.animations[this.facing][this.spriteIndex].texture;
       }
-      this.moveFrame++;
+      this.moveFrame += this.sprinting ? 2 : 1;
     }
   }
 
@@ -129,9 +136,24 @@ export class Player {
     this.sprite.visible = true;
   }
 
-  private isWalkableTile(matrix: number[][], x: number, y: number, interactiveElements:InteractiveElement[]): boolean {
+  public isWalkableTile(matrix: number[][], x: number, y: number, interactiveElements:InteractiveElement[]): boolean {
     return matrix[y][x] !== 11 && matrix[y][x] !== 1 && !interactiveElements.some(element =>
       element.position.x === x && element.position.y === y
     );
+  }
+
+  public getFrontTilePosition(): Position {
+    switch (this.facing) {
+      case Direction.RIGHT:
+        return { x: this.tilePosition.x + 1, y: this.tilePosition.y };
+      case Direction.LEFT:
+        return { x: this.tilePosition.x - 1, y: this.tilePosition.y };
+      case Direction.UP:
+        return { x: this.tilePosition.x, y: this.tilePosition.y - 1 };
+      case Direction.DOWN:
+        return { x: this.tilePosition.x, y: this.tilePosition.y + 1 };
+      default:
+        return { x: this.tilePosition.x, y: this.tilePosition.y };
+    }
   }
 }
