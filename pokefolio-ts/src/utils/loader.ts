@@ -20,7 +20,7 @@ export const loadSpriteAndTexture = async (positionX: number, positionY: number,
 export const loadTexture = async (texturePath: string) => {
   const texture = await Assets.load(texturePath);
   texture.baseTexture.scaleMode = 'nearest';
-  return texture;
+  return texture as Texture;
 }
 
 export const loadMap = async () => {

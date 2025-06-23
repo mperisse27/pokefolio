@@ -58,6 +58,6 @@ export class NPC {
     this.changeDirection(getOppositeDirection(player.facing));
     const text = [...this.dialogue[lang]];
     text[0] = `${this.name}: ${text[0]}`;
-    return popup.print(text);
+    return popup.changeText(text);
   }
 }

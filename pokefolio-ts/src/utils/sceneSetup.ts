@@ -4,42 +4,34 @@ import { Direction } from "../types/direction";
 import type { InteractiveElement } from "../types/interactiveElement";
 import { NPC } from "../components/npc";
 import { Sign } from "../components/sign";
+import { Tile } from "../types/tile";
 
 export const createGridFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
-  const grassTexture = await loadTexture('/tiles/grass.png');
-  const roadTexture = await loadTexture('/tiles/road.png');
-  const waterTexture = await loadTexture('/tiles/water.png');
-  const signTexture = await loadTexture('/tiles/sign.png');
-  const flowerTexture = await loadTexture('/tiles/flower.png');
+  const tileJSON = await fetch('/tiles.json');
+  const tileData = await tileJSON.json() as {
+    id: number,
+    name: string,
+    type: string,
+    isWalkable: boolean
+  }[];
+  const allTiles: Tile[] = await Promise.all(
+    tileData.map(async (tile) => {
+      const texture = await loadTexture(`/tiles/${tile.name}.png`);
+      return new Tile(tile.id, tile.name, tile.type, tile.isWalkable, texture);
+    })
+  );
+  console.log('All tiles loaded:', allTiles);
   matrix.forEach((row, i) => {
     row.forEach(async (cell, j) => {
-      if (cell === 1) {
-        const flowers = loadSprite(j * 80, i * 80, flowerTexture);
-        flowers.zIndex = -1; // Ensure tree is above road
-        container.addChild(flowers);
-      }
-      else if (cell === 3) {
-        const grass = loadSprite(j * 80, i * 80, grassTexture);
-        grass.zIndex = -1; // Ensure grass is above road
-        container.addChild(grass);
-      }
-      else if (cell === 10) {
-        const road = loadSprite(j * 80, i * 80, roadTexture);
-        road.zIndex = -1; // Ensure road is behind grass
-        container.addChild(road);
-      }
-      else if (cell === 11) {
-        const sign = loadSprite(j * 80, i * 80, signTexture);
-        sign.zIndex = -1; // Ensure sign is above grass
-        container.addChild(sign);
-      }
-      else {
-        const water = loadSprite(j * 80, i * 80, waterTexture);
-        water.zIndex = -1; // Ensure tree is above grass
-        container.addChild(water);
+      const texture = allTiles.find(t => t.id === cell)?.texture;
+      if (texture) {
+        const tile = loadSprite(j * 80, i * 80, texture);
+        tile.zIndex = -1;
+        container.addChild(tile);
       }
     });
   });
+  return allTiles;
 }
 
 export const loadPlayerSprites = async () => {
@@ -144,7 +136,8 @@ export const fetchInteractiveElements = async () => {
         {
           en: element.textEn,
           fr: element.textFr,
-        }
+        },
+        element.url
       );
     }
 

@@ -1,8 +1,8 @@
 export enum Direction {
-  RIGHT,
-  LEFT,
-  UP,
-  DOWN
+  RIGHT = "RIGHT",
+  LEFT = "LEFT",
+  UP = "UP",
+  DOWN = "DOWN",
 }
 
 export const getOppositeDirection = (direction: Direction): Direction => {
