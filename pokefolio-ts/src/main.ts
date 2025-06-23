@@ -1,9 +1,8 @@
 import { Application, Container } from 'pixi.js';
-import { loadMap, loadTexture } from './utils/loader';
+import { loadMap } from './utils/loader';
 import { bgm } from './components/sounds';
 import { Player } from './components/player';
 import { createGridFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
-// import { Popup } from './components/popup';
 import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
 import { addFlagListeners, setupGui } from './gui';
 import { Direction } from './types/direction';
@@ -11,7 +10,6 @@ import { NPC } from './components/npc';
 import type { Sign } from './components/sign';
 import { Popup } from './components/popup';
 import { PlayerAction } from './types/playerAction';
-import { Tile } from './types/tile';
 
 (async () =>
 {
