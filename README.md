@@ -1,6 +1,7 @@
 # Pokéfolio
 
-**Pokéfolio** is an interactive portfolio inspired by the visual style of **Pokémon Emerald**. Built with **TypeScript**, **Vite**, **PixiJS** for 2D rendering, and **Howler.js** for audio playback, this project offers a nostalgic and engaging way to showcase my work and skills.
+**Pokéfolio** is an interactive portfolio inspired by the visual style of **Pokémon Emerald**. This project is meant to offer a nostalgic and engaging way to showcase my work and skills.
+You can check it out [here](https://www.pokefolio-three.vercel.app).
 
 > ⚠️ **Disclaimer**: This is a personal, non-commercial project. It is **not affiliated with Nintendo, Game Freak, or The Pokémon Company**. All Pokémon-related visual and audio references are used **for demonstration purposes only**, with **no intent to profit**.
 
@@ -24,7 +25,7 @@
 
 ```bash
 git clone https://github.com/mperisse27/pokefolio.git
-cd pokefolio
+cd pokefolio-ts
 npm install
 npm run dev
 ```
