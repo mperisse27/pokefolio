@@ -1,5 +1,5 @@
 import { Application, Container } from 'pixi.js';
-import { loadMap, loadSpriteAndTexture } from './utils/loader';
+import { loadMap } from './utils/loader';
 import { bgm } from './components/sounds';
 import { Player } from './components/player';
 import { createGridFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
