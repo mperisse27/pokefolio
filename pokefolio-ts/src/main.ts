@@ -27,11 +27,14 @@ import { PlayerAction } from './types/playerAction';
 
   initializeApplication(app);
 
-  const container = new Container();
-  app.stage.addChild(container);
+  const groundLayer = new Container();
+  app.stage.addChild(groundLayer);
+
+  const objectsLayer = new Container();
+  app.stage.addChild(objectsLayer);
 
   const matrix = await loadMap();
-  const allTiles = await createGridFromMatrix(matrix, container);
+  const allTiles = await createGridFromMatrix(matrix, groundLayer);
 
   const popup = new Popup();
 
@@ -39,14 +42,14 @@ import { PlayerAction } from './types/playerAction';
   const playerAnimations = await loadPlayerAnimations();
   const player = new Player('player1', 16, 16, playerSprites, playerAnimations);
 
-  app.stage.addChild(player.container);
+  objectsLayer.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
   player.container.position.y = app.screen.height / 2 - 160;
 
   bgm.play();
   const interactiveElements = await fetchInteractiveElements();
   interactiveElements.forEach((element) => {
-    container.addChild(element.object.container);
+    objectsLayer.addChild(element.object.container);
   });
 
   let activeKeys: Set<string> = new Set();
@@ -58,8 +61,12 @@ import { PlayerAction } from './types/playerAction';
     if (!popup.container.classList.contains('hidden')) {
       popup.print();
     }
-    container.position.x = -player.position.x + app.screen.width / 2 - 40;
-    container.position.y = -player.position.y + app.screen.height / 2 - 80;
+    groundLayer.position.x = -player.position.x + app.screen.width / 2 - 40;
+    groundLayer.position.y = -player.position.y + app.screen.height / 2 - 80;
+    objectsLayer.position.x = -player.position.x + app.screen.width / 2 - 40;
+    objectsLayer.position.y = -player.position.y + app.screen.height / 2 - 80;
+    player.container.position.x = player.position.x;
+    player.container.position.y = player.position.y - 80;
 
     if (popupDelayCounter > 0) {
       popupDelayCounter--;
