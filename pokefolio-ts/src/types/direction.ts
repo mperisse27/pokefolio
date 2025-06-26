@@ -1,3 +1,5 @@
+import { PlayerAction } from "./playerAction";
+
 export enum Direction {
   RIGHT = "RIGHT",
   LEFT = "LEFT",
@@ -17,5 +19,20 @@ export const getOppositeDirection = (direction: Direction): Direction => {
       return Direction.UP;
     default:
       throw new Error("Invalid direction");
+  }
+}
+
+export const getDirectionFromPlayerAction = (action: PlayerAction) => {
+  switch (action) {
+    case PlayerAction.UP:
+      return Direction.UP;
+    case PlayerAction.DOWN:
+      return Direction.DOWN;
+    case PlayerAction.LEFT:
+      return Direction.LEFT;
+    case PlayerAction.RIGHT:
+      return Direction.RIGHT;
+    default:
+      return null;
   }
 }
