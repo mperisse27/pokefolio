@@ -5,6 +5,7 @@ import type { InteractiveElement } from "../types/interactiveElement";
 import { NPC } from "../components/npc";
 import { Sign } from "../components/sign";
 import { Tile } from "../types/tile";
+import { Obstacle } from "../types/obstacle";
 
 export const createGroundFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
   const tileJSON = await fetch('/mapData/tiles.json');
@@ -34,29 +35,32 @@ export const createGroundFromMatrix = async (matrix: number[][], container: Cont
 }
 
 export const createObstaclesFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
-  const tileJSON = await fetch('/mapData/obstacles.json');
-  const tileData = await tileJSON.json() as {
+  const obstaclesJSON = await fetch('/mapData/obstacles.json');
+  const obstaclesData = await obstaclesJSON.json() as {
     id: number,
-    name: string
+    name: string,
+    height: number,
+    width: number,
+    hitbox: { x: number, y: number }
   }[];
-  const allSprites = await Promise.all(
-    tileData.map(async (tile) => {
-      const texture = await loadTexture(`/tiles/obstacles/${tile.name}.png`);
-      return { id: tile.id, texture };
+  const allObstacles = await Promise.all(
+    obstaclesData.map(async (obs) => {
+      const texture = await loadTexture(`/tiles/obstacles/${obs.name}.png`);
+      return new Obstacle(obs.id, obs.name, obs.height, obs.width, obs.hitbox, texture);
     })
   );
   matrix.forEach((row, i) => {
     row.forEach(async (cell, j) => {
-      const texture = allSprites.find(t => t.id === cell);
-      if (texture) {
-        console.log(`Obstacle at (${i}, ${j}) with texture: ${texture.id}`);
-        console.log(texture.texture);
-        const obstacle = loadSprite(j * 80, i * 80, texture.texture);
+      const found = allObstacles.find(t => t.id === cell);
+      console.log(found)
+      if (found) {
+        const obstacle = loadSprite(j * 80, (i - found.height + 1) * 80, found.texture);
         obstacle.zIndex = i;
         container.addChild(obstacle);
       }
     });
   });
+  return allObstacles;
 }
 
 export const loadPlayerSprites = async () => {
