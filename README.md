@@ -14,6 +14,7 @@ You can check it out [here](https://www.pokefolio-three.vercel.app).
 - **[PixiJS](https://pixijs.com/)** — Fast 2D WebGL rendering engine
 - **[Howler.js](https://howlerjs.com/)** — Audio library for the web
 - **[Tiled](https://www.mapeditor.org/)** — Open-source 2D level/map editor used for creating the visual layout
+- **[Vercel](https://vercel.com/)** — Deployment and hosting for the website
 
 ---
 
