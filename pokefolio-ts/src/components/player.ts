@@ -58,7 +58,6 @@ export class Player {
     if (this.facing !== direction) {
       this.changeDirection(direction);
     }
-    console.log('ohe')
     switch (direction) {
       case Direction.RIGHT:
         if (this.isWalkableTile(matrix, this.tilePosition.x + 1, this.tilePosition.y, interactiveElements, allTiles)) {
@@ -139,7 +138,6 @@ export class Player {
   }
 
   public isWalkableTile(matrix: number[][], x: number, y: number, interactiveElements:InteractiveElement[], allTiles: Tile[]): boolean {
-    console.log('here', x, y, matrix.length, matrix[0].length);
     if (y < 0 || y >= matrix.length || x < 0 || x >= matrix[0].length) return false;
     return (allTiles.find(tile => tile.id == matrix[y][x])?.isWalkable ?? false) && !interactiveElements.some(element =>
       element.position.x === x && element.position.y === y
