@@ -7,7 +7,7 @@ import { Sign } from "../components/sign";
 import { Tile } from "../types/tile";
 
 export const createGridFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
-  const tileJSON = await fetch('/tiles.json');
+  const tileJSON = await fetch('/mapData/tiles.json');
   const tileData = await tileJSON.json() as {
     id: number,
     name: string,
@@ -16,11 +16,10 @@ export const createGridFromMatrix = async (matrix: number[][], container: Contai
   }[];
   const allTiles: Tile[] = await Promise.all(
     tileData.map(async (tile) => {
-      const texture = await loadTexture(`/tiles/${tile.name}.png`);
+      const texture = await loadTexture(`/tiles/ground/${tile.name}.png`);
       return new Tile(tile.id, tile.name, tile.type, tile.isWalkable, texture);
     })
   );
-  console.log('All tiles loaded:', allTiles);
   matrix.forEach((row, i) => {
     row.forEach(async (cell, j) => {
       const texture = allTiles.find(t => t.id === cell)?.texture;
@@ -107,7 +106,7 @@ export const initializeApplication = (app: Application) => {
 }
 
 export const fetchInteractiveElements = async () => {
-  const messagesJson = await fetch('/messages.json');
+  const messagesJson = await fetch('/mapData/messages.json');
   const elements = await messagesJson.json();
   const interactiveElements: InteractiveElement[] = [];
 

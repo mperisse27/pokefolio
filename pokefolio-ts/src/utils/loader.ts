@@ -24,7 +24,7 @@ export const loadTexture = async (texturePath: string) => {
 }
 
 export const loadMap = async () => {
-  const res = await fetch('/map.json');
+  const res = await fetch('/mapData/map.json');
   const mapData = await res.json();
   const chunks = mapData.layers[0].chunks;
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
