@@ -1,15 +1,6 @@
 import { AStarFinder } from 'astar-typescript';
 
-let myMatrix = [
-  [0, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1],
-  [0, 0, 1, 1, 0, 1, 1, 0],
-  [0, 0, 1, 0, 0, 0, 1, 0],
-  [0, 0, 0, 0, 0, 0, 1, 0],
-  [1, 1, 1, 0, 1, 0, 1, 0],
-  [0, 0, 0, 0, 1, 0, 1, 0],
-  [0, 0, 1, 0, 0, 0, 0, 0]
-];
+// For now only tests
 let newMatrix = Array.from({ length: 50 }, () => Array.from({ length: 50 }, () => Math.random() > 0.1 ? 0 : 1));
 
 const aStarInstance = new AStarFinder({
