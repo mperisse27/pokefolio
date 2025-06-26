@@ -58,7 +58,6 @@ export class Player {
     if (this.facing !== direction) {
       this.changeDirection(direction);
     }
-    console.log('ohe')
     switch (direction) {
       case Direction.RIGHT:
         if (this.isWalkableTile(matrix, this.tilePosition.x + 1, this.tilePosition.y, interactiveElements, allTiles)) {
