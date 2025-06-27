@@ -1,0 +1,42 @@
+[
+  {
+    "id": 141,
+    "name": "big-house",
+    "height": 4,
+    "width": 5,
+    "hitbox": {
+      "x": 5,
+      "y": 4
+    }
+  },
+  {
+    "id": 25,
+    "name": "small-pine",
+    "height": 2,
+    "width": 1,
+    "hitbox": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "id": 111,
+    "name": "small-tree",
+    "height": 2,
+    "width": 1,
+    "hitbox": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "id": 124,
+    "name": "big-tree",
+    "height": 3,
+    "width": 2,
+    "hitbox": {
+      "x": 2,
+      "y": 2
+    }
+  }
+]

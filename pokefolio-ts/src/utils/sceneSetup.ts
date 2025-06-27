@@ -5,9 +5,10 @@ import type { InteractiveElement } from "../types/interactiveElement";
 import { NPC } from "../components/npc";
 import { Sign } from "../components/sign";
 import { Tile } from "../types/tile";
+import { Obstacle } from "../types/obstacle";
 
-export const createGridFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
-  const tileJSON = await fetch('/tiles.json');
+export const createGroundFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
+  const tileJSON = await fetch('/mapData/tiles.json');
   const tileData = await tileJSON.json() as {
     id: number,
     name: string,
@@ -16,11 +17,10 @@ export const createGridFromMatrix = async (matrix: number[][], container: Contai
   }[];
   const allTiles: Tile[] = await Promise.all(
     tileData.map(async (tile) => {
-      const texture = await loadTexture(`/tiles/${tile.name}.png`);
+      const texture = await loadTexture(`/tiles/ground/${tile.name}.png`);
       return new Tile(tile.id, tile.name, tile.type, tile.isWalkable, texture);
     })
   );
-  console.log('All tiles loaded:', allTiles);
   matrix.forEach((row, i) => {
     row.forEach(async (cell, j) => {
       const texture = allTiles.find(t => t.id === cell)?.texture;
@@ -34,15 +34,40 @@ export const createGridFromMatrix = async (matrix: number[][], container: Contai
   return allTiles;
 }
 
+export const createObstaclesFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
+  const obstaclesJSON = await fetch('/mapData/obstacles.json');
+  const obstaclesData = await obstaclesJSON.json() as {
+    id: number,
+    name: string,
+    height: number,
+    width: number,
+    hitbox: { x: number, y: number }
+  }[];
+  const allObstacles = await Promise.all(
+    obstaclesData.map(async (obs) => {
+      const texture = await loadTexture(`/tiles/obstacles/${obs.name}.png`);
+      return new Obstacle(obs.id, obs.name, obs.height, obs.width, obs.hitbox, texture);
+    })
+  );
+  matrix.forEach((row, i) => {
+    row.forEach(async (cell, j) => {
+      const found = allObstacles.find(t => t.id === cell);
+      console.log(found)
+      if (found) {
+        const obstacle = loadSprite(j * 80, (i - found.height + 1) * 80, found.texture);
+        obstacle.zIndex = i;
+        container.addChild(obstacle);
+      }
+    });
+  });
+  return allObstacles;
+}
+
 export const loadPlayerSprites = async () => {
   const playerSpriteUp = await loadSpriteAndTexture(0, 0, '/player/player-up.png');
-  playerSpriteUp.zIndex = 1; // Ensure player is above other sprites
   const playerSpriteDown = await loadSpriteAndTexture(0, 0, '/player/player-down.png');
-  playerSpriteDown.zIndex = 1; // Ensure player is above other sprites
   const playerSpriteLeft = await loadSpriteAndTexture(0, 0, '/player/player-left.png');
-  playerSpriteLeft.zIndex = 1; // Ensure player is above other sprites
   const playerSpriteRight = await loadSpriteAndTexture(0, 0, '/player/player-right.png');
-  playerSpriteRight.zIndex = 1; // Ensure player is above other sprites
   const playerSprites: Record<Direction, Sprite> = {
     [Direction.UP]: new Sprite(playerSpriteUp),
     [Direction.DOWN]: new Sprite(playerSpriteDown),
@@ -107,47 +132,44 @@ export const initializeApplication = (app: Application) => {
 }
 
 export const fetchInteractiveElements = async () => {
-  const messagesJson = await fetch('/messages.json');
+  const messagesJson = await fetch('/mapData/messages.json');
   const elements = await messagesJson.json();
-  const interactiveElements: InteractiveElement[] = [];
 
-  const npcSprites = await loadPlayerSprites(); //TODO: load NPC sprites from a different source
+  const interactiveElements: InteractiveElement[] = await Promise.all(
+    elements.map(async (element: any) => {
+      let newElement;
+      if (element.type === 'npc') {
+        newElement = new NPC(
+          element.name,
+          element.positionX,
+          element.positionY,
+          await loadPlayerSprites(), //TODO: load NPC sprites from a different source
+          Direction.LEFT,
+          {
+            en: element.textEn,
+            fr: element.textFr,
+          }
+        );
+      }
+      else if (element.type == 'sign') {
+        newElement = new Sign(
+          await loadSpriteAndTexture(0, 0, element.image),
+          element.positionX,
+          element.positionY,
+          {
+            en: element.textEn,
+            fr: element.textFr,
+          },
+          element.url
+        );
+      }
 
-  elements.forEach((element: any) => {
-    let newElement;
-    if (element.type === 'npc') {
-      newElement = new NPC(
-        element.name,
-        element.positionX,
-        element.positionY,
-        npcSprites,
-        Direction.LEFT,
-        {
-          en: element.textEn,
-          fr: element.textFr,
-        }
-      );
-    }
-    else if (element.type == 'sign') {
-      newElement = new Sign(
-        npcSprites[Direction.UP],
-        element.positionX,
-        element.positionY,
-        {
-          en: element.textEn,
-          fr: element.textFr,
-        },
-        element.url
-      );
-    }
-
-    if (newElement) {
-      interactiveElements.push({
+      return {
         position: { x: element.positionX, y: element.positionY },
         object: newElement,
         type: element.type,
-      });
-    }
-  });
+      };
+    })
+  );
   return interactiveElements;
 }

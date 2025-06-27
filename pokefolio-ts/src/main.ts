@@ -2,14 +2,15 @@ import { Application, Container } from 'pixi.js';
 import { loadMap } from './utils/loader';
 import { bgm } from './components/sounds';
 import { Player } from './components/player';
-import { createGridFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
+import { createGroundFromMatrix, createObstaclesFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
 import { addFlagListeners, setupGui } from './gui';
-import { Direction } from './types/direction';
+import { Direction, getDirectionFromPlayerAction } from './types/direction';
 import { NPC } from './components/npc';
 import type { Sign } from './components/sign';
 import { Popup } from './components/popup';
 import { PlayerAction } from './types/playerAction';
+import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
 
 (async () =>
 {
@@ -33,8 +34,9 @@ import { PlayerAction } from './types/playerAction';
   const objectsLayer = new Container();
   app.stage.addChild(objectsLayer);
 
-  const matrix = await loadMap();
-  const allTiles = await createGridFromMatrix(matrix, groundLayer);
+  const { groundMatrix, objectsMatrix } = await loadMap();
+  const allTiles = await createGroundFromMatrix(groundMatrix, groundLayer);
+  const allObstacles = await createObstaclesFromMatrix(objectsMatrix, objectsLayer);
 
   const popup = new Popup();
 
@@ -51,6 +53,8 @@ import { PlayerAction } from './types/playerAction';
   interactiveElements.forEach((element) => {
     objectsLayer.addChild(element.object.container);
   });
+
+  const walkableMatrix = createWalkableMatrix(groundMatrix, objectsMatrix, allTiles, allObstacles, interactiveElements);
 
   let activeKeys: Set<string> = new Set();
   let popupDelayCounter = 0;
@@ -88,18 +92,16 @@ import { PlayerAction } from './types/playerAction';
       }
     }
     if (player.canMove) {
-      const sprint = playerActions.includes(PlayerAction.SPRINT);
-      if (playerActions.includes(PlayerAction.UP)) {
-        player.move(Direction.UP, matrix, interactiveElements, sprint, allTiles);
-      }
-      else if (playerActions.includes(PlayerAction.DOWN)) {
-        player.move(Direction.DOWN, matrix, interactiveElements, sprint, allTiles);
-      }
-      else if (playerActions.includes(PlayerAction.LEFT)) {
-        player.move(Direction.LEFT, matrix, interactiveElements, sprint, allTiles);
-      }
-      else if (playerActions.includes(PlayerAction.RIGHT)) {
-        player.move(Direction.RIGHT, matrix, interactiveElements, sprint, allTiles);
+      const direction = playerActions.map(action => getDirectionFromPlayerAction(action)).find(direction => direction !== null);
+      if (direction) {
+        player.changeDirection(direction);
+        const sprint = playerActions.includes(PlayerAction.SPRINT);
+        const newX = player.tilePosition.x + (direction == Direction.RIGHT ? 1 : direction == Direction.LEFT ? -1 : 0);
+        const newY = player.tilePosition.y + (direction == Direction.DOWN ? 1 : direction == Direction.UP ? -1 : 0);
+
+        if (isWalkableTile(newX, newY, walkableMatrix)) {
+          player.move(direction, sprint);
+        }
       }
     }
     
