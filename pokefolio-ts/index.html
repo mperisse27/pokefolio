@@ -11,10 +11,10 @@
   <body>
     <div id="overlay" class="absolute top-0 left-0 z-10 w-full h-full">
       <div class="flex justify-end w-full p-[20px] space-x-4">
-        <button id="help-toggle" class="bg-[rgba(0,0,0,0.5)] rounded-xl w-16 h-16 flex justify-center items-center cursor-pointer">
+        <button id="help-toggle" class="gui-button">
           <p class="text-5xl text-white">?</p>
         </button>
-        <button id="settings-toggle" class="bg-[rgba(0,0,0,0.5)] rounded-xl w-16 h-16 flex justify-center items-center cursor-pointer">
+        <button id="settings-toggle" class="gui-button">
           <i class="fa fa-cog text-white fa-2x" aria-hidden="true"></i>
         </button>
       </div>
@@ -68,14 +68,40 @@
           </div>
         </section>
       </div>
-      <div
-        id="popup"
-        class="fixed bottom-0 left-0 w-full bg-white border-4 border-black p-2 hidden z-500 h-26"
-        style="font-family: 'my32bit';"
-      >
-        <p id="popup-line1" class="text-4xl text-black"></p>
-        <p id="popup-line2" class="text-4xl text-black"></p>
-      </div>
+      <section class="fixed bottom-0 left-0 w-full flex flex-col items-end space-y-1">
+        <div id="action-buttons" class="h-full z-100 flex flex-col space-y-1 mr-1">
+          <div class="flex space-x-1">
+            <button id="interact-action" class="gui-button">
+              I
+            </button>
+            <button id="up-action" class="gui-button">
+              Z
+            </button>
+            <button id="run-action" class="gui-button">
+              C
+            </button>
+          </div>
+          <div class="flex space-x-1">
+            <button id="left-action" class="gui-button">
+              Q
+            </button>
+            <button id="down-action" class="gui-button">
+              S
+            </button>
+            <button id="right-action" class="gui-button">
+              D
+            </button>
+          </div>
+        </div>
+        <div
+          id="popup"
+          class=" bg-white border-4 border-black p-2 hidden z-500 h-26 w-full"
+          style="font-family: 'my32bit';"
+        >
+          <p id="popup-line1" class="text-4xl text-black"></p>
+          <p id="popup-line2" class="text-4xl text-black"></p>
+        </div>
+      </section>
     </div>
     <script type="module" src="/src/main.ts" style="position: absolute; top: 0px; left: 0px;"></script>
   </body>
