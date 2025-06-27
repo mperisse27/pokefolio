@@ -57,6 +57,7 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
   const walkableMatrix = createWalkableMatrix(groundMatrix, objectsMatrix, allTiles, allObstacles, interactiveElements);
 
   let activeKeys: Set<string> = new Set();
+  let activeButtons: Set<string> = new Set();
   let popupDelayCounter = 0;
 
   app.ticker.add((_) =>
@@ -76,7 +77,7 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
       popupDelayCounter--;
     }
 
-    const playerActions = getActionFromKey(activeKeys);
+    const playerActions = getActionFromKey(activeKeys, activeButtons);
     if (playerActions.includes(PlayerAction.INTERACT) && popupDelayCounter <= 0) {
       const frontTile = player.getFrontTilePosition();
       const element = interactiveElements.find((element) => {
@@ -104,7 +105,6 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
         }
       }
     }
-    
   });
 
   window.addEventListener('keydown', (event) => handleKeyboardInput(event, activeKeys));
@@ -116,5 +116,5 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
     player.container.position.y = app.screen.height / 2 - 160;
   });
 
-  setupGui();
+  setupGui(activeButtons);
 })();

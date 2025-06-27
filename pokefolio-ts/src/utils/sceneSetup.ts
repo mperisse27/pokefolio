@@ -52,7 +52,6 @@ export const createObstaclesFromMatrix = async (matrix: number[][], container: C
   matrix.forEach((row, i) => {
     row.forEach(async (cell, j) => {
       const found = allObstacles.find(t => t.id === cell);
-      console.log(found)
       if (found) {
         const obstacle = loadSprite(j * 80, (i - found.height + 1) * 80, found.texture);
         obstacle.zIndex = i;

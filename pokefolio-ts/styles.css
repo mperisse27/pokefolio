@@ -10,6 +10,20 @@
 .gui-button {
   display: flex;
   justify-content: center;
+  object-position: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  background: rgba(0,0,0,0.5);
+  font-size: 2rem;
+  color: #ffffff; 
+}
+.gui-button-big {
+  display: flex;
+  justify-content: center;
+  object-position: center;
   align-items: center;
   border-radius: 0.75rem;
   width: 4rem;

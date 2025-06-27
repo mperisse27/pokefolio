@@ -11,11 +11,11 @@
   <body>
     <div id="overlay" class="absolute top-0 left-0 z-10 w-full h-full">
       <div class="flex justify-end w-full p-[20px] space-x-4">
-        <button id="help-toggle" class="gui-button">
-          <p class="text-5xl text-white">?</p>
+        <button id="help-toggle" class="gui-button-big">
+          <i class="fa fa-question" aria-hidden="true"></i>
         </button>
-        <button id="settings-toggle" class="gui-button">
-          <i class="fa fa-cog text-white fa-2x" aria-hidden="true"></i>
+        <button id="settings-toggle" class="gui-button-big">
+          <i class="fa fa-cog" aria-hidden="true"></i>
         </button>
       </div>
       <div class="flex justify-center items-start w-full h-full">
@@ -44,6 +44,10 @@
               <label class="text-3xl" for="en-button">English</label>
             </div>
           </fieldset>
+          <div class="flex justify-start items-center w-full space-x-4">
+            <input id="actions-visible" type="checkbox" class="w-6 h-6">
+            <p class="text-3xl">Cacher les boutons d'action</p>
+          </div>
         </section>
         <section id="help-menu" style="font-family: 'my32bit';" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-start items-start space-y-8 font-my32bit">
           <div class="flex justify-between w-full">
@@ -71,27 +75,9 @@
       </div>
       <section class="fixed bottom-0 left-0 w-full flex flex-col items-end space-y-1">
         <div id="action-buttons" class="h-full z-100 flex flex-col space-y-1 mr-1">
-          <div class="flex space-x-1">
-            <button id="interact-action" class="gui-button">
-              I
-            </button>
-            <button id="up-action" class="gui-button">
-              Z
-            </button>
-            <button id="run-action" class="gui-button">
-              C
-            </button>
+          <div id="action-line1" class="flex space-x-1">
           </div>
-          <div class="flex space-x-1">
-            <button id="left-action" class="gui-button">
-              Q
-            </button>
-            <button id="down-action" class="gui-button">
-              S
-            </button>
-            <button id="right-action" class="gui-button">
-              D
-            </button>
+          <div id="action-line2" class="flex space-x-1">
           </div>
         </div>
         <div
@@ -105,5 +91,10 @@
       </section>
     </div>
     <script type="module" src="/src/main.ts" style="position: absolute; top: 0px; left: 0px;"></script>
+    <template id="gui-button-template">
+      <button class="gui-button">
+        <i class="fa" aria-hidden="true"></i>
+      </button>
+    </template>
   </body>
 </html>
