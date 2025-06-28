@@ -4,7 +4,7 @@ import { bgm } from './components/sounds';
 import { Player } from './components/player';
 import { createGroundFromMatrix, createObstaclesFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
-import { addFlagListeners, setupGui } from './gui';
+import { setupGui } from './gui';
 import { Direction, getDirectionFromPlayerAction } from './types/direction';
 import { NPC } from './components/npc';
 import type { Sign } from './components/sign';
@@ -20,11 +20,6 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
   await app.init({ background: '#fff', resizeTo: window });
 
   await loadMap();
-
-  let language: 'fr' | 'en' = 'fr';
-  addFlagListeners((lang: 'fr' | 'en') => {
-    language = lang;
-  });
 
   initializeApplication(app);
 
@@ -85,8 +80,8 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
       });
       if (element) {
         const popupHidden = element.type == 'npc' ?
-        (element.object as NPC).speak(player, popup, language) :
-        (element.object as Sign).speak(popup, language);
+        (element.object as NPC).speak(player, popup) :
+        (element.object as Sign).speak(popup);
 
         player.canMove = popupHidden;
         popupDelayCounter = 30;

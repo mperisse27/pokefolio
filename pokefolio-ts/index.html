@@ -21,7 +21,7 @@
       <div class="flex justify-center items-start w-full h-full">
         <section id="settings-menu" style="font-family: 'my32bit';" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-center items-center space-y-8">
           <div class="flex justify-between object-center w-full">
-            <h1 class="text-6xl">Paramètres</h1>
+            <h1 data-i18n="settingsTitle" class="text-6xl">Paramètres</h1>
             <button id="close-settings" type="button" class="cursor-pointer">
               <i class="fa fa-times fa-2x"></i>
             </button>
@@ -46,12 +46,12 @@
           </fieldset>
           <div class="flex justify-start items-center w-full space-x-4">
             <input id="actions-visible" type="checkbox" class="w-6 h-6">
-            <p class="text-3xl">Cacher les boutons d'action</p>
+            <p data-i18n="actionsToggle" class="text-3xl">Cacher les boutons d'action</p>
           </div>
         </section>
         <section id="help-menu" style="font-family: 'my32bit';" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-start items-start space-y-8 font-my32bit">
           <div class="flex justify-between w-full">
-            <h1 class="text-6xl">Aide</h1>
+            <h1 data-i18n="helpTitle" class="text-6xl">Aide</h1>
             <button id="close-help" type="button" class="cursor-pointer">
               <i class="fa fa-times fa-2x"></i>
             </button>
@@ -61,15 +61,15 @@
             <p class="text-2xl">Pokéfolio est un projet personnel de portfolio.</p>
             <p class="text-2xl">Le code est disponible <a href="https://github.com/mperisse27/pokefolio" target="_blank" rel="noopener noreferrer" class="text-blue-500 font-bold underline">ici</a>.</p>
           </div>
-          <h2 class="text-4xl mb-1 font-bold">Comment jouer ?</h2>
-          <div class="text-2xl">
-            <p>Appuyez sur :</p>
-            <li class="ml-4">Z ou ⬆️ pour vous déplacer vers le haut</li>
-            <li class="ml-4">Q ou ⬅️ pour vous déplacer vers la gauche</li>
-            <li class="ml-4">S ou ⬇️ pour vous déplacer vers le bas</li>
-            <li class="ml-4">D ou ➡️ pour vous déplacer vers la droite</li>
-            <li class="ml-4">Shift pour courir</li>
-            <li class="ml-4">Espace ou Entrée pour interagir</li>
+          <h2 data-i18n="controlsHeader" class="text-4xl mb-1 font-bold">Comment jouer ?</h2>
+          <div class="text-2xl ml-4">
+            <p data-i18n="controlsTitle">Appuyez sur :</p>
+            <li data-i18n="moveUp">Z ou ⬆️ pour vous déplacer vers le haut</li>
+            <li data-i18n="moveLeft">Q ou ⬅️ pour vous déplacer vers la gauche</li>
+            <li data-i18n="moveDown">S ou ⬇️ pour vous déplacer vers le bas</li>
+            <li data-i18n="moveRight">D ou ➡️ pour vous déplacer vers la droite</li>
+            <li data-i18n="run">Shift pour courir</li>
+            <li data-i18n="interact">Espace ou Entrée pour interagir</li>
           </div>
         </section>
       </div>

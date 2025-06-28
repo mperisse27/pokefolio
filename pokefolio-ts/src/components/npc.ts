@@ -3,6 +3,7 @@ import { Direction, getOppositeDirection } from "../types/direction";
 import type { Position } from "../types/position";
 import type { Player } from "./player";
 import type { Popup } from "./popup";
+import { t } from "../utils/i18n";
 
 export class NPC {
   public name: string;
@@ -12,7 +13,7 @@ export class NPC {
   public sprites: Record<Direction, Sprite>;
   public sprite: Sprite;
   public container: Container;
-  public dialogue: { en: string[], fr: string[] };
+  public textKey: string;
 
   constructor(
     name: string,
@@ -20,14 +21,14 @@ export class NPC {
     positionY: number = 0,
     sprites: Record<Direction, Sprite>,
     facing: Direction,
-    dialogue: { en: string[], fr: string[] }
+    textKey: string
   ) {
     this.name = name;
     this.tilePosition = { x: positionX, y: positionY };
     this.position = { x: positionX * 80, y: positionY * 80 };
     this.facing = facing;
     this.sprites = sprites;
-    this.dialogue = dialogue;
+    this.textKey = textKey;
 
     this.container = new Container();
     this.container.x = this.position.x;
@@ -54,9 +55,9 @@ export class NPC {
     }
   }
 
-  public speak(player: Player, popup: Popup, lang: "fr" | "en") {
+  public speak(player: Player, popup: Popup) {
     this.changeDirection(getOppositeDirection(player.facing));
-    const text = [...this.dialogue[lang]];
+    const text = [...t(this.textKey)];
     text[0] = `${this.name}: ${text[0]}`;
     return popup.changeText(text);
   }

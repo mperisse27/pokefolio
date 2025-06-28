@@ -1,27 +1,28 @@
 import { Container, type Sprite } from "pixi.js";
 import type { Position } from "../types/position";
 import type { Popup } from "./popup";
+import { t } from "../utils/i18n";
 
 export class Sign {
   public sprite: Sprite;
   public tilePosition: Position;
   public container: Container;
   public position: Position;
-  public text: { en: string[], fr: string[] };
+  public textKey: string;
   public url?: string;
 
   constructor(
     sprite: Sprite,
     positionX: number = 0,
     positionY: number = 0,
-    text: { en: string[], fr: string[] },
+    textKey: string,
     url?: string
   ) {
     this.sprite = sprite;
     this.tilePosition = { x: positionX, y: positionY };
     this.position = { x: positionX * 80, y: positionY * 80 };
-    this.text = text;
     this.url = url;
+    this.textKey = textKey;
 
     this.container = new Container();
     this.container.x = this.position.x;
@@ -30,7 +31,7 @@ export class Sign {
     this.container.addChild(this.sprite);
   }
 
-  public speak = (popup: Popup, lang: "fr" | "en") => {
-    return popup.changeText(this.text[lang], this.url);
+  public speak = (popup: Popup) => {
+    return popup.changeText(t(this.textKey), this.url);
   }
 }
