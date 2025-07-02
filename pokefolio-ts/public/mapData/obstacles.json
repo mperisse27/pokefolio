@@ -10,6 +10,16 @@
     }
   },
   {
+    "id": 161,
+    "name": "pokecenter",
+    "height": 4,
+    "width": 5,
+    "hitbox": {
+      "x": 5,
+      "y": 4
+    }
+  },
+  {
     "id": 25,
     "name": "small-pine",
     "height": 2,
@@ -37,6 +47,16 @@
     "hitbox": {
       "x": 2,
       "y": 2
+    }
+  },
+  {
+    "id": 15,
+    "name": "sign",
+    "height": 1,
+    "width": 1,
+    "hitbox": {
+      "x": 1,
+      "y": 1
     }
   }
 ]

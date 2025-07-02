@@ -1,11 +1,12 @@
 import { addEventToVolumeSlider } from "./components/sounds";
+import { setLanguage, t, type Lang } from "./utils/i18n";
 
-export const addFlagListeners = (onLanguageChange: (lang: 'fr' | 'en') => void) => {
+const addFlagListeners = () => {
   const frButton = document.getElementById('fr-button') as HTMLButtonElement;
   const enButton = document.getElementById('en-button') as HTMLButtonElement;
 
-  const updateLanguageSelection = (lang: 'fr' | 'en') => {
-    onLanguageChange(lang);
+  const updateLanguageSelection = (lang: Lang) => {
+    setLanguage(lang);
 
     document.querySelectorAll('.language-btn').forEach(btn => {
       btn.classList.remove('ring-white', 'ring-2');
@@ -13,27 +14,29 @@ export const addFlagListeners = (onLanguageChange: (lang: 'fr' | 'en') => void) 
 
     const selectedBtn = lang === 'fr' ? frButton : enButton;
     selectedBtn.classList.add('ring-white', 'ring-2');
+
+    applyTranslationsToDOM();
   };
   
   frButton.addEventListener('click', () => updateLanguageSelection('fr'));
   enButton.addEventListener('click', () => updateLanguageSelection('en'));
 }
 
-export function openSettingsMenu(event: MouseEvent) {
+function openSettingsMenu(event: MouseEvent) {
   const menu = document.getElementById('settings-menu');
   if (menu) menu.classList.toggle('hidden');
   const button = event.currentTarget as HTMLButtonElement;
   button.blur()
 }
 
-export function openHelpMenu(event: MouseEvent) {
+function openHelpMenu(event: MouseEvent) {
   const menu = document.getElementById('help-menu');
   if (menu) menu.classList.toggle('hidden');
   const button = event.currentTarget as HTMLButtonElement;
   button.blur()
 }
 
-export function setupMenuOutsideClickHandler() {
+function setupMenuOutsideClickHandler() {
   document.addEventListener('click', (event) => {
     const settingsMenu = document.getElementById('settings-menu');
     const helpMenu = document.getElementById('help-menu');
@@ -123,8 +126,17 @@ const toggleActionButtons = () => {
   }
 }
 
+export function applyTranslationsToDOM() {
+  document.querySelectorAll<HTMLElement>("[data-i18n]").forEach(el => {
+    const key = el.dataset.i18n!;
+    const translated = t(key);
+    el.textContent = translated[0];
+  });
+}
+
 export const setupGui = (activeButtons: Set<string>) => {
   addEventToVolumeSlider();
+  addFlagListeners();
   document.getElementById('settings-toggle')?.addEventListener('click', openSettingsMenu);
   document.getElementById('help-toggle')?.addEventListener('click', openHelpMenu);
   document.getElementById('close-settings')?.addEventListener('click', openSettingsMenu);

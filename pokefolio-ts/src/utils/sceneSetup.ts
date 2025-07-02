@@ -144,10 +144,7 @@ export const fetchInteractiveElements = async () => {
           element.positionY,
           await loadPlayerSprites(), //TODO: load NPC sprites from a different source
           Direction.LEFT,
-          {
-            en: element.textEn,
-            fr: element.textFr,
-          }
+          element.textKey
         );
       }
       else if (element.type == 'sign') {
@@ -155,10 +152,7 @@ export const fetchInteractiveElements = async () => {
           await loadSpriteAndTexture(0, 0, element.image),
           element.positionX,
           element.positionY,
-          {
-            en: element.textEn,
-            fr: element.textFr,
-          },
+          element.textKey,
           element.url
         );
       }

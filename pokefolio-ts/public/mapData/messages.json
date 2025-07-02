@@ -1,46 +1,41 @@
 [
   {
-    "textFr": ["Bienvenue dans Pokéfolio !"],
-    "textEn": ["Welcome to Pokéfolio!"],
     "positionX": 16,
     "positionY": 15,
     "type": "sign",
-    "image": "/tiles/obstacles/sign.png"
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "welcomeSign"
   },
   {
-    "textFr": ["Passez sur ma chaîne Twitch :", "https://twitch.tv/matt_la_menacee"],
-    "textEn": ["Check out my Twitch channel:", "https://twitch.tv/matt_la_menacee"],
     "positionX": 13,
     "positionY": 10,
     "type": "sign",
     "url": "https://twitch.tv/matt_la_menacee",
-    "image": "/tiles/obstacles/sign-purple.png"
+    "image": "/tiles/obstacles/sign-purple.png",
+    "textKey": "twitchSign"
   },
   {
-    "textFr": ["Visitez mon LinkedIn :", "https://linkedin.com/in/matteo-perisse"],
-    "textEn": ["Visit my LinkedIn:", "https://linkedin.com/in/matteo-perisse"],
     "positionX": 15,
     "positionY": 10,
     "type": "sign",
     "url": "https://linkedin.com/in/matteo-perisse",
-    "image": "/tiles/obstacles/sign-blue.png"
+    "image": "/tiles/obstacles/sign-blue.png",
+    "textKey": "linkedinSign"
   },
   {
-    "textFr": ["Faites un tour sur mon GitHub :", "https://github.com/mperisse27"],
-    "textEn": ["Check out my GitHub:", "https://github.com/mperisse27"],
     "positionX": 17,
     "positionY": 10,
     "type": "sign",
     "url": "https://github.com/mperisse27",
-    "image": "/tiles/obstacles/sign-black.png"
+    "image": "/tiles/obstacles/sign-black.png",
+    "textKey": "githubSign"
   },
   {
-    "textFr": ["Pour m'envoyer un mail :", "matteo.perisse@gmail.com"],
-    "textEn": ["To send me a mail:", "matteo.perisse@gmail.com"],
     "positionX": 19,
     "positionY": 10,
     "type": "sign",
-    "image": "/tiles/obstacles/sign-red.png"
+    "image": "/tiles/obstacles/sign-red.png",
+    "textKey": "mailSign"
   },
   {
     "textFr": ["Bonjour", "Bienvenue dans mon monde", "Explore et amuse-toi !"],
@@ -48,6 +43,7 @@
     "positionX": 22,
     "positionY": 17,
     "type": "npc",
-    "name": "Matt"
+    "name": "Matt",
+    "textKey": "mattNPC"
   }
 ]
