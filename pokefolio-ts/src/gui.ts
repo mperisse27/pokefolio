@@ -1,3 +1,4 @@
+import type { Player } from "./components/player";
 import { addEventToVolumeSlider } from "./components/sounds";
 import { setLanguage, t, type Lang } from "./utils/i18n";
 
@@ -22,18 +23,12 @@ const addFlagListeners = () => {
   enButton.addEventListener('click', () => updateLanguageSelection('en'));
 }
 
-function openSettingsMenu(event: MouseEvent) {
-  const menu = document.getElementById('settings-menu');
+function toggleMenu(event: MouseEvent, menuName: string, player?: Player) {
+  const menu = document.getElementById(menuName);
   if (menu) menu.classList.toggle('hidden');
   const button = event.currentTarget as HTMLButtonElement;
   button.blur()
-}
-
-function openHelpMenu(event: MouseEvent) {
-  const menu = document.getElementById('help-menu');
-  if (menu) menu.classList.toggle('hidden');
-  const button = event.currentTarget as HTMLButtonElement;
-  button.blur()
+  if (player) player.canMove = menu?.classList.contains('hidden') ?? true;
 }
 
 function setupMenuOutsideClickHandler() {
@@ -127,20 +122,22 @@ const toggleActionButtons = () => {
 }
 
 export function applyTranslationsToDOM() {
-  document.querySelectorAll<HTMLElement>("[data-i18n]").forEach(el => {
-    const key = el.dataset.i18n!;
+  document.querySelectorAll<HTMLElement>("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n!;
     const translated = t(key);
-    el.textContent = translated[0];
+    element.textContent = translated[0];
   });
 }
 
-export const setupGui = (activeButtons: Set<string>) => {
+export const setupGui = (activeButtons: Set<string>, player: Player) => {
+  applyTranslationsToDOM();
   addEventToVolumeSlider();
   addFlagListeners();
-  document.getElementById('settings-toggle')?.addEventListener('click', openSettingsMenu);
-  document.getElementById('help-toggle')?.addEventListener('click', openHelpMenu);
-  document.getElementById('close-settings')?.addEventListener('click', openSettingsMenu);
-  document.getElementById('close-help')?.addEventListener('click', openHelpMenu);
+  document.getElementById('settings-toggle')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu"));
+  document.getElementById('help-toggle')?.addEventListener('click', (event) => toggleMenu(event, "help-menu"));
+  document.getElementById('close-settings')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu"));
+  document.getElementById('close-help')?.addEventListener('click', (event) => toggleMenu(event, "help-menu"));
+  document.getElementById('close-epita')?.addEventListener('click', (event) => toggleMenu(event, "epita-dialog", player));
   document.getElementById('actions-visible')?.addEventListener('click', toggleActionButtons);
   setupMenuOutsideClickHandler();
 

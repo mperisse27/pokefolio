@@ -12,13 +12,13 @@
     "isWalkable": true
   },
   {
-    "id": 4,
+    "id": 299,
     "name": "flower2",
     "type": "ground",
     "isWalkable": true
   },
   {
-    "id": 5,
+    "id": 300,
     "name": "flower",
     "type": "ground",
     "isWalkable": true
@@ -132,7 +132,7 @@
     "isWalkable": false
   },
   {
-    "id": 15,
+    "id": 310,
     "name": "sign",
     "type": "obstacle",
     "isWalkable": false

@@ -153,7 +153,8 @@ export const fetchInteractiveElements = async () => {
           element.positionX,
           element.positionY,
           element.textKey,
-          element.url
+          element.url,
+          element.details
         );
       }
 

@@ -10,19 +10,22 @@ export class Sign {
   public position: Position;
   public textKey: string;
   public url?: string;
+  public details?: string;
 
   constructor(
     sprite: Sprite,
     positionX: number = 0,
     positionY: number = 0,
     textKey: string,
-    url?: string
+    url?: string,
+    details?: string
   ) {
     this.sprite = sprite;
     this.tilePosition = { x: positionX, y: positionY };
     this.position = { x: positionX * 80, y: positionY * 80 };
     this.url = url;
     this.textKey = textKey;
+    this.details = details;
 
     this.container = new Container();
     this.container.x = this.position.x;
@@ -32,6 +35,6 @@ export class Sign {
   }
 
   public speak = (popup: Popup) => {
-    return popup.changeText(t(this.textKey), this.url);
+    return popup.changeText(t(this.textKey), this.url, this.details);
   }
 }

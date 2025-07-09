@@ -10,17 +10,7 @@
     }
   },
   {
-    "id": 161,
-    "name": "pokecenter",
-    "height": 4,
-    "width": 5,
-    "hitbox": {
-      "x": 5,
-      "y": 4
-    }
-  },
-  {
-    "id": 25,
+    "id": 196,
     "name": "small-pine",
     "height": 2,
     "width": 1,
@@ -50,13 +40,33 @@
     }
   },
   {
-    "id": 15,
+    "id": 96,
     "name": "sign",
     "height": 1,
     "width": 1,
     "hitbox": {
       "x": 1,
       "y": 1
+    }
+  },
+  {
+    "id": 276,
+    "name": "epita",
+    "height": 4,
+    "width": 4,
+    "hitbox": {
+      "x": 4,
+      "y": 3
+    }
+  },
+  {
+    "id": 231,
+    "name": "pravaig",
+    "height": 3,
+    "width": 5,
+    "hitbox": {
+      "x": 5,
+      "y": 2
     }
   }
 ]

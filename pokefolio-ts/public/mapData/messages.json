@@ -34,12 +34,27 @@
     "positionX": 19,
     "positionY": 10,
     "type": "sign",
+    "url":"mailto:matteo.perisse@epita.fr",
     "image": "/tiles/obstacles/sign-red.png",
     "textKey": "mailSign"
   },
   {
-    "textFr": ["Bonjour", "Bienvenue dans mon monde", "Explore et amuse-toi !"],
-    "textEn": ["Hello", "Welcome to my world", "Explore and have fun!"],
+    "positionX": 7,
+    "positionY": 15,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "epitaSign",
+    "details": "epita-dialog"
+  },
+  {
+    "positionX": 40,
+    "positionY": 15,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "pravaigSign",
+    "open": "pravaig-dialog"
+  },
+  {
     "positionX": 22,
     "positionY": 17,
     "type": "npc",
