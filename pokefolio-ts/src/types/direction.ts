@@ -36,3 +36,18 @@ export const getDirectionFromPlayerAction = (action: PlayerAction) => {
       return null;
   }
 }
+
+export const getDirectionFromText = (text: string) => {
+  switch (text.toLowerCase()) {
+    case "left":
+      return Direction.LEFT
+    case "right":
+      return Direction.RIGHT
+    case "down":
+      return Direction.DOWN
+    case "up":
+      return Direction.UP
+    default:
+      return Direction.DOWN
+  }
+}

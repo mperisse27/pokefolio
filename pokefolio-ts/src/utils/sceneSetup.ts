@@ -1,6 +1,6 @@
 import { Application, Sprite, type Container, type ContainerChild } from "pixi.js";
 import { loadSprite, loadSpriteAndTexture, loadTexture } from "./loader";
-import { Direction } from "../types/direction";
+import { Direction, getDirectionFromText } from "../types/direction";
 import type { InteractiveElement } from "../types/interactiveElement";
 import { NPC } from "../components/npc";
 import { Sign } from "../components/sign";
@@ -116,6 +116,21 @@ export const loadPlayerAnimations = async () => {
   return playerAnimations;
 }
 
+export const loadNPCSprites = async (name: string) => {
+  const npcSpriteUp = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-up.png`);
+  const npcSpriteDown = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-down.png`);
+  const npcSpriteLeft = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-left.png`);
+  const npcSpriteRight = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-right.png`);
+  const npcSprites: Record<Direction, Sprite> = {
+    [Direction.UP]: new Sprite(npcSpriteUp),
+    [Direction.DOWN]: new Sprite(npcSpriteDown),
+    [Direction.LEFT]: new Sprite(npcSpriteLeft),
+    [Direction.RIGHT]: new Sprite(npcSpriteRight),
+  };
+
+  return npcSprites;
+}
+
 export const initializeApplication = (app: Application) => {
   document.body.style.margin = '0';
   document.body.style.padding = '0';
@@ -142,8 +157,8 @@ export const fetchInteractiveElements = async () => {
           element.name,
           element.positionX,
           element.positionY,
-          await loadPlayerSprites(), //TODO: load NPC sprites from a different source
-          Direction.LEFT,
+          await loadNPCSprites(element.name),
+          getDirectionFromText(element.direction),
           element.textKey
         );
       }

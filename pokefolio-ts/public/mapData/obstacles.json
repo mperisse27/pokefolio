@@ -68,5 +68,15 @@
       "x": 5,
       "y": 2
     }
+  },
+  {
+    "id": 236,
+    "name": "big-house",
+    "height": 4,
+    "width": 5,
+    "hitbox": {
+      "x": 5,
+      "y": 3
+    }
   }
 ]

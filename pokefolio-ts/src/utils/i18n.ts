@@ -1,16 +1,18 @@
 const translations = {
   fr: {
     //Signs
-    welcomeSign: ["Bienvenue dans Pokéfolio !"],
+    welcomeSign: ["Bonjour", "Bienvenue dans mon monde", "Explore et amuse-toi !"],
     twitchSign: ["Cliquez pour découvrir ma chaîne Twitch :", "https://twitch.tv/matt_la_menacee"],
     linkedinSign: ["Cliquez pour visiter mon LinkedIn :", "https://linkedin.com/in/matteo-perisse"],
-    githubSign: ["Clickez pour faire un tour sur mon GitHub :", "https://github.com/mperisse27"],
-    mailSign: ["Clicquez pour m'envoyer un mail :", "matteo.perisse@epita.fr"],
+    githubSign: ["Cliquez pour faire un tour sur mon GitHub :", "https://github.com/mperisse27"],
+    mailSign: ["Cliquez pour m'envoyer un mail :", "matteo.perisse@epita.fr"],
     epitaSign: ["Bienvenue à l'EPITA !", "L'école d'ingénieurs en informatique"],
     pravaigSign: ["Bienvenue à Pravaig !", "Une entreprise indienne fabriquant des véhicules électriques.", "C'est ici que j'ai effectué mon stage de fin d'études."],
+    studeventsSign: ["Téléchargez StudEvents !", "L'application qui lie les étudiants et les associations."],
 
     //NPCs
-    mattNPC: ["Bonjour", "Bienvenue dans mon monde", "Explore et amuse-toi !"],
+    alixNPC: ["Trop bien le Java !"],
+    botumrathNPC: ["Tu veux voir la dernière photo de Moka ?"],
 
     //GUI
     settingsTitle: ["Paramètres"],
@@ -34,16 +36,18 @@ const translations = {
   },
   en: {
     //Signs
-    welcomeSign: ["Welcome to Pokéfolio!"],
+    welcomeSign: ["Hello", "Welcome to my world", "Explore and have fun!"],
     twitchSign: ["Click to discover my Twitch channel:", "https://twitch.tv/matt_la_menacee"],
     linkedinSign: ["Click to visit my LinkedIn:", "https://linkedin.com/in/matteo-perisse"],
     githubSign: ["Click to take a look at my GitHub:", "https://github.com/mperisse27"],
     mailSign: ["Click to send me a mail:", "matteo.perisse@epita.fr"],
     epitaSign: ["Welcome to EPITA!", "The engineering school for computer science"],
     pravaigSign: ["Welcome to Pravaig!", "An Indian company making electric vehicles.", "This is where I did my end-of-studies internship."],
+    studeventsSign: ["Download StudEvents !", "The app that links students and associations."],
 
     //NPCs
-    mattNPC: ["Hello", "Welcome to my world", "Explore and have fun!"],
+    alixNPC: ["I love Java !"],
+    botumrathNPC: ["You wanna see my new picture of Moka ?"],
 
     //GUI
     settingsTitle: ["Settings"],
