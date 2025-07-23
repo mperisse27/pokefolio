@@ -37,7 +37,7 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
 
   const playerSprites = await loadPlayerSprites();
   const playerAnimations = await loadPlayerAnimations();
-  const player = new Player('player1', 16, 19, playerSprites, playerAnimations);
+  const player = new Player('player1', 48, 17, playerSprites, playerAnimations);
 
   objectsLayer.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
