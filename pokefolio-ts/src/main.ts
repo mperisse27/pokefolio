@@ -37,7 +37,7 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
 
   const playerSprites = await loadPlayerSprites();
   const playerAnimations = await loadPlayerAnimations();
-  const player = new Player('player1', 16, 16, playerSprites, playerAnimations);
+  const player = new Player('player1', 48, 17, playerSprites, playerAnimations);
 
   objectsLayer.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
@@ -74,17 +74,19 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
 
     const playerActions = getActionFromKey(activeKeys, activeButtons);
     if (playerActions.includes(PlayerAction.INTERACT) && popupDelayCounter <= 0) {
-      const frontTile = player.getFrontTilePosition();
-      const element = interactiveElements.find((element) => {
-        return element.position.x == frontTile.x && element.position.y == frontTile.y;
-      });
-      if (element) {
-        const popupHidden = element.type == 'npc' ?
-        (element.object as NPC).speak(player, popup) :
-        (element.object as Sign).speak(popup);
-
-        player.canMove = popupHidden;
-        popupDelayCounter = 30;
+      if (player.canMove || popup.lineCounter > 0) {
+        const frontTile = player.getFrontTilePosition();
+        const element = interactiveElements.find((element) => {
+          return element.position.x == frontTile.x && element.position.y == frontTile.y;
+        });
+        if (element) {
+          const popupHidden = element.type == 'npc' ?
+          (element.object as NPC).speak(player, popup) :
+          (element.object as Sign).speak(popup);
+  
+          player.canMove = popupHidden;
+          popupDelayCounter = 30;
+        }
       }
     }
     if (player.canMove) {
@@ -111,5 +113,5 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
     player.container.position.y = app.screen.height / 2 - 160;
   });
 
-  setupGui(activeButtons);
+  setupGui(activeButtons, player);
 })();

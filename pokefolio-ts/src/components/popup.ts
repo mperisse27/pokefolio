@@ -62,7 +62,7 @@ export class Popup {
     return { container, line1, line2 };
   }
 
-  public changeText(text: string[], url?: string): boolean {
+  public changeText(text: string[], url?: string, details?: string): boolean {
     if (this.lineCounter == 0) {
       this.container.classList.remove("hidden");
       this.fullLine1 = text[0] ?? "";
@@ -89,6 +89,10 @@ export class Popup {
       this.lineCounter = 0;
       this.container.onclick = null;
       this.container.classList.remove("cursor-pointer");
+      if (details) {
+        document.getElementById(details)?.classList.remove("hidden");
+        return false; //Make sure that player can't move while details are shown
+      }
     }
     return this.lineCounter == 0;
   }
