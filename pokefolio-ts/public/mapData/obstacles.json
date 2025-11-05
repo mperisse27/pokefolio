@@ -1,16 +1,6 @@
 [
   {
-    "id": 141,
-    "name": "big-house",
-    "height": 4,
-    "width": 5,
-    "hitbox": {
-      "x": 5,
-      "y": 4
-    }
-  },
-  {
-    "id": 196,
+    "id": 151,
     "name": "small-pine",
     "height": 2,
     "width": 1,
@@ -20,7 +10,7 @@
     }
   },
   {
-    "id": 111,
+    "id": 146,
     "name": "small-tree",
     "height": 2,
     "width": 1,
@@ -30,7 +20,27 @@
     }
   },
   {
-    "id": 124,
+    "id": 156,
+    "name": "small-tree",
+    "height": 2,
+    "width": 1,
+    "hitbox": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "id": 131,
+    "name": "small-tree",
+    "height": 2,
+    "width": 1,
+    "hitbox": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "id": 154,
     "name": "big-tree",
     "height": 3,
     "width": 2,
@@ -40,7 +50,7 @@
     }
   },
   {
-    "id": 96,
+    "id": 101,
     "name": "sign",
     "height": 1,
     "width": 1,
@@ -50,7 +60,7 @@
     }
   },
   {
-    "id": 276,
+    "id": 231,
     "name": "epita",
     "height": 4,
     "width": 4,
@@ -60,7 +70,7 @@
     }
   },
   {
-    "id": 231,
+    "id": 186,
     "name": "pravaig",
     "height": 3,
     "width": 5,
@@ -70,7 +80,7 @@
     }
   },
   {
-    "id": 236,
+    "id": 191,
     "name": "big-house",
     "height": 4,
     "width": 5,

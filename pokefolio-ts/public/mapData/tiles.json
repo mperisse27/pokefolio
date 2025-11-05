@@ -12,13 +12,13 @@
     "isWalkable": true
   },
   {
-    "id": 299,
+    "id": 4,
     "name": "flower2",
     "type": "ground",
     "isWalkable": true
   },
   {
-    "id": 300,
+    "id": 5,
     "name": "flower",
     "type": "ground",
     "isWalkable": true
@@ -132,7 +132,7 @@
     "isWalkable": false
   },
   {
-    "id": 310,
+    "id": 15,
     "name": "sign",
     "type": "obstacle",
     "isWalkable": false
@@ -190,6 +190,18 @@
     "name": "water right",
     "type": "water",
     "isWalkable": false
+  },
+  {
+    "id": 96,
+    "name": "stairs left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 97,
+    "name": "stairs",
+    "type": "ground",
+    "isWalkable": true
   }
 
 ]
