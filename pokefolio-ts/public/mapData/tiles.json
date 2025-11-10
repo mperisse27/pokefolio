@@ -162,6 +162,12 @@
     "isWalkable": false
   },
   {
+    "id": 29,
+    "name": "water top right join",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
     "id": 27,
     "name": "water top left join",
     "type": "water",

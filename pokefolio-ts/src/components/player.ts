@@ -3,9 +3,9 @@ import type { Position } from "../types/position";
 import { Direction } from "../types/direction";
 
 export class Player {
-  public position: Position;
-  public destination: Position;
-  public tilePosition: Position;
+  public position: Position; //Graphical position in pixels
+  public destination: Position; //Graphical destination in pixels
+  public tilePosition: Position; //Logical position in tiles
   public id: string;
   public sprites: Record<Direction, Sprite>;
   public animations: Record<Direction, Sprite[]>;

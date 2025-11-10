@@ -11,9 +11,9 @@ const translations = {
     studeventsSign: ["Téléchargez StudEvents !", "L'application qui lie les étudiants et les associations."],
 
     //NPCs
-    alixNPC: ["Trop bien le Java !"],
+    alixNPC: ["Les micro-services c'est incroyable !"],
     botumrathNPC: ["Heureusement que Moka est là pour nous aider."],
-    clementNPC: ["Promis je dormais pas !"],
+    clementNPC: ["J'en peux plus des maquettes !"],
     mokaNPC: ["Miaou ! (C'est moi la mascotte !)"],
 
     //GUI
@@ -59,9 +59,9 @@ const translations = {
     studeventsSign: ["Download StudEvents !", "The app that links students and associations."],
 
     //NPCs
-    alixNPC: ["I love Java !"],
+    alixNPC: ["Micro-services are awesome!"],
     botumrathNPC: ["Thankfully Moka is here to help us."],
-    clementNPC: ["I promise I wasn't sleeping!"],
+    clementNPC: ["I'm done with mockups!"],
     mokaNPC: ["Meow ! (I'm the star here!)"],
 
     //GUI

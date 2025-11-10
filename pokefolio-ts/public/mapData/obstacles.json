@@ -50,6 +50,26 @@
     }
   },
   {
+    "id": 132,
+    "name": "big-tree",
+    "height": 3,
+    "width": 2,
+    "hitbox": {
+      "x": 2,
+      "y": 2
+    }
+  },
+  {
+    "id": 152,
+    "name": "big-tree",
+    "height": 3,
+    "width": 2,
+    "hitbox": {
+      "x": 2,
+      "y": 2
+    }
+  },
+  {
     "id": 101,
     "name": "sign",
     "height": 1,
