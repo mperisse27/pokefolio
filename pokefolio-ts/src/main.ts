@@ -1,5 +1,5 @@
 import { Application, Container } from 'pixi.js';
-import { loadMap } from './utils/loader';
+import { loadMap, loadTopLeftPosition } from './utils/loader';
 import { bgm } from './components/sounds';
 import { Player } from './components/player';
 import { createGroundFromMatrix, createObstaclesFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
@@ -35,16 +35,18 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
 
   const popup = new Popup();
 
+  const topLeftPos = await loadTopLeftPosition(); //Used to recalibrate positions if map extended at top or left
+  const startPos = { x: -16 - topLeftPos.x, y: 1 - topLeftPos.y };
   const playerSprites = await loadPlayerSprites();
   const playerAnimations = await loadPlayerAnimations();
-  const player = new Player('player1', 16, 17, playerSprites, playerAnimations);
+  const player = new Player('player1', startPos.x, startPos.y, playerSprites, playerAnimations);
 
   objectsLayer.addChild(player.container);
   player.container.position.x = app.screen.width / 2 - 40;
   player.container.position.y = app.screen.height / 2 - 160;
 
   bgm.play();
-  const interactiveElements = await fetchInteractiveElements();
+  const interactiveElements = await fetchInteractiveElements(topLeftPos);
   interactiveElements.forEach((element) => {
     objectsLayer.addChild(element.object.container);
   });
@@ -58,6 +60,11 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
   app.ticker.add((_) =>
   {
     player.applyMovement();
+    if (player.tilePosition.y <= 9) { //Endless staircase
+      player.tilePosition.y += 2;
+      player.position.y += 160;
+      player.destination.y += 160;
+    }
     if (!popup.container.classList.contains('hidden')) {
       popup.print();
     }

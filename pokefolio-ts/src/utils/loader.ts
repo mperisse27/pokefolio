@@ -87,3 +87,10 @@ export const loadMap = async () => {
   }
   return {groundMatrix, objectsMatrix};
 }
+
+export const loadTopLeftPosition = async () => {
+  const res = await fetch('/mapData/map.json');
+  const mapData = await res.json();
+  const topLeftChunk = mapData.layers[0].chunks[0];
+  return { x: topLeftChunk.x, y: topLeftChunk.y };
+}

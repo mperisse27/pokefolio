@@ -6,6 +6,7 @@ import { NPC } from "../components/npc";
 import { Sign } from "../components/sign";
 import { Tile } from "../types/tile";
 import { Obstacle } from "../types/obstacle";
+import type { Position } from "../types/position";
 
 export const createGroundFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
   const tileJSON = await fetch('/mapData/tiles.json');
@@ -145,7 +146,7 @@ export const initializeApplication = (app: Application) => {
   document.body.appendChild(app.canvas);
 }
 
-export const fetchInteractiveElements = async () => {
+export const fetchInteractiveElements = async (topLeftPos: Position) => {
   const messagesJson = await fetch('/mapData/messages.json');
   const elements = await messagesJson.json();
 
@@ -155,8 +156,8 @@ export const fetchInteractiveElements = async () => {
       if (element.type === 'npc') {
         newElement = new NPC(
           element.name,
-          element.positionX,
-          element.positionY,
+          element.positionX - topLeftPos.x,
+          element.positionY - topLeftPos.y,
           await loadNPCSprites(element.name),
           getDirectionFromText(element.direction),
           element.textKey
@@ -165,8 +166,8 @@ export const fetchInteractiveElements = async () => {
       else if (element.type == 'sign') {
         newElement = new Sign(
           await loadSpriteAndTexture(0, 0, element.image),
-          element.positionX,
-          element.positionY,
+          element.positionX - topLeftPos.x,
+          element.positionY - topLeftPos.y,
           element.textKey,
           element.url,
           element.details
@@ -174,7 +175,7 @@ export const fetchInteractiveElements = async () => {
       }
 
       return {
-        position: { x: element.positionX, y: element.positionY },
+        position: { x: element.positionX - topLeftPos.x, y: element.positionY - topLeftPos.y },
         object: newElement,
         type: element.type,
       };
