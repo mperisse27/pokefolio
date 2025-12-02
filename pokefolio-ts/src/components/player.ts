@@ -14,7 +14,7 @@ export class Player {
   public facing: Direction = Direction.DOWN;
   public canMove: boolean = true;
   moveFrame: number = 0;
-  spriteIndex: number;
+  spriteIndex: number = 0;
   sprinting: boolean = false;
 
   constructor(
@@ -30,7 +30,6 @@ export class Player {
     this.tilePosition = { x: positionX, y: positionY };
     this.sprites = sprites;
     this.animations = animations;
-    this.spriteIndex = 0;
 
     this.container = new Container();
     this.container.x = this.position.x;
@@ -81,7 +80,7 @@ export class Player {
   }
 
   public applyMovement() {
-    if (this.moveFrame == 16) {
+    if (this.moveFrame == 16) { //Moving one tile is 16 frames
       this.canMove = true;
       this.sprinting = false;
       this.moveFrame = 0;
@@ -113,7 +112,6 @@ export class Player {
   public changeDirection(direction: Direction) {
     this.facing = direction;
     this.sprite = this.sprites[direction];
-    this.spriteIndex = 0;
 
     for (const dir in this.sprites) {
       this.sprites[dir as unknown as Direction].visible = false;

@@ -18,6 +18,7 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
 
   const app = new Application();
   await app.init({ background: '#fff', resizeTo: window });
+  app.ticker.maxFPS = 90;
 
   await loadMap();
 
