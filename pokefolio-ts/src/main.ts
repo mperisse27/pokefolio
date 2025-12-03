@@ -30,7 +30,7 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
   const objectsLayer = new Container();
   app.stage.addChild(objectsLayer);
 
-  const { groundMatrix, objectsMatrix } = await loadMap();
+  const { groundMatrix, objectsMatrix } = await loadMap(); // Load export from Tiled
   const allTiles = await createGroundFromMatrix(groundMatrix, groundLayer);
   const allObstacles = await createObstaclesFromMatrix(objectsMatrix, objectsLayer);
 

@@ -1,7 +1,7 @@
 const translations = {
   fr: {
     //Signs
-    welcomeSign: ["Bonjour", "Bienvenue dans mon monde", "Explore et amuse-toi !"],
+    welcomeSign: ["Bonjour", "Bienvenue dans le monde de Pokéfolio !", "Pour en découvrir plus sur moi,", "n'hésite pas à te balader et à intéragir avec les panneaux !"],
     twitchSign: ["Cliquez pour découvrir ma chaîne Twitch :", "https://twitch.tv/matt_la_menacee"],
     linkedinSign: ["Cliquez pour visiter mon LinkedIn :", "https://linkedin.com/in/matteo-perisse"],
     githubSign: ["Cliquez pour faire un tour sur mon GitHub :", "https://github.com/mperisse27"],
@@ -9,6 +9,7 @@ const translations = {
     epitaSign: ["Bienvenue à l'EPITA !", "L'école d'ingénieurs en informatique"],
     pravaigSign: ["Bienvenue à Pravaig !", "Une entreprise indienne fabriquant des véhicules électriques.", "C'est ici que j'ai effectué mon stage de fin d'études."],
     studeventsSign: ["Téléchargez StudEvents !", "L'application qui lie les étudiants et les associations."],
+    nordonSign: ["Bienvenue chez Fives Nordon !", "Entreprise spécialisée dans la fabrication", "de tuyauterie industrielle, j'y ai effectué", "mon premier stage en dévloppement mobile"],
 
     //NPCs
     alixNPC: ["Les micro-services c'est incroyable !"],
@@ -32,24 +33,28 @@ const translations = {
     moveRight: ["D ou ➡️ pour vous déplacer vers la droite"],
     run: ["Shift pour courir"],
     interact: ["Espace ou Entrée pour interagir"],
-    disclaimer: ["Disclaimer: Ceci est un projet personnel et non commercial. Il n’est affilié ni à Nintendo, ni à Game Freak, ni à The Pokémon Company."],
+    disclaimer: ["Disclaimer: Ceci est un projet personnel et non commercial. Il n'est affilié ni à Nintendo, ni à Game Freak, ni à The Pokémon Company."],
     here: ["ici"],
 
     //Dialogs
     epitaTitle: ["Je suis actuellement en 5e année à l'EPITA, école d'ingénieurs spécialisée en informatique."],
-    epitaMti: ["J’y ai suivi la majeure MTI (Multimédia et Technologies de l'Information), où j’ai développé des compétences solides en développement logiciel, notamment en frontend, mobile et architecture web."],
-    epitaProjects: ["Ce cursus m’a permis de participer à de nombreux projets techniques, souvent en équipe, mêlant design, performance, et innovation."],
+    epitaMti: ["J'y ai suivi la majeure MTI (Multimédia et Technologies de l'Information), où j'ai développé des compétences solides en développement logiciel, notamment en frontend, mobile et architecture web."],
+    epitaProjects: ["Ce cursus m'a permis de participer à de nombreux projets techniques, souvent en équipe, mêlant design, performance, et innovation."],
     epitaFrontend: ["Je me suis spécialisé en développement frontend avec React, Flutter et Angular, tout en maîtrisant le backend pour une approche fullstack, ainsi que l'UI/UX."],
     epitaTechnologies: ["Technologies Apprises"],
+
     studeventsTitle: ["StudEvents est une application Web qui relie les étudiants et les associations."],
     studeventsTeam: ["J'ai réalisé le projet lors de ma formation à EPITA, avec trois autres personnes. Alix et Botumrath s'occupaient du backend, et Clément et moi du frontend."],
     studeventsDetails: ["Le projet est composé d'un frontend en React.js, avec Next.js, d'un backend en Java Spring Boot, et d'une base de données PostgreSQL. Nous avons aussi utilisé Firebase pour la messagerie, l'authentification et le stockage d'images en ligne. Enfin, nous avons utilisé Vercel et Kubernetes pour déployer le projet."],
     studeventsManagement: ["La conception s'est faite en mode agile, avec des rendus à faire à chaque fin de sprint (3 semaines). La répartition des tâches et le suivi du projet se faisait grâce à Jira."],
 
+    nordonTitle: ["J'ai effectué mon premier stage de développement logiciel chez Fives Nordon à Nancy pendant 6 mois."],
+    nordonMission: ["J'y ai conçu mon premier gros projet logiciel, une application mobile \"hub central\" ayant pour but de faciliter l'accès aux ressources numériques de l'entreprises (documents, formulaires, ...) pour les employés, notamment les ouvriers."],
+    nordonTechnologies: ["Le projet est composé d'un frontend développé en Flutter, avec une API backend en DotNet Core, et une base de données SQL Server. J'y ai appris beaucoup sur l'interaction avec les utilisateurs finaux et la méthodologie agile."],
   },
   en: {
     //Signs
-    welcomeSign: ["Hello", "Welcome to my world", "Explore and have fun!"],
+    welcomeSign: ["Hello", "Welcome to the world of Pokéfolio!", "To discover more about me,", "feel free to explore and interact with the signs!"],
     twitchSign: ["Click to discover my Twitch channel:", "https://twitch.tv/matt_la_menacee"],
     linkedinSign: ["Click to visit my LinkedIn:", "https://linkedin.com/in/matteo-perisse"],
     githubSign: ["Click to take a look at my GitHub:", "https://github.com/mperisse27"],
@@ -89,10 +94,15 @@ const translations = {
     epitaProjects: ["This curriculum allowed me to participate in numerous technical projects, often in teams, combining design, performance, and innovation."],
     epitaFrontend: ["I specialized in frontend development with React, Flutter, and Angular, while mastering backend for a fullstack approach, as well as UI/UX."],
     epitaTechnologies: ["Technologies Learned"],
+
     studeventsTitle: ["StudEvents is a web application that connects students and associations."],
     studeventsTeam: ["I completed the project during my training at EPITA, with three other people. Alix and Botumrath handled the backend, while Clément and I worked on the frontend."],
     studeventsDetails: ["The project consists of a frontend in React.js, with Next.js, a backend in Java Spring Boot, and a PostgreSQL database. We also used Firebase for messaging, authentication, and online image storage. Finally, we used Vercel and Kubernetes to deploy the project."],
     studeventsManagement: ["The design was done in agile mode, with deliverables due at the end of each sprint (3 weeks). Task distribution and project tracking were managed using Jira."],
+    
+    nordonTitle: ["I completed my first software development internship at Fives Nordon in Nancy for 6 months."],
+    nordonMission: ["There, I designed my first major software project, a mobile \"central hub\" application that aimed at making easier the access to the company's digital resources (documents, forms, ...) for employees, particularly workers in factory."],
+    nordonTechnologies: ["The project consists of a frontend developed in Flutter, with a DotNet backend API, and a SQL Server database. I learned a lot about interacting with end users and agile methodology."],
   }
 };
 

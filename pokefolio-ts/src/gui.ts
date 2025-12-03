@@ -139,6 +139,7 @@ export const setupGui = (activeButtons: Set<string>, player: Player) => {
   document.getElementById('close-help')?.addEventListener('click', (event) => toggleMenu(event, "help-menu"));
   document.getElementById('close-epita')?.addEventListener('click', (event) => toggleMenu(event, "epita-dialog", player));
   document.getElementById('close-studevents')?.addEventListener('click', (event) => toggleMenu(event, "studevents-dialog", player));
+  document.getElementById('close-nordon')?.addEventListener('click', (event) => toggleMenu(event, "nordon-dialog", player));
   document.getElementById('actions-visible')?.addEventListener('click', toggleActionButtons);
   setupMenuOutsideClickHandler();
 

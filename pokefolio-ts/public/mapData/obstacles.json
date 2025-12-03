@@ -80,7 +80,7 @@
     }
   },
   {
-    "id": 231,
+    "id": 246,
     "name": "epita",
     "height": 4,
     "width": 4,
@@ -90,7 +90,7 @@
     }
   },
   {
-    "id": 186,
+    "id": 201,
     "name": "pravaig",
     "height": 3,
     "width": 5,
@@ -100,13 +100,23 @@
     }
   },
   {
-    "id": 191,
+    "id": 206,
     "name": "big-house",
     "height": 4,
     "width": 5,
     "hitbox": {
       "x": 5,
       "y": 3
+    }
+  },
+  {
+    "id": 231,
+    "name": "nordon",
+    "height": 3,
+    "width": 4,
+    "hitbox": {
+      "x": 4,
+      "y": 2
     }
   }
 ]

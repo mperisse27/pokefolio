@@ -92,5 +92,13 @@
     "name": "Clement",
     "textKey": "clementNPC",
     "direction": "down"
+  },
+  {
+    "positionX": 30,
+    "positionY": -1,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "nordonSign",
+    "details": "nordon-dialog"
   }
 ]

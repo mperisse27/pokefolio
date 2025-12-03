@@ -28,7 +28,7 @@
           </div>
           <div class="flex justify-between w-full">
             <i class="fa fa-volume-up fa-2x" aria-hidden="true"></i>
-            <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.4" class="w-[80%]" />
+            <input id="volume-slider" type="range" min="0" max="0.5" step="0.01" value="0.2" class="w-[80%]" />
           </div>
           <fieldset class="flex justify-between w-[60%]">
             <div class="flex flex-col justify-center items-center">
@@ -119,6 +119,17 @@
           <h2 data-i18n="studeventsTeam" class="text-3xl"></h2>
           <h2 data-i18n="studeventsDetails" class="text-3xl"></h2>
           <h2 data-i18n="studeventsManagement" class="text-3xl"></h2>
+        </section>
+        <section id="nordon-dialog" class="flex hidden flex-col bg-[rgba(0,0,0,1)] p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 font-my32bit">
+          <div class="flex justify-between w-full">
+            <img src="/nordon-logo.png" alt="StudEvents Logo" class="h-16 mt-4">
+            <button id="close-nordon" type="button" class="cursor-pointer">
+              <i class="fa fa-times fa-2x"></i>
+            </button>
+          </div>
+          <h2 data-i18n="nordonTitle" class="text-3xl"></h2>
+          <h2 data-i18n="nordonMission" class="text-3xl"></h2>
+          <h2 data-i18n="nordonTechnologies" class="text-3xl"></h2>
         </section>
       </div>
       <section class="fixed bottom-0 left-0 w-full flex flex-col items-end space-y-1">
