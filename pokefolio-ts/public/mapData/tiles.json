@@ -180,6 +180,12 @@
     "isWalkable": false
   },
   {
+    "id": 46,
+    "name": "water left up",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
     "id": 22,
     "name": "water left",
     "type": "water",
@@ -208,6 +214,90 @@
     "name": "stairs",
     "type": "ground",
     "isWalkable": true
+  },
+  {
+    "id": 101,
+    "name": "square top left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 102,
+    "name": "square top",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 103,
+    "name": "square top right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 106,
+    "name": "square left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 107,
+    "name": "square center",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 108,
+    "name": "square right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 111,
+    "name": "square bot left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 112,
+    "name": "square bot",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 113,
+    "name": "square bot right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 100,
+    "name": "flower box",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 92,
+    "name": "bridge left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 93,
+    "name": "bridge center",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 94,
+    "name": "bridge right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 99,
+    "name": "wood sign",
+    "type": "ground",
+    "isWalkable": false
   }
 
 ]

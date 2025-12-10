@@ -6,16 +6,22 @@ const translations = {
     linkedinSign: ["Cliquez pour visiter mon LinkedIn :", "https://linkedin.com/in/matteo-perisse"],
     githubSign: ["Cliquez pour faire un tour sur mon GitHub :", "https://github.com/mperisse27"],
     mailSign: ["Cliquez pour m'envoyer un mail :", "matteo.perisse@epita.fr"],
+
     epitaSign: ["Bienvenue à l'EPITA !", "L'école d'ingénieurs en informatique"],
+    poincaSign: ["Bienvenue au lycée Henri Poincaré !.", "Situé à Nancy j'y ai passé deux ans pour ma classe préparatoire physique-chimie."],
     pravaigSign: ["Bienvenue à Pravaig !", "Une entreprise indienne fabriquant des véhicules électriques.", "C'est ici que j'ai effectué mon stage de fin d'études."],
     studeventsSign: ["Téléchargez StudEvents !", "L'application qui lie les étudiants et les associations."],
     nordonSign: ["Bienvenue chez Fives Nordon !", "Entreprise spécialisée dans la fabrication", "de tuyauterie industrielle, j'y ai effectué", "mon premier stage en dévloppement mobile"],
 
+    videoGameSign: ["J'adore les jeux vidéo, d'ailleurs, j'ai réalisé ce projet en le voyant un peu comme un jeu vidéo.", "Parmi mes jeux préférés, je peux citer Celeste, Civilization et, vous l'aurez deviné, Pokémon !"],
+
     //NPCs
-    alixNPC: ["Les micro-services c'est incroyable !"],
+    alixNPC: ["Je me suis occupé du back-end de l'application avec Botumrath."],
     botumrathNPC: ["Heureusement que Moka est là pour nous aider."],
-    clementNPC: ["J'en peux plus des maquettes !"],
+    clementNPC: ["J'ai travaillé avec Matteo sur le frontend, j'en peux plus des maquettes !"],
     mokaNPC: ["Miaou ! (C'est moi la mascotte !)"],
+
+    jorisNPC: ["J'ai refait la base de données avec Matteo, c'était pas une mince affaire !"],
 
     //GUI
     settingsTitle: ["Paramètres"],
@@ -59,15 +65,21 @@ const translations = {
     linkedinSign: ["Click to visit my LinkedIn:", "https://linkedin.com/in/matteo-perisse"],
     githubSign: ["Click to take a look at my GitHub:", "https://github.com/mperisse27"],
     mailSign: ["Click to send me a mail:", "matteo.perisse@epita.fr"],
+
     epitaSign: ["Welcome to EPITA!", "The engineering school for computer science"],
+    poincaSign: ["Welcome to Henri Poincaré high school!", "Located in Nancy, I spent two years here for my preparatory class in physics and chemistry."],
     pravaigSign: ["Welcome to Pravaig!", "An Indian company making electric vehicles.", "This is where I did my end-of-studies internship."],
     studeventsSign: ["Download StudEvents !", "The app that links students and associations."],
+    nordonSign: ["Welcome to Fives Nordon!", "A company specialized in the manufacturing", "of industrial piping, where I did", "my first mobile development internship."],
+    videoGameSign: ["I love video games, in fact, I made this project thinking a bit like making a video game.", "Some of my favorite games are Celeste, Civilization and, you guessed it, Pokémon!"],
 
     //NPCs
-    alixNPC: ["Micro-services are awesome!"],
+    alixNPC: ["I worked on the backend of the application with Botumrath."],
     botumrathNPC: ["Thankfully Moka is here to help us."],
-    clementNPC: ["I'm done with mockups!"],
+    clementNPC: ["I worked with Matteo on the frontend, I can't take these mockups anymore!"],
     mokaNPC: ["Meow ! (I'm the star here!)"],
+
+    jorisNPC: ["I redesigned the database with Matteo, it was no easy task!"],
 
     //GUI
     settingsTitle: ["Settings"],

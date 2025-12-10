@@ -1,7 +1,27 @@
 [
   {
-    "id": 151,
+    "id": 166,
     "name": "small-pine",
+    "height": 2,
+    "width": 1,
+    "hitbox": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "id": 161,
+    "name": "small-tree",
+    "height": 2,
+    "width": 1,
+    "hitbox": {
+      "x": 1,
+      "y": 1
+    }
+  },
+  {
+    "id": 171,
+    "name": "small-tree",
     "height": 2,
     "width": 1,
     "hitbox": {
@@ -20,27 +40,7 @@
     }
   },
   {
-    "id": 156,
-    "name": "small-tree",
-    "height": 2,
-    "width": 1,
-    "hitbox": {
-      "x": 1,
-      "y": 1
-    }
-  },
-  {
-    "id": 131,
-    "name": "small-tree",
-    "height": 2,
-    "width": 1,
-    "hitbox": {
-      "x": 1,
-      "y": 1
-    }
-  },
-  {
-    "id": 154,
+    "id": 147,
     "name": "big-tree",
     "height": 3,
     "width": 2,
@@ -50,7 +50,7 @@
     }
   },
   {
-    "id": 132,
+    "id": 167,
     "name": "big-tree",
     "height": 3,
     "width": 2,
@@ -118,5 +118,26 @@
       "x": 4,
       "y": 2
     }
+  },
+  {
+    "id": 296,
+    "name": "poinca",
+    "height": 5,
+    "width": 6,
+    "hitbox": {
+      "x": 6,
+      "y": 3
+    }
+  },
+  {
+    "id": 132,
+    "name": "celeste",
+    "height": 2,
+    "width": 2,
+    "hitbox": {
+      "x": 2,
+      "y": 1
+    }
   }
+
 ]

@@ -39,7 +39,7 @@
     "textKey": "mailSign"
   },
   {
-    "positionX": -25,
+    "positionX": -21,
     "positionY": -1,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
@@ -47,14 +47,22 @@
     "details": "epita-dialog"
   },
   {
-    "positionX": 8,
+    "positionX": 3,
     "positionY": -1,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "pravaigSign"
   },
   {
-    "positionX": 20,
+    "positionX": 7,
+    "positionY": 0,
+    "type": "npc",
+    "name": "Joris",
+    "textKey": "jorisNPC",
+    "direction": "down"
+  },
+  {
+    "positionX": 15,
     "positionY": -1,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
@@ -62,7 +70,7 @@
     "details": "studevents-dialog"
   },
   {
-    "positionX": 18,
+    "positionX": 20,
     "positionY": 1,
     "type": "npc",
     "name": "Alix",
@@ -70,7 +78,7 @@
     "direction": "up"
   },
   {
-    "positionX": 16,
+    "positionX": 18,
     "positionY": 0,
     "type": "npc",
     "name": "Botumrath",
@@ -78,7 +86,7 @@
     "direction": "left"
   },
   {
-    "positionX": 15,
+    "positionX": 17,
     "positionY": 0,
     "type": "npc",
     "name": "Moka",
@@ -86,7 +94,7 @@
     "direction": "down"
   },
   {
-    "positionX": 18,
+    "positionX": 20,
     "positionY": 0,
     "type": "npc",
     "name": "Clement",
@@ -94,11 +102,18 @@
     "direction": "down"
   },
   {
-    "positionX": 30,
+    "positionX": 26,
     "positionY": -1,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "nordonSign",
     "details": "nordon-dialog"
+  },
+  {
+    "positionX": -18,
+    "positionY": 8,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "videoGameSign"
   }
 ]
