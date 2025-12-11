@@ -115,5 +115,12 @@
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "videoGameSign"
+  },
+  {
+    "positionX": -29,
+    "positionY": -1,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "poincaSign"
   }
 ]

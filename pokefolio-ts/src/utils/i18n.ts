@@ -8,7 +8,7 @@ const translations = {
     mailSign: ["Cliquez pour m'envoyer un mail :", "matteo.perisse@epita.fr"],
 
     epitaSign: ["Bienvenue à l'EPITA !", "L'école d'ingénieurs en informatique"],
-    poincaSign: ["Bienvenue au lycée Henri Poincaré !.", "Situé à Nancy j'y ai passé deux ans pour ma classe préparatoire physique-chimie."],
+    poincaSign: ["Bienvenue au lycée Henri Poincaré.", "Situé à Nancy j'y ai passé deux ans pour ma classe préparatoire physique-chimie."],
     pravaigSign: ["Bienvenue à Pravaig !", "Une entreprise indienne fabriquant des véhicules électriques.", "C'est ici que j'ai effectué mon stage de fin d'études."],
     studeventsSign: ["Téléchargez StudEvents !", "L'application qui lie les étudiants et les associations."],
     nordonSign: ["Bienvenue chez Fives Nordon !", "Entreprise spécialisée dans la fabrication", "de tuyauterie industrielle, j'y ai effectué", "mon premier stage en dévloppement mobile"],
@@ -67,7 +67,7 @@ const translations = {
     mailSign: ["Click to send me a mail:", "matteo.perisse@epita.fr"],
 
     epitaSign: ["Welcome to EPITA!", "The engineering school for computer science"],
-    poincaSign: ["Welcome to Henri Poincaré high school!", "Located in Nancy, I spent two years here for my preparatory class in physics and chemistry."],
+    poincaSign: ["Welcome to Henri Poincaré high school.", "Located in Nancy, I spent two years here for my preparatory class in physics and chemistry."],
     pravaigSign: ["Welcome to Pravaig!", "An Indian company making electric vehicles.", "This is where I did my end-of-studies internship."],
     studeventsSign: ["Download StudEvents !", "The app that links students and associations."],
     nordonSign: ["Welcome to Fives Nordon!", "A company specialized in the manufacturing", "of industrial piping, where I did", "my first mobile development internship."],
