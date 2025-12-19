@@ -4,6 +4,7 @@ import type { Position } from "../types/position";
 import type { Player } from "./player";
 import type { Popup } from "./popup";
 import { t } from "../utils/i18n";
+import { TILE_SIZE } from "../utils/constants";
 
 export class NPC {
   public name: string;
@@ -25,7 +26,7 @@ export class NPC {
   ) {
     this.name = name;
     this.tilePosition = { x: positionX, y: positionY };
-    this.position = { x: positionX * 80, y: positionY * 80 };
+    this.position = { x: positionX * TILE_SIZE, y: positionY * TILE_SIZE };
     this.facing = facing;
     this.sprites = sprites;
     this.textKey = textKey;
@@ -38,7 +39,7 @@ export class NPC {
     for (const dir in this.sprites) {
       const sprite = this.sprites[dir as unknown as Direction];
       sprite.x = 0;
-      sprite.y = -80; //Sprites are 2 tiles high, so we offset by -80 to align with the tile
+      sprite.y = -TILE_SIZE; //Sprites are 2 tiles high, so we offset by one tile to align with the tile
       sprite.visible = false;
       this.container.addChild(sprite);
     }
@@ -55,6 +56,11 @@ export class NPC {
     }
   }
 
+  /**
+   * Gets the text related to this NPC and initiates a popup.
+   * @param player The instance of the player
+   * @param popup The instance of the popup
+   */
   public speak(player: Player, popup: Popup) {
     this.changeDirection(getOppositeDirection(player.facing));
     const text = [...t(this.textKey)];

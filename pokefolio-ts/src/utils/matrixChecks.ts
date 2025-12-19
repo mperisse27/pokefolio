@@ -7,6 +7,15 @@ export const isWalkableTile = (x: number, y: number, walkableMatrix: number[][])
   return walkableMatrix[y][x] === 0;
 }
 
+/**
+ * Creates a matrix of walkable tiles based on ground and obstacle matrices, and interactive elements.
+ * @param groundMatrix A matrix reprenting all ground tiles by their ID defined by Tiled.
+ * @param obstaclesMatrix A matrix reprenting all obstacle tiles by their ID defined by Tiled.
+ * @param allTiles A list of all possible ground tiles in the map and their properties.
+ * @param allObstacles A list of all possible obstacle tiles in the map and their properties.
+ * @param interactiveElements A list of all inteactive elements.
+ * @returns A matrix of walkable (0) and non-walkable (1) tiles.
+ */
 export const createWalkableMatrix = (groundMatrix: number[][], obstaclesMatrix: number[][], allTiles: Tile[], allObstacles: Obstacle[], interactiveElements: InteractiveElement[]) => {
   const walkableMatrix: number[][] =  Array.from({ length: groundMatrix.length }, () => Array(groundMatrix[0].length).fill(0));
   

@@ -1,5 +1,8 @@
 import { Assets, Sprite, Texture } from "pixi.js";
 
+/**
+ * Load a sprite at a given position using a given texture
+ */
 export const loadSprite = (positionX: number, positionY: number, texture: Texture) => {
   const sprite = new Sprite(texture);
   sprite.scale.set(5);
@@ -8,6 +11,9 @@ export const loadSprite = (positionX: number, positionY: number, texture: Textur
   return sprite;
 }
 
+/**
+ * Load a sprite and its texture at a given position using the texture name
+ */
 export const loadSpriteAndTexture = async (positionX: number, positionY: number, texturePath: string) => {
   const texture = await loadTexture(texturePath);
   const sprite = new Sprite(texture);
@@ -17,12 +23,20 @@ export const loadSpriteAndTexture = async (positionX: number, positionY: number,
   return sprite;
 }
 
+/**
+ * Load a texture using its name
+ */
 export const loadTexture = async (texturePath: string) => {
   const texture = await Assets.load(texturePath);
   texture.baseTexture.scaleMode = 'nearest';
   return texture as Texture;
 }
 
+/**
+ * Creates matrix representations for each layer of the map : ground and obstacles.
+ * Uses the map.json file exported by Tiled.
+ * @returns The two matrix
+ */
 export const loadMap = async () => {
   const res = await fetch('/mapData/map.json');
   const mapData = await res.json();
@@ -88,6 +102,10 @@ export const loadMap = async () => {
   return {groundMatrix, objectsMatrix};
 }
 
+/**
+ * Gets the top-left position of the map as defined by the Tiled export in map.json. This allows for automatic calibration
+ * @returns 
+ */
 export const loadTopLeftPosition = async () => {
   const res = await fetch('/mapData/map.json');
   const mapData = await res.json();

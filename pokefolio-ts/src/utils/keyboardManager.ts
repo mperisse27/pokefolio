@@ -1,5 +1,8 @@
 import { PlayerAction } from "../types/playerAction";
 
+/**
+ * Handles keyboard inputs (press or release) to get a set of currently pressed keys.
+ */
 export const handleKeyboardInput = (event: KeyboardEvent, activeKeys: Set<string>) => {
   //Prevent issues with pressing Shift giving different results like "a" and "A"
   const keyToAnalyse = event.key.length === 1 ? event.key.toUpperCase() : event.key;
@@ -11,6 +14,12 @@ export const handleKeyboardInput = (event: KeyboardEvent, activeKeys: Set<string
   }
 }
 
+/**
+ * Gets what actions are being performed using the active buttons and key presses.
+ * @param activeKeys A set of currently pressed keys on keyboard.
+ * @param activeButtons A set of currently clicked buttons on screen.
+ * @returns An array of player actions.
+ */
 export const getActionFromKey = (activeKeys: Set<string>, activeButtons: Set<string>): PlayerAction[] => {
   const actions: PlayerAction[] = [];
   if (activeKeys.has(" ") || activeKeys.has("Enter") || activeButtons.has("interact")) {

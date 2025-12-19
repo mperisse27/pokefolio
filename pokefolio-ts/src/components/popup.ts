@@ -15,6 +15,13 @@ export class Popup {
     this.lineCounter = 0;
   }
 
+  /**
+   * Changes the text displayed in the next popup. It should be called at the start of the popup.
+   * @param text Array of text lines to be displayed
+   * @param url The URL to open when the popup is clicked. If provided, the popup beco;es clickable and the second line will have a link text effect
+   * @param details ID of a secondary more solid popup to open after the text is finished, to give more information.
+   * @returns Boolean indicating whether the popup is finished or still continues to display text. Useful to decide if the player can move
+   */
   public changeText(text: string[], url?: string, details?: string): boolean {
     if (this.lineCounter == 0) {
       this.container.classList.remove("hidden");
@@ -52,6 +59,10 @@ export class Popup {
     return this.lineCounter == 0;
   }
 
+  /**
+   * This function allows the text to be printed one character by one character.
+   * It is supposed to be called every frame to have a smooth appearing text effect.
+   */
   public print() {
     if ((this.line1.textContent ?? "").length < this.fullLine1.length) {
       this.line1.textContent ??= "";

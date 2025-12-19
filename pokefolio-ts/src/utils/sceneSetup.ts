@@ -7,6 +7,7 @@ import { Sign } from "../components/sign";
 import { Tile } from "../types/tile";
 import { Obstacle } from "../types/obstacle";
 import type { Position } from "../types/position";
+import { TILE_SIZE } from "./constants";
 
 export const createGroundFromMatrix = async (matrix: number[][], container: Container<ContainerChild>) => {
   const tileJSON = await fetch('/mapData/tiles.json');
@@ -26,7 +27,7 @@ export const createGroundFromMatrix = async (matrix: number[][], container: Cont
     row.forEach(async (cell, j) => {
       const texture = allTiles.find(t => t.id === cell)?.texture;
       if (texture) {
-        const tile = loadSprite(j * 80, i * 80, texture);
+        const tile = loadSprite(j * TILE_SIZE, i * TILE_SIZE, texture);
         tile.zIndex = -1;
         container.addChild(tile);
       }
@@ -54,7 +55,7 @@ export const createObstaclesFromMatrix = async (matrix: number[][], container: C
     row.forEach(async (cell, j) => {
       const found = allObstacles.find(t => t.id === cell);
       if (found) {
-        const obstacle = loadSprite(j * 80, (i - found.height + 1) * 80, found.texture);
+        const obstacle = loadSprite(j * TILE_SIZE, (i - found.height + 1) * TILE_SIZE, found.texture);
         obstacle.zIndex = i;
         container.addChild(obstacle);
       }

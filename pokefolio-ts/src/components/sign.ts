@@ -2,6 +2,7 @@ import { Container, type Sprite } from "pixi.js";
 import type { Position } from "../types/position";
 import type { Popup } from "./popup";
 import { t } from "../utils/i18n";
+import { TILE_SIZE } from "../utils/constants";
 
 export class Sign {
   public sprite: Sprite;
@@ -22,7 +23,7 @@ export class Sign {
   ) {
     this.sprite = sprite;
     this.tilePosition = { x: positionX, y: positionY };
-    this.position = { x: positionX * 80, y: positionY * 80 };
+    this.position = { x: positionX * TILE_SIZE, y: positionY * TILE_SIZE };
     this.url = url;
     this.textKey = textKey;
     this.details = details;

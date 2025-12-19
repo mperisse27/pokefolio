@@ -1,6 +1,7 @@
 import { Container, Sprite } from "pixi.js";
 import type { Position } from "../types/position";
 import { Direction } from "../types/direction";
+import { CHARACTER_MOVEMENT_FRAMES, TILE_SIZE } from "../utils/constants";
 
 export class Player {
   public position: Position; //Graphical position in pixels
@@ -25,8 +26,8 @@ export class Player {
     animations: Record<Direction, Sprite[]>
   ) {
     this.id = id;
-    this.position = { x: positionX * 80, y: positionY * 80 };
-    this.destination = { x: positionX * 80, y: positionY * 80 };
+    this.position = { x: positionX * TILE_SIZE, y: positionY * TILE_SIZE };
+    this.destination = { x: positionX * TILE_SIZE, y: positionY * TILE_SIZE };
     this.tilePosition = { x: positionX, y: positionY };
     this.sprites = sprites;
     this.animations = animations;
@@ -48,45 +49,49 @@ export class Player {
     this.sprite.visible = true;
   }
 
+  /**
+   * Indicates where the player is supposed to go next.
+   * @param direction The direction input for the movement
+   * @param sprint The sprint status
+   */
   public move(direction: Direction, sprint: boolean) {
     switch (direction) {
       case Direction.RIGHT:
-        this.destination.x = this.position.x + 80;
+        this.destination.x = this.position.x + TILE_SIZE;
         this.tilePosition.x += 1;
-        this.canMove = false;
-        this.sprinting = sprint;
         break;
       case Direction.LEFT:
-        this.destination.x = this.position.x - 80;
+        this.destination.x = this.position.x - TILE_SIZE;
         this.tilePosition.x -= 1;
-        this.canMove = false;
-        this.sprinting = sprint;
         break;
       case Direction.UP:
-        this.destination.y = this.position.y - 80;
+        this.destination.y = this.position.y - TILE_SIZE;
         this.tilePosition.y -= 1;
-        this.canMove = false;
         this.container.zIndex = this.tilePosition.y;
-        this.sprinting = sprint;
         break;
       case Direction.DOWN:
-        this.destination.y = this.position.y + 80;
+        this.destination.y = this.position.y + TILE_SIZE;
         this.tilePosition.y += 1;
-        this.canMove = false;
         this.container.zIndex = this.tilePosition.y;
-        this.sprinting = sprint;
         break;
     }
+    this.canMove = false;
+    this.sprinting = sprint;
   }
 
+  /**
+   * Applies the movement towards the destination for a smooth and animated translation. Should be called every frame.
+   */
   public applyMovement() {
-    if (this.moveFrame == 16) { //Moving one tile is 16 frames
+    if (this.moveFrame == CHARACTER_MOVEMENT_FRAMES) { //Moving one tile is 16 frames
       this.canMove = true;
       this.sprinting = false;
       this.moveFrame = 0;
     }
     else if (this.position.x !== this.destination.x || this.position.y !== this.destination.y) {
-      const delta = this.sprinting ? 10 : 5;
+      const delta = this.sprinting ?
+      TILE_SIZE / (CHARACTER_MOVEMENT_FRAMES / 2) :
+      TILE_SIZE / CHARACTER_MOVEMENT_FRAMES;
       switch (this.facing) {
         case Direction.RIGHT:
           this.position.x += delta;
@@ -101,7 +106,7 @@ export class Player {
           this.position.y += delta;
           break;
       }
-      if (this.moveFrame % 8 === 0) {
+      if (this.moveFrame % (CHARACTER_MOVEMENT_FRAMES/2) === 0) {
         this.spriteIndex = (this.spriteIndex + 1) % this.animations[this.facing].length;
         this.sprite.texture = this.animations[this.facing][this.spriteIndex].texture;
       }
