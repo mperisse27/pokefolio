@@ -46,7 +46,6 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
   player.container.position.x = app.screen.width / 2 - 40;
   player.container.position.y = app.screen.height / 2 - 160;
 
-  bgm.play();
   const interactiveElements = await fetchInteractiveElements(topLeftPos);
   interactiveElements.forEach((element) => {
     objectsLayer.addChild(element.object.container);

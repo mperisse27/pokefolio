@@ -1,5 +1,5 @@
 import type { Player } from "./components/player";
-import { addEventToVolumeSlider } from "./components/sounds";
+import { addEventToVolumeSlider, toggleSound } from "./components/sounds";
 import { setLanguage, t, type Lang } from "./utils/i18n";
 
 const addFlagListeners = () => {
@@ -129,12 +129,28 @@ export function applyTranslationsToDOM() {
   });
 }
 
+export function toggleSoundButton() {
+  const isSoundOn = document.getElementById('sound-icon')?.classList.contains('fa-volume-up') ?? false;
+  const soundToggle = document.getElementById('sound-toggle') as HTMLButtonElement;
+  soundToggle.blur();
+  const soundIcon = document.getElementById('sound-icon') as HTMLButtonElement;
+  if (isSoundOn) {
+    soundIcon.classList.remove('fa-volume-up');
+    soundIcon.classList.add('fa-volume-off');
+  } else {
+    soundIcon.classList.remove('fa-volume-off');
+    soundIcon.classList.add('fa-volume-up');
+  }
+  toggleSound(isSoundOn);
+}
+
 export const setupGui = (activeButtons: Set<string>, player: Player) => {
   applyTranslationsToDOM();
   addEventToVolumeSlider();
   addFlagListeners();
   document.getElementById('settings-toggle')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu"));
   document.getElementById('help-toggle')?.addEventListener('click', (event) => toggleMenu(event, "help-menu"));
+  document.getElementById('sound-toggle')?.addEventListener('click', () => toggleSoundButton());
   document.getElementById('close-settings')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu"));
   document.getElementById('close-help')?.addEventListener('click', (event) => toggleMenu(event, "help-menu"));
   document.getElementById('close-epita')?.addEventListener('click', (event) => toggleMenu(event, "epita-dialog", player));

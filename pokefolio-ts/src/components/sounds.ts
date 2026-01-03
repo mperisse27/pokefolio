@@ -16,3 +16,11 @@ export const addEventToVolumeSlider = () => {
     });
   }
 };
+
+export const toggleSound = (isSoundOn: boolean) => {
+  if (isSoundOn) {
+    bgm.pause();
+  } else {
+    bgm.play();
+  }
+};
