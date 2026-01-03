@@ -1,6 +1,5 @@
 import { Application, Container } from 'pixi.js';
 import { loadMap, loadTopLeftPosition } from './utils/loader';
-import { bgm } from './components/sounds';
 import { Player } from './components/player';
 import { createGroundFromMatrix, createObstaclesFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
