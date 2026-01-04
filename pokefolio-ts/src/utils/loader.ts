@@ -42,6 +42,7 @@ export const loadMap = async () => {
   const mapData = await res.json();
   const groundChunks = mapData.layers[0].chunks;
   const objectsChunks = mapData.layers[1].chunks;
+  const zonesChunks = mapData.layers[2].chunks;
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
 
   for (const chunk of groundChunks) {
@@ -54,52 +55,36 @@ export const loadMap = async () => {
   const width = maxX - minX;
   const height = maxY - minY;
 
-  const groundMatrix: number[][] = Array.from({ length: height }, () =>
-    Array(width).fill(0)
-  );
-  const objectsMatrix: number[][] = Array.from({ length: height }, () =>
-    Array(width).fill(0)
-  );
-
-  for (const chunk of groundChunks) {
-    const { x: chunkX, y: chunkY, width: chunkWidth, height: chunkHeight, data } = chunk;
-  
-    for (let j = 0; j < chunkHeight; j++) {
-      for (let i = 0; i < chunkWidth; i++) {
-        const tileId = data[j * chunkWidth + i];
-  
-        const globalX = chunkX + i - minX;
-        const globalY = chunkY + j - minY;
-  
-        if (
-          globalY >= 0 && globalY < height &&
-          globalX >= 0 && globalX < width
-        ) {
-          groundMatrix[globalY][globalX] = tileId;
+  const chunksToMatrix = (chunks: any[]) => {
+    let matrix: number[][] = Array.from({ length: height }, () =>
+      Array(width).fill(0)
+    );
+    for (const chunk of chunks) {
+      const { x: chunkX, y: chunkY, width: chunkWidth, height: chunkHeight, data } = chunk;
+      for (let j = 0; j < chunkHeight; j++) {
+        for (let i = 0; i < chunkWidth; i++) {
+          const tileId = data[j * chunkWidth + i];
+    
+          const globalX = chunkX + i - minX;
+          const globalY = chunkY + j - minY;
+    
+          if (
+            globalY >= 0 && globalY < height &&
+            globalX >= 0 && globalX < width
+          ) {
+            matrix[globalY][globalX] = tileId;
+          }
         }
       }
     }
+    return matrix;
   }
 
-  for (const chunk of objectsChunks) {
-    const { x: chunkX, y: chunkY, width: chunkWidth, height: chunkHeight, data } = chunk;
-    for (let j = 0; j < chunkHeight; j++) {
-      for (let i = 0; i < chunkWidth; i++) {
-        const tileId = data[j * chunkWidth + i];
-  
-        const globalX = chunkX + i - minX;
-        const globalY = chunkY + j - minY;
-  
-        if (
-          globalY >= 0 && globalY < height &&
-          globalX >= 0 && globalX < width
-        ) {
-          objectsMatrix[globalY][globalX] = tileId;
-        }
-      }
-    }
-  }
-  return {groundMatrix, objectsMatrix};
+  const groundMatrix = chunksToMatrix(groundChunks);
+  const objectsMatrix = chunksToMatrix(objectsChunks);
+  const zonesMatrix = chunksToMatrix(zonesChunks);
+
+  return {groundMatrix, objectsMatrix, zonesMatrix};
 }
 
 /**

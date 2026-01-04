@@ -10,16 +10,21 @@
   </head>
   <body>
     <main id="overlay" style="font-family: 'my32bit';" class="absolute top-0 left-0 z-10 w-full h-full">
-      <div class="flex justify-end w-full p-[20px] space-x-4">
-        <button id="sound-toggle" class="gui-button-big">
-          <i id="sound-icon" class="fa fa-volume-off" aria-hidden="true"></i>
-        </button>
-        <button id="help-toggle" class="gui-button-big">
-          <i class="fa fa-question" aria-hidden="true"></i>
-        </button>
-        <button id="settings-toggle" class="gui-button-big">
-          <i class="fa fa-cog" aria-hidden="true"></i>
-        </button>
+      <div class="flex justify-between w-full p-[20px]">
+        <div id="zonePopup" class="flex bg-white object-center px-4 py-2 items-center border-8 border-black opacity-0 transition-opacity duration-500 pointer-events-none">
+          <h1 id="zoneTitle" class="text-6xl text-center">Poy</h1>
+        </div>
+        <section class="flex space-x-4">
+          <button id="sound-toggle" class="gui-button-big">
+            <i id="sound-icon" class="fa fa-volume-off" aria-hidden="true"></i>
+          </button>
+          <button id="help-toggle" class="gui-button-big">
+            <i class="fa fa-question" aria-hidden="true"></i>
+          </button>
+          <button id="settings-toggle" class="gui-button-big">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+          </button>
+        </section>
       </div>
       <div class="flex justify-center items-start w-full h-full">
         <section id="settings-menu" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-center items-center space-y-8">
@@ -144,7 +149,7 @@
         </nav>
         <div
           id="popup"
-          class=" bg-white border-4 border-black p-2 hidden z-500 h-26 w-full"
+          class="bg-white border-4 border-black p-2 hidden z-500 h-26 w-full"
           style="font-family: 'my32bit';"
         >
           <p id="popup-line1" class="text-4xl text-black"></p>

@@ -144,6 +144,21 @@ export function toggleSoundButton() {
   toggleSound(isSoundOn);
 }
 
+export async function showZonePopup(zoneName: string) {
+  const popupText = document.getElementById('zoneTitle');
+  if (popupText) {
+    popupText.textContent = zoneName;
+  }
+  const popup = document.getElementById('zonePopup');
+  if (popup) {
+    popup.classList.remove('opacity-0', 'pointer-events-none');
+    popup.classList.add('opacity-100', 'pointer-events-auto');
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    popup.classList.remove('opacity-100', 'pointer-events-auto');
+    popup.classList.add('opacity-0', 'pointer-events-none');
+  }
+}
+
 export const setupGui = (activeButtons: Set<string>, player: Player) => {
   applyTranslationsToDOM();
   addEventToVolumeSlider();

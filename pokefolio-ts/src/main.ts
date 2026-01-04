@@ -3,13 +3,15 @@ import { loadMap, loadTopLeftPosition } from './utils/loader';
 import { Player } from './components/player';
 import { createGroundFromMatrix, createObstaclesFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
-import { setupGui } from './gui';
+import { setupGui, showZonePopup } from './gui';
 import { Direction, getDirectionFromPlayerAction } from './types/direction';
 import { NPC } from './components/npc';
 import type { Sign } from './components/sign';
 import { Popup } from './components/popup';
 import { PlayerAction } from './types/playerAction';
 import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
+import ZoneTypes from './types/zones';
+import { t } from './utils/i18n';
 
 (async () =>
 {
@@ -19,8 +21,6 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
   await app.init({ background: '#fff', resizeTo: window });
   app.ticker.maxFPS = 90;
 
-  await loadMap();
-
   initializeApplication(app);
 
   const groundLayer = new Container();
@@ -29,7 +29,7 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
   const objectsLayer = new Container();
   app.stage.addChild(objectsLayer);
 
-  const { groundMatrix, objectsMatrix } = await loadMap(); // Load export from Tiled
+  const { groundMatrix, objectsMatrix, zonesMatrix } = await loadMap(); // Load export from Tiled
   const allTiles = await createGroundFromMatrix(groundMatrix, groundLayer);
   const allObstacles = await createObstaclesFromMatrix(objectsMatrix, objectsLayer);
 
@@ -104,6 +104,11 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
         const newY = player.tilePosition.y + (direction == Direction.DOWN ? 1 : direction == Direction.UP ? -1 : 0);
 
         if (isWalkableTile(newX, newY, walkableMatrix)) {
+          const zoneBeforeMove = zonesMatrix[player.tilePosition.y]?.[player.tilePosition.x] ?? 0;
+          const zoneAfterMove = zonesMatrix[newY]?.[newX] ?? 0;
+          if (zoneBeforeMove != zoneAfterMove && zoneAfterMove != 0) {
+            showZonePopup(t(ZoneTypes[zoneAfterMove as keyof typeof ZoneTypes]?.id)[0]);
+          }
           player.move(direction, sprint);
         }
       }

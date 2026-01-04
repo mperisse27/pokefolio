@@ -42,6 +42,14 @@ const translations = {
     disclaimer: ["Disclaimer: Ceci est un projet personnel et non commercial. Il n'est affilié ni à Nintendo, ni à Game Freak, ni à The Pokémon Company."],
     here: ["ici"],
 
+    //Zones
+    lostZone: ["Zone Perdue"],
+    stairsZone: ["Escalier Infini"],
+    scholarZone: ["Chemin des Etudes"],
+    projectsZone: ["Route des Projets"],
+    startZone: ["Zone des Liens"],
+    hobbiesZone: ["Place des Loisirs"],
+
     //Dialogs
     epitaTitle: ["Je suis actuellement en 5e année à l'EPITA, école d'ingénieurs spécialisée en informatique."],
     epitaMti: ["J'y ai suivi la majeure MTI (Multimédia et Technologies de l'Information), où j'ai développé des compétences solides en développement logiciel, notamment en frontend, mobile et architecture web."],
@@ -99,6 +107,14 @@ const translations = {
     interact: ["Space or Enter to interact"],
     disclaimer: ["Disclaimer: This is a personal, non-commercial project. It is not affiliated with Nintendo, Game Freak, or The Pokémon Company."],
     here: ["here"],
+
+    //Zones
+    lostZone: ["Lost Zone"],
+    stairsZone: ["Endless Staircase"],
+    scholarZone: ["Path of Studies"],
+    projectsZone: ["Projects Road"],
+    startZone: ["Link Zone"],
+    hobbiesZone: ["Hobbies Square"],
 
     //Details
     epitaTitle: ["I am currently in my 5th year at EPITA, an engineering school specialized in computer science."],
