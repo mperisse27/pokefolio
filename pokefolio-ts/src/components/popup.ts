@@ -33,6 +33,7 @@ export class Popup {
         this.container.onclick = () => window.open(url, "_blank")?.focus();
         this.container.classList.add("cursor-pointer");
       }
+      document.getElementById("overlay")?.classList.remove("select-none"); //Remove safety for Shift key
     }
     else if (this.lineCounter < text.length) {
       this.line1.textContent = this.line2.textContent;
@@ -54,6 +55,9 @@ export class Popup {
       if (details) {
         document.getElementById(details)?.classList.remove("hidden");
         return false; //Make sure that player can't move while details are shown
+      }
+      else {
+        document.getElementById("overlay")?.classList.add("select-none"); //Set safety for Shift key back, player is now free to move
       }
     }
     return this.lineCounter == 0;

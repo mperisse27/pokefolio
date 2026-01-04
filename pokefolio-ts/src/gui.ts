@@ -29,6 +29,9 @@ function toggleMenu(event: MouseEvent, menuName: string, player?: Player) {
   const button = event.currentTarget as HTMLButtonElement;
   button.blur()
   if (player) player.canMove = menu?.classList.contains('hidden') ?? true;
+  menu?.classList.contains('hidden') ?
+  document.getElementById("overlay")?.classList.add("select-none") :
+  document.getElementById("overlay")?.classList.remove("select-none"); // Add or remove safety for Shift key selecting all text on screen
 }
 
 function setupMenuOutsideClickHandler() {
@@ -47,10 +50,12 @@ function setupMenuOutsideClickHandler() {
 
     if (settingsMenu && !isClickInsideSettings && !isClickOnSettingsToggle) {
       settingsMenu.classList.add('hidden');
+      document.getElementById("overlay")?.classList.add("select-none");
     }
 
     if (helpMenu && !isClickInsideHelp && !isClickOnHelpToggle) {
       helpMenu.classList.add('hidden');
+      document.getElementById("overlay")?.classList.add("select-none");
     }
   });
 }
