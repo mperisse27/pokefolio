@@ -29,35 +29,13 @@ function toggleMenu(event: MouseEvent, menuName: string, player?: Player) {
   const button = event.currentTarget as HTMLButtonElement;
   button.blur()
   if (player) player.canMove = menu?.classList.contains('hidden') ?? true;
-  menu?.classList.contains('hidden') ?
-  document.getElementById("overlay")?.classList.add("select-none") :
-  document.getElementById("overlay")?.classList.remove("select-none"); // Add or remove safety for Shift key selecting all text on screen
-}
-
-function setupMenuOutsideClickHandler() {
-  document.addEventListener('click', (event) => {
-    const settingsMenu = document.getElementById('settings-menu');
-    const helpMenu = document.getElementById('help-menu');
-    const settingsToggle = document.getElementById('settings-toggle');
-    const helpToggle = document.getElementById('help-toggle');
-
-    const target = event.target as HTMLElement;
-
-    const isClickInsideSettings = settingsMenu?.contains(target);
-    const isClickInsideHelp = helpMenu?.contains(target);
-    const isClickOnSettingsToggle = settingsToggle?.contains(target);
-    const isClickOnHelpToggle = helpToggle?.contains(target);
-
-    if (settingsMenu && !isClickInsideSettings && !isClickOnSettingsToggle) {
-      settingsMenu.classList.add('hidden');
-      document.getElementById("overlay")?.classList.add("select-none");
-    }
-
-    if (helpMenu && !isClickInsideHelp && !isClickOnHelpToggle) {
-      helpMenu.classList.add('hidden');
-      document.getElementById("overlay")?.classList.add("select-none");
-    }
-  });
+  if (menu?.classList.contains('hidden')) { // Add or remove safety for Shift key selecting all text on screen
+    document.getElementById("overlay")?.classList.add("select-none");
+    document.getElementById("menu-container")?.classList.add("hidden"); //Player is only passed when the menu is an info dialog
+  } else {
+    document.getElementById("overlay")?.classList.remove("select-none");
+    document.getElementById("menu-container")?.classList.remove("hidden"); //Player is only passed when the menu is an info dialog
+  }
 }
 
 const setupActionButtons = (activeButtons: Set<string>) => {
@@ -168,16 +146,15 @@ export const setupGui = (activeButtons: Set<string>, player: Player) => {
   applyTranslationsToDOM();
   addEventToVolumeSlider();
   addFlagListeners();
-  document.getElementById('settings-toggle')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu"));
-  document.getElementById('help-toggle')?.addEventListener('click', (event) => toggleMenu(event, "help-menu"));
-  document.getElementById('sound-toggle')?.addEventListener('click', () => toggleSoundButton());
-  document.getElementById('close-settings')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu"));
-  document.getElementById('close-help')?.addEventListener('click', (event) => toggleMenu(event, "help-menu"));
+  document.getElementById('settings-toggle')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu", player));
+  document.getElementById('help-toggle')?.addEventListener('click', (event) => toggleMenu(event, "help-menu", player));
+  document.getElementById('close-settings')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu", player));
+  document.getElementById('close-help')?.addEventListener('click', (event) => toggleMenu(event, "help-menu", player));
   document.getElementById('close-epita')?.addEventListener('click', (event) => toggleMenu(event, "epita-dialog", player));
   document.getElementById('close-studevents')?.addEventListener('click', (event) => toggleMenu(event, "studevents-dialog", player));
   document.getElementById('close-nordon')?.addEventListener('click', (event) => toggleMenu(event, "nordon-dialog", player));
+  document.getElementById('sound-toggle')?.addEventListener('click', () => toggleSoundButton());
   document.getElementById('actions-visible')?.addEventListener('click', toggleActionButtons);
-  setupMenuOutsideClickHandler();
 
   setupActionButtons(activeButtons);
 

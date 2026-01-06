@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokéfolio</title>
   </head>
-  <body>
-    <main id="overlay" style="font-family: 'my32bit';" class="absolute top-0 left-0 z-10 w-full h-full select-none">
+  <body style="font-family: 'my32bit';">
+    <main id="overlay"  class="absolute top-0 left-0 z-10 w-full h-full select-none">
       <div class="flex justify-between w-full p-[20px]">
         <div id="zonePopup" class="flex bg-white object-center px-4 py-2 items-center border-8 border-black opacity-0 transition-opacity duration-500 pointer-events-none select-none">
           <h1 id="zoneTitle" class="text-6xl text-center"></h1>
@@ -24,120 +24,6 @@
           <button id="settings-toggle" class="gui-button-big">
             <i class="fa fa-cog" aria-hidden="true"></i>
           </button>
-        </section>
-      </div>
-      <div class="flex justify-center items-start w-full h-full">
-        <section id="settings-menu" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-center items-center space-y-8">
-          <div class="flex justify-between object-center w-full">
-            <h1 data-i18n="settingsTitle" class="text-6xl">Paramètres</h1>
-            <button id="close-settings" type="button" class="cursor-pointer">
-              <i class="fa fa-times fa-2x"></i>
-            </button>
-          </div>
-          <div class="flex justify-between w-full">
-            <i class="fa fa-volume-up fa-2x" aria-hidden="true"></i>
-            <input id="volume-slider" type="range" min="0" max="0.5" step="0.01" value="0.2" class="w-[80%]" />
-          </div>
-          <fieldset class="flex justify-between w-[60%]">
-            <div class="flex flex-col justify-center items-center">
-              <button id="fr-button" type="button" class="language-btn cursor-pointer mb-4 rounded-md ring-2 ring-white">
-                <img src="/france.png" class="w-18 h-12 rounded-md" alt="French Flag" />
-              </button>
-              <label class="text-3xl" for="fr-button">Français</label>
-            </div>
-            <div class="flex flex-col justify-center items-center">
-              <button id="en-button" type="button" class="language-btn cursor-pointer mb-4 rounded-md">
-                <img src="/uk.png" class="w-18 h-12 rounded-md" alt="UK Flag" />
-              </button>
-              <label class="text-3xl" for="en-button">English</label>
-            </div>
-          </fieldset>
-          <div class="flex justify-start items-center w-full space-x-4">
-            <input id="actions-visible" type="checkbox" class="w-6 h-6">
-            <p data-i18n="actionsToggle" class="text-3xl">Cacher les boutons d'action</p>
-          </div>
-        </section>
-        <section id="help-menu" class="flex hidden flex-col bg-[rgba(0,0,0,0.8)] p-6 rounded-xl w-120 text-white justify-start items-start space-y-8 font-my32bit">
-          <div class="flex justify-between w-full">
-            <h1 data-i18n="helpTitle" class="text-6xl">Aide</h1>
-            <button id="close-help" type="button" class="cursor-pointer">
-              <i class="fa fa-times fa-2x"></i>
-            </button>
-          </div>
-          <div>
-            <p class="text-4xl mb-1 font-bold" data-i18n="helpProject">Le projet</p>
-            <p class="text-2xl" data-i18n="helpPresent">Pokéfolio est un projet personnel de portfolio.</p>
-            <p class="text-2xl" data-i18n="helpIncomplete">Le projet est encore incomplet, notamment au niveau du contenu. La suite arrive bientôt !</p>
-            <div class="flex">
-              <p class="text-2xl mr-[4px]" data-i18n="helpCodeHere">Le code est disponible</p>
-              <a href="https://github.com/mperisse27/pokefolio" target="_blank" rel="noopener noreferrer" class="text-blue-500 font-bold underline text-2xl" data-i18n="here">ici.</a>
-            </div>
-            <p class="text-xl" data-i18n="disclaimer"></p>
-          </div>
-          <h2 data-i18n="controlsHeader" class="text-4xl mb-1 font-bold">Comment jouer ?</h2>
-          <div class="text-2xl ml-4">
-            <p data-i18n="controlsTitle">Appuyez sur :</p>
-            <li data-i18n="moveUp">Z ou ⬆️ pour vous déplacer vers le haut</li>
-            <li data-i18n="moveLeft">Q ou ⬅️ pour vous déplacer vers la gauche</li>
-            <li data-i18n="moveDown">S ou ⬇️ pour vous déplacer vers le bas</li>
-            <li data-i18n="moveRight">D ou ➡️ pour vous déplacer vers la droite</li>
-            <li data-i18n="run">Shift pour courir</li>
-            <li data-i18n="interact">Espace ou Entrée pour interagir</li>
-          </div>
-        </section>
-        <section id="epita-dialog" class="flex hidden flex-col bg-[rgba(0,0,0,1)] p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 font-my32bit overflow-y-auto">
-          <div class="flex justify-between w-full">
-            <img src="/epita-logo.png" alt="EPITA Logo" class="w-36 h-24">
-            <button id="close-epita" type="button" class="cursor-pointer">
-              <i class="fa fa-times fa-2x"></i>
-            </button>
-          </div>
-          <h2 data-i18n="epitaTitle" class="text-3xl"></h2>
-          <h2 data-i18n="epitaMti" class="text-3xl"></h2>
-          <h2 data-i18n="epitaProjects" class="text-3xl"></h2>
-          <h2 data-i18n="epitaFrontend" class="text-3xl"></h2>
-          <h2 data-i18n="epitaTechnologies" class="text-3xl"></h2>
-          <div class="flex mx-4 space-x-40">
-            <div class="text-xl">
-              <h1 class="text-2xl">Frontend</h1>
-              <li>React.js</li>
-              <li>Angular.js</li>
-              <li>Android</li>
-              <li>Swift (iOS)</li>
-              <li>WPF</li>
-              <li>Blazor</li>
-            </div>
-            <div class="text-xl">
-              <h1 class="text-2xl">Backend</h1>
-              <li>.NET</li>
-              <li>Java</li>
-              <li>Django</li>
-              <li>Node.js</li>
-            </div>
-          </div>
-        </section>
-        <section id="studevents-dialog" class="flex hidden flex-col bg-[rgba(0,0,0,1)] p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 font-my32bit">
-          <div class="flex justify-between w-full">
-            <img src="/studevents-logo.png" alt="StudEvents Logo" class="h-16 mt-4">
-            <button id="close-studevents" type="button" class="cursor-pointer">
-              <i class="fa fa-times fa-2x"></i>
-            </button>
-          </div>
-          <h2 data-i18n="studeventsTitle" class="text-3xl"></h2>
-          <h2 data-i18n="studeventsTeam" class="text-3xl"></h2>
-          <h2 data-i18n="studeventsDetails" class="text-3xl"></h2>
-          <h2 data-i18n="studeventsManagement" class="text-3xl"></h2>
-        </section>
-        <section id="nordon-dialog" class="flex hidden flex-col bg-[rgba(0,0,0,1)] p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 font-my32bit">
-          <div class="flex justify-between w-full">
-            <img src="/nordon-logo.png" alt="StudEvents Logo" class="h-16 mt-4">
-            <button id="close-nordon" type="button" class="cursor-pointer">
-              <i class="fa fa-times fa-2x"></i>
-            </button>
-          </div>
-          <h2 data-i18n="nordonTitle" class="text-3xl"></h2>
-          <h2 data-i18n="nordonMission" class="text-3xl"></h2>
-          <h2 data-i18n="nordonTechnologies" class="text-3xl"></h2>
         </section>
       </div>
       <section class="fixed bottom-0 left-0 w-full flex flex-col items-end space-y-1">
@@ -157,6 +43,120 @@
         </div>
       </section>
     </main>
+    <div id="menu-container" class="absolute top-0 left-0 flex hidden justify-center items-center w-full h-full z-20 bg-[rgba(0,0,0,0.6)]">
+      <section id="settings-menu" class="flex hidden flex-col bg-black p-6 rounded-xl w-120 text-white justify-start items-center space-y-8 overflow-y-auto max-h-[80%]">
+        <div class="flex justify-between object-center w-full">
+          <h1 data-i18n="settingsTitle" class="text-6xl">Paramètres</h1>
+          <button id="close-settings" type="button" class="cursor-pointer">
+            <i class="fa fa-times fa-2x"></i>
+          </button>
+        </div>
+        <div class="flex justify-between w-full">
+          <i class="fa fa-volume-up fa-2x" aria-hidden="true"></i>
+          <input id="volume-slider" type="range" min="0" max="0.5" step="0.01" value="0.2" class="w-[80%]" />
+        </div>
+        <fieldset class="flex justify-between w-[60%]">
+          <div class="flex flex-col justify-center items-center">
+            <button id="fr-button" type="button" class="language-btn cursor-pointer mb-4 rounded-md ring-2 ring-white">
+              <img src="/france.png" class="w-18 h-12 rounded-md" alt="French Flag" />
+            </button>
+            <label class="text-3xl" for="fr-button">Français</label>
+          </div>
+          <div class="flex flex-col justify-center items-center">
+            <button id="en-button" type="button" class="language-btn cursor-pointer mb-4 rounded-md">
+              <img src="/uk.png" class="w-18 h-12 rounded-md" alt="UK Flag" />
+            </button>
+            <label class="text-3xl" for="en-button">English</label>
+          </div>
+        </fieldset>
+        <div class="flex justify-start items-center w-full space-x-4">
+          <input id="actions-visible" type="checkbox" class="w-6 h-6">
+          <p data-i18n="actionsToggle" class="text-3xl">Cacher les boutons d'action</p>
+        </div>
+      </section>
+      <section id="help-menu" class="flex hidden flex-col bg-black p-6 rounded-xl w-120 text-white justify-start items-start space-y-8 overflow-y-auto max-h-[80%]">
+        <div class="flex justify-between w-full">
+          <h1 data-i18n="helpTitle" class="text-6xl">Aide</h1>
+          <button id="close-help" type="button" class="cursor-pointer">
+            <i class="fa fa-times fa-2x"></i>
+          </button>
+        </div>
+        <div>
+          <p class="text-4xl mb-1 font-bold" data-i18n="helpProject">Le projet</p>
+          <p class="text-2xl" data-i18n="helpPresent">Pokéfolio est un projet personnel de portfolio.</p>
+          <p class="text-2xl" data-i18n="helpIncomplete">Le projet est encore incomplet, notamment au niveau du contenu. La suite arrive bientôt !</p>
+          <div class="flex">
+            <p class="text-2xl mr-[4px]" data-i18n="helpCodeHere">Le code est disponible</p>
+            <a href="https://github.com/mperisse27/pokefolio" target="_blank" rel="noopener noreferrer" class="text-blue-500 font-bold underline text-2xl" data-i18n="here">ici.</a>
+          </div>
+          <p class="text-xl" data-i18n="disclaimer"></p>
+        </div>
+        <h2 data-i18n="controlsHeader" class="text-4xl mb-1 font-bold">Comment jouer ?</h2>
+        <div class="text-2xl ml-4">
+          <p data-i18n="controlsTitle">Appuyez sur :</p>
+          <li data-i18n="moveUp">Z ou ⬆️ pour vous déplacer vers le haut</li>
+          <li data-i18n="moveLeft">Q ou ⬅️ pour vous déplacer vers la gauche</li>
+          <li data-i18n="moveDown">S ou ⬇️ pour vous déplacer vers le bas</li>
+          <li data-i18n="moveRight">D ou ➡️ pour vous déplacer vers la droite</li>
+          <li data-i18n="run">Shift pour courir</li>
+          <li data-i18n="interact">Espace ou Entrée pour interagir</li>
+        </div>
+      </section>
+      <section id="epita-dialog" class="flex hidden flex-col bg-black p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 overflow-y-auto max-h-[80%]">
+        <div class="flex justify-between w-full">
+          <img src="/epita-logo.png" alt="EPITA Logo" class="w-36 h-24">
+          <button id="close-epita" type="button" class="cursor-pointer">
+            <i class="fa fa-times fa-2x"></i>
+          </button>
+        </div>
+        <h2 data-i18n="epitaTitle" class="text-3xl"></h2>
+        <h2 data-i18n="epitaMti" class="text-3xl"></h2>
+        <h2 data-i18n="epitaProjects" class="text-3xl"></h2>
+        <h2 data-i18n="epitaFrontend" class="text-3xl"></h2>
+        <h2 data-i18n="epitaTechnologies" class="text-3xl"></h2>
+        <div class="flex mx-4 space-x-40">
+          <div class="text-xl">
+            <h1 class="text-2xl">Frontend</h1>
+            <li>React.js</li>
+            <li>Angular.js</li>
+            <li>Android</li>
+            <li>Swift (iOS)</li>
+            <li>WPF</li>
+            <li>Blazor</li>
+          </div>
+          <div class="text-xl">
+            <h1 class="text-2xl">Backend</h1>
+            <li>.NET</li>
+            <li>Java</li>
+            <li>Django</li>
+            <li>Node.js</li>
+          </div>
+        </div>
+      </section>
+      <section id="studevents-dialog" class="flex hidden flex-col bg-black p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 overflow-y-auto max-h-[80%]">
+        <div class="flex justify-between w-full">
+          <img src="/studevents-logo.png" alt="StudEvents Logo" class="h-16 mt-4">
+          <button id="close-studevents" type="button" class="cursor-pointer">
+            <i class="fa fa-times fa-2x"></i>
+          </button>
+        </div>
+        <h2 data-i18n="studeventsTitle" class="text-3xl"></h2>
+        <h2 data-i18n="studeventsTeam" class="text-3xl"></h2>
+        <h2 data-i18n="studeventsDetails" class="text-3xl"></h2>
+        <h2 data-i18n="studeventsManagement" class="text-3xl"></h2>
+      </section>
+      <section id="nordon-dialog" class="flex hidden flex-col bg-black p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 overflow-y-auto max-h-[80%]">
+        <div class="flex justify-between w-full">
+          <img src="/nordon-logo.png" alt="StudEvents Logo" class="h-16 mt-4">
+          <button id="close-nordon" type="button" class="cursor-pointer">
+            <i class="fa fa-times fa-2x"></i>
+          </button>
+        </div>
+        <h2 data-i18n="nordonTitle" class="text-3xl"></h2>
+        <h2 data-i18n="nordonMission" class="text-3xl"></h2>
+        <h2 data-i18n="nordonTechnologies" class="text-3xl"></h2>
+      </section>
+    </div>
     <script type="module" src="/src/main.ts"></script>
     <template id="gui-button-template">
       <button class="gui-button">

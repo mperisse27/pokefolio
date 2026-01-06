@@ -54,6 +54,7 @@ export class Popup {
       this.container.classList.remove("cursor-pointer");
       if (details) {
         document.getElementById(details)?.classList.remove("hidden");
+        document.getElementById("menu-container")?.classList.remove("hidden");
         return false; //Make sure that player can't move while details are shown
       }
       else {
