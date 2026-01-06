@@ -138,6 +138,15 @@
       "x": 2,
       "y": 1
     }
+  },
+  {
+    "id": 251,
+    "name": "climbing",
+    "height": 2,
+    "width": 3,
+    "hitbox": {
+      "x": 3,
+      "y": 2
+    }
   }
-
 ]

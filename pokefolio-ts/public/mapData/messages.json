@@ -125,6 +125,13 @@
     "textKey": "videoGameSign"
   },
   {
+    "positionX": -15,
+    "positionY": 8,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "climbingSign"
+  },
+  {
     "positionX": -29,
     "positionY": -1,
     "type": "sign",

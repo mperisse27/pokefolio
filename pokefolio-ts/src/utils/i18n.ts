@@ -14,6 +14,7 @@ const translations = {
     nordonSign: ["Bienvenue chez Fives Nordon !", "Entreprise spécialisée dans la fabrication", "de tuyauterie industrielle, j'y ai effectué", "mon premier stage en dévloppement mobile"],
 
     videoGameSign: ["J'adore les jeux vidéo, d'ailleurs, j'ai réalisé ce projet en le voyant un peu comme un jeu vidéo.", "Parmi mes jeux préférés, je peux citer Celeste, Civilization et, vous l'aurez deviné, Pokémon !"],
+    climbingSign: ["Je fais de l'escalade dans mon temps libre, c'est un bon moyen de me dépenser en m'amusant.", "J'ai toujours apprécié ce sport, surtout l'escalade en bloc."],
 
     //NPCs
     alixNPC: ["Je me suis occupé du back-end de l'application avec Botumrath."],
@@ -81,6 +82,7 @@ const translations = {
     studeventsSign: ["Download StudEvents !", "The app that links students and associations."],
     nordonSign: ["Welcome to Fives Nordon!", "A company specialized in the manufacturing", "of industrial piping, where I did", "my first mobile development internship."],
     videoGameSign: ["I love video games, in fact, I made this project thinking a bit like making a video game.", "Some of my favorite games are Celeste, Civilization and, you guessed it, Pokémon!"],
+    climbingSign: ["I do climbing in my free time, it's a great way to exercise while also having fun.", "I've always appreciated this sport, especially bouldering."],
 
     //NPCs
     alixNPC: ["I worked on the backend of the application with Botumrath."],
