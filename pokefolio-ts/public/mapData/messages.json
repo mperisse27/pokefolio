@@ -62,6 +62,14 @@
     "direction": "down"
   },
   {
+    "positionX": 6,
+    "positionY": 0,
+    "type": "npc",
+    "name": "Vincent",
+    "textKey": "vincentNPC",
+    "direction": "right"
+  },
+  {
     "positionX": 15,
     "positionY": -1,
     "type": "sign",

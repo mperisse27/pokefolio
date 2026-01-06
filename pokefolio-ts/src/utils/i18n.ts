@@ -22,6 +22,7 @@ const translations = {
     mokaNPC: ["Miaou ! (C'est moi la mascotte !)"],
 
     jorisNPC: ["J'ai refait la base de données avec Matteo, c'était pas une mince affaire !"],
+    vincentNPC: ["L'Inde était une sacrée expérience, j'en ai même perdu mes cheveux !"],
 
     //GUI
     settingsTitle: ["Paramètres"],
@@ -88,6 +89,7 @@ const translations = {
     mokaNPC: ["Meow ! (I'm the star here!)"],
 
     jorisNPC: ["I redesigned the database with Matteo, it was no easy task!"],
+    vincentNPC: ["India was a crazy experience, I even lost my hair to it!"],
 
     //GUI
     settingsTitle: ["Settings"],
