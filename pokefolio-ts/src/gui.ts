@@ -153,6 +153,7 @@ export const setupGui = (activeButtons: Set<string>, player: Player) => {
   document.getElementById('close-epita')?.addEventListener('click', (event) => toggleMenu(event, "epita-dialog", player));
   document.getElementById('close-studevents')?.addEventListener('click', (event) => toggleMenu(event, "studevents-dialog", player));
   document.getElementById('close-nordon')?.addEventListener('click', (event) => toggleMenu(event, "nordon-dialog", player));
+  document.getElementById('close-contact')?.addEventListener('click', (event) => toggleMenu(event, "contact-dialog", player));
   document.getElementById('sound-toggle')?.addEventListener('click', () => toggleSoundButton());
   document.getElementById('actions-visible')?.addEventListener('click', toggleActionButtons);
 

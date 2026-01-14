@@ -1,6 +1,6 @@
 [
   {
-    "id": 81,
+    "id": 87,
     "name": "grass",
     "type": "ground",
     "isWalkable": true
@@ -36,6 +36,18 @@
     "isWalkable": false
   },
   {
+    "id": 70,
+    "name": "cliff left end",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 75,
+    "name": "cliff right end",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
     "id": 88,
     "name": "cliff bot left",
     "type": "ground",
@@ -62,6 +74,18 @@
   {
     "id": 84,
     "name": "cliff right join",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 78,
+    "name": "cliff top left",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 80,
+    "name": "cliff top right",
     "type": "ground",
     "isWalkable": false
   },
@@ -126,8 +150,122 @@
     "isWalkable": true
   },
   {
-    "id": 14,
+    "id": 53,
+    "name": "road white top left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 54,
+    "name": "road white top",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 55,
+    "name": "road white top right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 58,
+    "name": "road white left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 59,
+    "name": "road white",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 60,
+    "name": "road white right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 63,
+    "name": "road white bot left",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 64,
+    "name": "road white bot",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 65,
+    "name": "road white bot right",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 73,
     "name": "fence",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 71,
+    "name": "fence top left",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 76,
+    "name": "fence left",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 81,
+    "name": "fence bot left",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 52,
+    "name": "fence white",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 56,
+    "name": "fence white top left",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 57,
+    "name": "fence white top right",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 61,
+    "name": "fence white left",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 62,
+    "name": "fence white right",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 66,
+    "name": "fence white bot left",
+    "type": "obstacle",
+    "isWalkable": false
+  },
+  {
+    "id": 67,
+    "name": "fence white bot right",
     "type": "obstacle",
     "isWalkable": false
   },
@@ -294,8 +432,50 @@
     "isWalkable": true
   },
   {
+    "id": 28,
+    "name": "bridge light top",
+    "type": "water",
+    "isWalkable": true
+  },
+  {
+    "id": 33,
+    "name": "bridge light bot",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
+    "id": 38,
+    "name": "bridge light top cliff",
+    "type": "water",
+    "isWalkable": true
+  },
+  {
+    "id": 43,
+    "name": "bridge light bot cliff",
+    "type": "water",
+    "isWalkable": false
+  },
+  {
     "id": 99,
     "name": "wood sign",
+    "type": "ground",
+    "isWalkable": false
+  },
+  {
+    "id": 98,
+    "name": "short grass",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 10,
+    "name": "wild grass",
+    "type": "ground",
+    "isWalkable": true
+  },
+  {
+    "id": 14,
+    "name": "bush",
     "type": "ground",
     "isWalkable": false
   }

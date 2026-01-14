@@ -12,9 +12,12 @@ const translations = {
     pravaigSign: ["Bienvenue à Pravaig !", "Une entreprise indienne fabriquant des véhicules électriques.", "C'est ici que j'ai effectué mon stage de fin d'études."],
     studeventsSign: ["Téléchargez StudEvents !", "L'application qui lie les étudiants et les associations."],
     nordonSign: ["Bienvenue chez Fives Nordon !", "Entreprise spécialisée dans la fabrication", "de tuyauterie industrielle, j'y ai effectué", "mon premier stage en dévloppement mobile"],
+    prologinSign: ["Prologin est une association qui organise des concours de programmation", "et des stages d'apprentissage de la programmation.", "J'ai eu l'occasion de participer à l'organisation et l'encadrement de plusieurs événements."],
 
     videoGameSign: ["J'adore les jeux vidéo, d'ailleurs, j'ai réalisé ce projet en le voyant un peu comme un jeu vidéo.", "Parmi mes jeux préférés, je peux citer Celeste, Civilization et, vous l'aurez deviné, Pokémon !"],
-    climbingSign: ["Je fais de l'escalade dans mon temps libre, c'est un bon moyen de me dépenser en m'amusant.", "J'ai toujours apprécié ce sport, surtout l'escalade en bloc."],
+    climbingSign: ["Je fais de l'escalade dans mon temps libre.", "J'ai toujours apprécié ce sport, surtout l'escalade en bloc."],
+    contactSign: ["Bravo, tu as fini d'explorer mon Pokéfolio ! Pour embarquer pour de nouvelles aventures, n'hésite pas à me contacter !"],
+    choiceSign: ["Tu es arrivé à un carrefour ! Que veux-tu faire ensuite ?", "↑ Explorer la carte librement", "↓ Voir mes liens de contact"],
 
     //NPCs
     alixNPC: ["Je me suis occupé du back-end de l'application avec Botumrath."],
@@ -67,6 +70,8 @@ const translations = {
     nordonTitle: ["J'ai effectué mon premier stage de développement logiciel chez Fives Nordon à Nancy pendant 6 mois."],
     nordonMission: ["J'y ai conçu mon premier gros projet logiciel, une application mobile \"hub central\" ayant pour but de faciliter l'accès aux ressources numériques de l'entreprises (documents, formulaires, ...) pour les employés, notamment les ouvriers."],
     nordonTechnologies: ["Le projet est composé d'un frontend développé en Flutter, avec une API backend en DotNet Core, et une base de données SQL Server. J'y ai appris beaucoup sur l'interaction avec les utilisateurs finaux et la méthodologie agile."],
+
+    contactBody: ["Contacte-moi via"],
   },
   en: {
     //Signs
@@ -81,8 +86,12 @@ const translations = {
     pravaigSign: ["Welcome to Pravaig!", "An Indian company making electric vehicles.", "This is where I did my end-of-studies internship."],
     studeventsSign: ["Download StudEvents !", "The app that links students and associations."],
     nordonSign: ["Welcome to Fives Nordon!", "A company specialized in the manufacturing", "of industrial piping, where I did", "my first mobile development internship."],
+    prologinSign: ["Prologin is an association that organizes programming competitions", "and programming learning workshops.", "I had the opportunity to partcipate in the organization and supervision of several events."],
+
     videoGameSign: ["I love video games, in fact, I made this project thinking a bit like making a video game.", "Some of my favorite games are Celeste, Civilization and, you guessed it, Pokémon!"],
-    climbingSign: ["I do climbing in my free time, it's a great way to exercise while also having fun.", "I've always appreciated this sport, especially bouldering."],
+    climbingSign: ["I do climbing in my free time.", "I've always appreciated this sport, especially bouldering."],
+    contactSign: ["Congrats, you finished exploring my Pokéfolio! To embark on new adventures, feel free to contact me!"],
+    choiceSign: ["You are at a crossroads! What do you want to do next?", "↑ Explore the map freely", "↓ See my contact links"],
 
     //NPCs
     alixNPC: ["I worked on the backend of the application with Botumrath."],
@@ -135,6 +144,8 @@ const translations = {
     nordonTitle: ["I completed my first software development internship at Fives Nordon in Nancy for 6 months."],
     nordonMission: ["There, I designed my first major software project, a mobile \"central hub\" application that aimed at making easier the access to the company's digital resources (documents, forms, ...) for employees, particularly workers in factory."],
     nordonTechnologies: ["The project consists of a frontend developed in Flutter, with a DotNet backend API, and a SQL Server database. I learned a lot about interacting with end users and agile methodology."],
+
+    contactBody: ["Contact me via"],
   }
 };
 

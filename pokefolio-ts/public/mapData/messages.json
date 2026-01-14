@@ -1,141 +1,164 @@
 [
   {
-    "positionX": -16,
-    "positionY": 0,
+    "positionX": -39,
+    "positionY": -3,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "welcomeSign"
   },
   {
-    "positionX": -13,
-    "positionY": -3,
+    "positionX": 42,
+    "positionY": 14,
     "type": "sign",
     "url": "https://twitch.tv/matt_la_menacee",
     "image": "/tiles/obstacles/sign-purple.png",
     "textKey": "twitchSign"
   },
   {
-    "positionX": -17,
-    "positionY": -3,
+    "positionX": 39,
+    "positionY": 12,
     "type": "sign",
     "url": "https://linkedin.com/in/matteo-perisse",
     "image": "/tiles/obstacles/sign-blue.png",
     "textKey": "linkedinSign"
   },
   {
-    "positionX": -15,
-    "positionY": -3,
+    "positionX": 42,
+    "positionY": 12,
     "type": "sign",
     "url": "https://github.com/mperisse27",
     "image": "/tiles/obstacles/sign-black.png",
     "textKey": "githubSign"
   },
   {
-    "positionX": -19,
-    "positionY": -3,
+    "positionX": 39,
+    "positionY": 14,
     "type": "sign",
     "url":"mailto:matteo.perisse@epita.fr",
     "image": "/tiles/obstacles/sign-red.png",
     "textKey": "mailSign"
   },
   {
-    "positionX": -21,
-    "positionY": -1,
+    "positionX": 40,
+    "positionY": 25,
+    "type": "sign",
+    "url":"mailto:matteo.perisse@epita.fr",
+    "image": "/tiles/obstacles/sign-green.png",
+    "textKey": "contactSign",
+    "details": "contact-dialog"
+  },
+  {
+    "positionX": -18,
+    "positionY": -4,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "epitaSign",
     "details": "epita-dialog"
   },
   {
-    "positionX": 3,
-    "positionY": -1,
+    "positionX": -26,
+    "positionY": -4,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "poincaSign"
+  },
+  {
+    "positionX": 10,
+    "positionY": 10,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "pravaigSign"
   },
   {
-    "positionX": 7,
-    "positionY": 0,
+    "positionX": 11,
+    "positionY": 9,
     "type": "npc",
     "name": "Joris",
     "textKey": "jorisNPC",
-    "direction": "down"
-  },
-  {
-    "positionX": 6,
-    "positionY": 0,
-    "type": "npc",
-    "name": "Vincent",
-    "textKey": "vincentNPC",
     "direction": "right"
   },
   {
-    "positionX": 15,
-    "positionY": -1,
+    "positionX": 11,
+    "positionY": 8,
+    "type": "npc",
+    "name": "Vincent",
+    "textKey": "vincentNPC",
+    "direction": "down"
+  },
+  {
+    "positionX": -1,
+    "positionY": -4,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "studeventsSign",
     "details": "studevents-dialog"
   },
   {
-    "positionX": 20,
-    "positionY": 1,
+    "positionX": 5,
+    "positionY": -3,
     "type": "npc",
     "name": "Alix",
     "textKey": "alixNPC",
-    "direction": "up"
+    "direction": "left"
   },
   {
-    "positionX": 18,
-    "positionY": 0,
+    "positionX": 2,
+    "positionY": -3,
     "type": "npc",
     "name": "Botumrath",
     "textKey": "botumrathNPC",
     "direction": "left"
   },
   {
-    "positionX": 17,
-    "positionY": 0,
+    "positionX": 1,
+    "positionY": -3,
     "type": "npc",
     "name": "Moka",
     "textKey": "mokaNPC",
     "direction": "down"
   },
   {
-    "positionX": 20,
-    "positionY": 0,
+    "positionX": 4,
+    "positionY": -3,
     "type": "npc",
     "name": "Clement",
     "textKey": "clementNPC",
-    "direction": "down"
+    "direction": "right"
   },
   {
-    "positionX": 26,
-    "positionY": -1,
+    "positionX": -9,
+    "positionY": -4,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "nordonSign",
     "details": "nordon-dialog"
   },
   {
-    "positionX": -18,
+    "positionX": 27,
     "positionY": 8,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "videoGameSign"
   },
   {
-    "positionX": -15,
+    "positionX": 30,
     "positionY": 8,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "climbingSign"
   },
   {
-    "positionX": -29,
-    "positionY": -1,
+    "positionX": 11,
+    "positionY": -4,
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
-    "textKey": "poincaSign"
+    "textKey": "prologinSign"
+  },
+  {
+    "positionX": 37,
+    "positionY": 9,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "choiceSign"
   }
 ]

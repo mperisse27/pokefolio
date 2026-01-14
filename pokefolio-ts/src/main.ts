@@ -36,7 +36,7 @@ import { t } from './utils/i18n';
   const popup = new Popup();
 
   const topLeftPos = await loadTopLeftPosition(); //Used to recalibrate positions if map extended at top or left
-  const startPos = { x: -16 - topLeftPos.x, y: 1 - topLeftPos.y };
+  const startPos = { x: -40 - topLeftPos.x, y: -1 - topLeftPos.y };
   const playerSprites = await loadPlayerSprites();
   const playerAnimations = await loadPlayerAnimations();
   const player = new Player('player1', startPos.x, startPos.y, playerSprites, playerAnimations);

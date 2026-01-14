@@ -60,7 +60,7 @@
     }
   },
   {
-    "id": 152,
+    "id": 169,
     "name": "big-tree",
     "height": 3,
     "width": 2,
@@ -146,6 +146,26 @@
     "width": 3,
     "hitbox": {
       "x": 3,
+      "y": 2
+    }
+  },
+  {
+    "id": 282,
+    "name": "prologin",
+    "height": 3,
+    "width": 3,
+    "hitbox": {
+      "x": 3,
+      "y": 3
+    }
+  },
+  {
+    "id": 174,
+    "name": "boat",
+    "height": 2,
+    "width": 2,
+    "hitbox": {
+      "x": 2,
       "y": 2
     }
   }
