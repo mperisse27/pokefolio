@@ -16,6 +16,7 @@ const translations = {
 
     videoGameSign: ["J'adore les jeux vidéo, d'ailleurs, j'ai réalisé ce projet en le voyant un peu comme un jeu vidéo.", "Parmi mes jeux préférés, je peux citer Celeste, Civilization et, vous l'aurez deviné, Pokémon !"],
     climbingSign: ["Je fais de l'escalade dans mon temps libre.", "J'ai toujours apprécié ce sport, surtout l'escalade en bloc."],
+    chessSign: ["Je joue aux échecs depuis que je suis petit, de manière très compétitive et très régulière.", "J'ai eu la chance d'intégrer pendant plusieurs années une des 16 meilleures équipes jeunes de France,", "ou encore de gagner une coupe nationale avec mon club."],
     contactSign: ["Bravo, tu as fini d'explorer mon Pokéfolio ! Pour embarquer pour de nouvelles aventures, n'hésite pas à me contacter !"],
     choiceSign: ["Tu es arrivé à un carrefour ! Que veux-tu faire ensuite ?", "↑ Explorer la carte librement", "↓ Voir mes liens de contact"],
 
@@ -90,6 +91,7 @@ const translations = {
 
     videoGameSign: ["I love video games, in fact, I made this project thinking a bit like making a video game.", "Some of my favorite games are Celeste, Civilization and, you guessed it, Pokémon!"],
     climbingSign: ["I do climbing in my free time.", "I've always appreciated this sport, especially bouldering."],
+    chessSign: ["I play chess since I was little, very competitively and regularly.", "I had the chance to join during several years one of the 16 best junior teams in France,", "and even win a national cup with my club."],
     contactSign: ["Congrats, you finished exploring my Pokéfolio! To embark on new adventures, feel free to contact me!"],
     choiceSign: ["You are at a crossroads! What do you want to do next?", "↑ Explore the map freely", "↓ See my contact links"],
 

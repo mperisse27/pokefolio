@@ -141,6 +141,13 @@
     "textKey": "videoGameSign"
   },
   {
+    "positionX": 27,
+    "positionY": 11,
+    "type": "sign",
+    "image": "/tiles/obstacles/sign.png",
+    "textKey": "chessSign"
+  },
+  {
     "positionX": 30,
     "positionY": 8,
     "type": "sign",
