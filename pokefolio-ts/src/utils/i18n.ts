@@ -73,6 +73,15 @@ const translations = {
     nordonMission: ["J'y ai conçu mon premier gros projet logiciel, une application mobile \"hub central\" ayant pour but de faciliter l'accès aux ressources numériques de l'entreprises (documents, formulaires, ...) pour les employés, notamment les ouvriers."],
     nordonTechnologies: ["Le projet est composé d'un frontend développé en Flutter, avec une API backend en DotNet Core, et une base de données SQL Server. J'y ai appris beaucoup sur l'interaction avec les utilisateurs finaux et la méthodologie agile."],
 
+    pravaigTitle: ["J'ai réalisé mon stage de fin d'études chez Pravaig, une startup indienne spécialisée dans la conception et fabrication de batteries et véhicules électriques."],
+    pravaigMission: ["Durant mon stage, j'étais en charge de tout le développement logiciel de l'entreprise, j'ai donc travaillé sur une variété de projets différents. Parmi mes missions figuraient le développement des écrans embarqués dans leur dernière voiture, le développement d'outils internes, et la reprise du site kutniti.watch"],
+    pravaigTechnologies: ["Au cours de ces projets, j'ai principalement utilisé React.js pour la partie frontend et Node.js avec Express.js pour la partie backend. J'ai aussi fait un peu de Python en travaillant sur les écrans embarqués."],
+    pravaigInternational: ["Ce stage en Inde m'a aussi beaucoup apporté en termes de niveau d'anglais et d'ouverture d'esprit, étant immergé dans une culture complètement différente. C'était vraiment une expérience unique."],
+
+    prologinTitle: ["Prologin est une association française à but non lucratif qui organise un concours de programmation tous les ans, attirant des milliers de participants de toute la France. L'association intervient aussi lors de différents événements pour promouvoir l'informatique et la programmation auprès des jeunes."],
+    prologinGCC: ["L'organisation est également à l'origine des stages Girls Can Code!, à destination des collégiennes et lycéennes. Ces stages ont pour but d'encourager les filles à ne pas tourner le dos aux études et aux métiers dans le numérique, majoritairement masculins, en leur offrant un environnement d'apprentissage ludique et stimulant."],
+    prologinOrga: ["En tant que membre de Prologin, j'ai eu l'opportunité de participer à l'organisation et à l'encadrement de plusieurs événements, comme la finale du concours à Paris ou des stages Girls Can Code! au cours desquels je peux partager mes connaissances en programmation avec les participantes."],
+
     contactBody: ["Contacte-moi via"],
   },
   en: {
@@ -148,6 +157,13 @@ const translations = {
     nordonTitle: ["I completed my first software development internship at Fives Nordon in Nancy for 6 months."],
     nordonMission: ["There, I designed my first major software project, a mobile \"central hub\" application that aimed at making easier the access to the company's digital resources (documents, forms, ...) for employees, particularly workers in factory."],
     nordonTechnologies: ["The project consists of a frontend developed in Flutter, with a DotNet backend API, and a SQL Server database. I learned a lot about interacting with end users and agile methodology."],
+
+    pravaigTitle: ["I did my end-of-studies internship at Pravaig, an Indian startup specialized in electric vehicles."],
+    pravaigMission: ["During my internship, I was in charge of all the software development in the company, so I worked on a large range of projects. Among my missions were the development of the embedded screens in their newest car, the development of internal tools, and the resumption of kutniti.watch"],
+    pravaigTechnologies: ["Throughout these projects, I mainly used React.js for the frontend part and Node.js and Express.js for the backend part. I also did some Python while working on the embedded screens."],
+    pravaigInternational: ["This internship in India also brought me a lot in terms of English level and open-mindedness, as I was immersed in a completely different culture. It was truly a one-of-a-kind experience."],
+
+
 
     contactBody: ["Contact me via"],
   }
