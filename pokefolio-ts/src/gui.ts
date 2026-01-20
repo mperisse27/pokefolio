@@ -164,6 +164,7 @@ export const setupGui = (activeButtons: Set<string>, player: Player) => {
   const hasVisited = localStorage.getItem("hasVisited");
   if (!hasVisited) {
     document.getElementById('help-menu')?.classList.remove("hidden");
+    document.getElementById("menu-container")?.classList.remove("hidden");
     localStorage.setItem("hasVisited", "true");
   }
 }

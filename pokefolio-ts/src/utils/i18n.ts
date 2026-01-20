@@ -35,11 +35,11 @@ const translations = {
     actionsToggle: ["Cacher les boutons d'action"],
     helpTitle: ["Aide"],
     helpProject: ["Le projet"],
-    helpPresent: ["Pokéfolio est un projet personnel de portfolio."],
-    helpIncomplete: ["Le projet est encore incomplet, notamment au niveau du contenu. La suite arrive bientôt !"],
+    helpPresent: ["Pokéfolio est un projet personnel de portfolio inspiré par les jeux Pokémon, notamment Pokémon Emeraude."],
+    helpDescription: ["Vous y incarnez un dresseur explorant une carte interactive pour découvrir mon parcours et mes compétences. Essayez d'interagir avec les panneaux sur votre chemin pour en apprendre plus sur moi !"],
     helpCodeHere: ["Le code est disponible "],
     controlsHeader: ["Comment jouer ?"],
-    controlsTitle: ["Appuyez sur :"],
+    controlsTitle: ["Vous pouvez utiliser les boutons présents sur l'interface ou le clavier. Pour jouer au clavier, appuyez sur :"],
     moveUp: ["Z ou ⬆️ pour vous déplacer vers le haut"],
     moveLeft: ["Q ou ⬅️ pour vous déplacer vers la gauche"],
     moveDown: ["S ou ⬇️ pour vous déplacer vers le bas"],
@@ -121,10 +121,10 @@ const translations = {
     helpTitle: ["Help"],
     helpProject: ["The projet"],
     helpPresent: ["Pokéfolio is a personnal portfolio project."],
-    helpIncomplete: ["The project is still incomplete, especially content-wise. Stay tuned for next updates!"],
+    helpDescription: ["In it, you play as a trainer exploring an interactive map to discover my background and skills. Try to interact with the signs along the way to learn more about me!"],
     helpCodeHere: ["The code is available "],
     controlsHeader: ["How to play?"],
-    controlsTitle: ["Press:"],
+    controlsTitle: ["You can use either the buttons on the UI or the keyboard. To use your keyboard, press:"],
     moveUp: ["W or ⬆️ to move up"],
     moveLeft: ["A or ⬅️ to move left"],
     moveDown: ["S or ⬇️ to move down"],
@@ -163,7 +163,9 @@ const translations = {
     pravaigTechnologies: ["Throughout these projects, I mainly used React.js for the frontend part and Node.js and Express.js for the backend part. I also did some Python while working on the embedded screens."],
     pravaigInternational: ["This internship in India also brought me a lot in terms of English level and open-mindedness, as I was immersed in a completely different culture. It was truly a one-of-a-kind experience."],
 
-
+    prologinTitle: ["Prologin is a French non-profit association that organizes an annual programming competition, attracting thousands of participants from all over France. The association also takes part in various events to promote computer science and programming among young people."],
+    prologinGCC: ["The organization is also the origin of the Girls Can Code! camps, aimed at middle and high school girls. These camps aim to encourage girls not to turn their backs on studies and careers in digital technology, which are mostly male-dominated, by offering a fun and stimulating learning environment."],
+    prologinOrga: ["As a member of Prologin, I had the opportunity to participate in the organization and supervision of several events, such as the final of the competition in Paris or Girls Can Code! camps where I can share my programming knowledge with participants."],
 
     contactBody: ["Contact me via"],
   }
