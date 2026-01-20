@@ -22,7 +22,9 @@ export class NPC {
     positionY: number = 0,
     sprites: Record<Direction, Sprite>,
     facing: Direction,
-    textKey: string
+    textKey: string,
+    width?: number,
+    height?: number
   ) {
     this.name = name;
     this.tilePosition = { x: positionX, y: positionY };
@@ -38,8 +40,8 @@ export class NPC {
 
     for (const dir in this.sprites) {
       const sprite = this.sprites[dir as unknown as Direction];
-      sprite.x = 0;
-      sprite.y = -TILE_SIZE; //Sprites are 2 tiles high, so we offset by one tile to align with the tile
+      sprite.x = (1 - (width ?? 1)) * TILE_SIZE / 2; //Center the sprite based on its width
+      sprite.y = -TILE_SIZE * ((height ?? 2) - 1); //Offset the sprite to align with its bottom to the tile
       sprite.visible = false;
       this.container.addChild(sprite);
     }

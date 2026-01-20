@@ -118,17 +118,30 @@ export const loadPlayerAnimations = async () => {
   return playerAnimations;
 }
 
-export const loadNPCSprites = async (name: string) => {
-  const npcSpriteUp = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-up.png`);
-  const npcSpriteDown = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-down.png`);
-  const npcSpriteLeft = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-left.png`);
-  const npcSpriteRight = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-right.png`);
-  const npcSprites: Record<Direction, Sprite> = {
-    [Direction.UP]: new Sprite(npcSpriteUp),
-    [Direction.DOWN]: new Sprite(npcSpriteDown),
-    [Direction.LEFT]: new Sprite(npcSpriteLeft),
-    [Direction.RIGHT]: new Sprite(npcSpriteRight),
-  };
+export const loadNPCSprites = async (name: string, noTurn?: boolean) => {
+  let npcSprites: Record<Direction, Sprite>;
+  if (noTurn) {
+    const npcSprite = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}.png`);
+    npcSprites = {
+      [Direction.UP]: new Sprite(npcSprite),
+      [Direction.DOWN]: new Sprite(npcSprite),
+      [Direction.LEFT]: new Sprite(npcSprite),
+      [Direction.RIGHT]: new Sprite(npcSprite),
+    };
+  }
+  else {
+    const npcSpriteUp = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-up.png`);
+    const npcSpriteDown = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-down.png`);
+    const npcSpriteLeft = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-left.png`);
+    const npcSpriteRight = await loadSpriteAndTexture(0, 0, `/npc/${name.toLocaleLowerCase()}-right.png`);
+    npcSprites = {
+      [Direction.UP]: new Sprite(npcSpriteUp),
+      [Direction.DOWN]: new Sprite(npcSpriteDown),
+      [Direction.LEFT]: new Sprite(npcSpriteLeft),
+      [Direction.RIGHT]: new Sprite(npcSpriteRight),
+    };
+  }
+  
 
   return npcSprites;
 }
@@ -159,9 +172,11 @@ export const fetchInteractiveElements = async (topLeftPos: Position) => {
           element.name,
           element.positionX - topLeftPos.x,
           element.positionY - topLeftPos.y,
-          await loadNPCSprites(element.name),
+          await loadNPCSprites(element.name, element.noTurn),
           getDirectionFromText(element.direction),
-          element.textKey
+          element.textKey,
+          element.width,
+          element.height
         );
       }
       else if (element.type == 'sign') {

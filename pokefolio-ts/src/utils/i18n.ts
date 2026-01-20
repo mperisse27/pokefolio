@@ -21,6 +21,8 @@ const translations = {
     contactSign: ["Bravo, tu as fini d'explorer mon Pokéfolio ! Pour embarquer pour de nouvelles aventures, n'hésite pas à me contacter !"],
     choiceSign: ["Tu es arrivé à un carrefour ! Que veux-tu faire ensuite ?", "↑ Explorer la carte librement", "↓ Voir mes liens de contact"],
 
+    pokeball: ["Tu as trouvé une Pokéball !"],
+
     //NPCs
     alixNPC: ["Je me suis occupé du back-end de l'application avec Botumrath."],
     botumrathNPC: ["Heureusement que Moka est là pour nous aider."],
@@ -29,6 +31,8 @@ const translations = {
 
     jorisNPC: ["J'ai refait la base de données avec Matteo, c'était pas une mince affaire !"],
     vincentNPC: ["L'Inde était une sacrée expérience, j'en ai même perdu mes cheveux !"],
+
+    electhorNPC: ["Electhor !"],
 
     //GUI
     settingsTitle: ["Paramètres"],
@@ -106,6 +110,8 @@ const translations = {
     contactSign: ["Congrats, you finished exploring my Pokéfolio! To embark on new adventures, feel free to contact me!"],
     choiceSign: ["You are at a crossroads! What do you want to do next?", "↑ Explore the map freely", "↓ See my contact links"],
 
+    pokeball: ["You found a Pokéball !"],
+
     //NPCs
     alixNPC: ["I worked on the backend of the application with Botumrath."],
     botumrathNPC: ["Thankfully Moka is here to help us."],
@@ -114,6 +120,8 @@ const translations = {
 
     jorisNPC: ["I redesigned the database with Matteo, it was no easy task!"],
     vincentNPC: ["India was a crazy experience, I even lost my hair to it!"],
+
+    electhorNPC: ["Zapdos!"],
 
     //GUI
     settingsTitle: ["Settings"],

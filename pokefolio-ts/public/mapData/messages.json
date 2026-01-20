@@ -116,7 +116,8 @@
     "type": "npc",
     "name": "Moka",
     "textKey": "mokaNPC",
-    "direction": "down"
+    "direction": "down",
+    "noTurn": true
   },
   {
     "positionX": 4,
@@ -176,5 +177,37 @@
     "type": "sign",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "choiceSign"
+  },
+  {
+    "positionX": 6,
+    "positionY": 24,
+    "type": "npc",
+    "name": "Electhor",
+    "textKey": "electhorNPC",
+    "direction": "down",
+    "width": 3,
+    "height": 3,
+    "noTurn": true
+  },
+  {
+    "positionX": -33,
+    "positionY": 13,
+    "type": "sign",
+    "image": "/tiles/obstacles/pokeball.png",
+    "textKey": "pokeball"
+  },
+  {
+    "positionX": -18,
+    "positionY": 11,
+    "type": "sign",
+    "image": "/tiles/obstacles/pokeball.png",
+    "textKey": "pokeball"
+  },
+  {
+    "positionX": 37,
+    "positionY": -13,
+    "type": "sign",
+    "image": "/tiles/obstacles/pokeball.png",
+    "textKey": "pokeball"
   }
 ]
