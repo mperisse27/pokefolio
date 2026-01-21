@@ -148,8 +148,10 @@ export const setupGui = (activeButtons: Set<string>, player: Player) => {
   addFlagListeners();
   document.getElementById('settings-toggle')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu", player));
   document.getElementById('help-toggle')?.addEventListener('click', (event) => toggleMenu(event, "help-menu", player));
+  document.getElementById('achievement-toggle')?.addEventListener('click', (event) => toggleMenu(event, "achievement-menu", player));
   document.getElementById('close-settings')?.addEventListener('click', (event) => toggleMenu(event, "settings-menu", player));
   document.getElementById('close-help')?.addEventListener('click', (event) => toggleMenu(event, "help-menu", player));
+  document.getElementById('close-achievement')?.addEventListener('click', (event) => toggleMenu(event, "achievement-menu", player));
   document.getElementById('close-epita')?.addEventListener('click', (event) => toggleMenu(event, "epita-dialog", player));
   document.getElementById('close-studevents')?.addEventListener('click', (event) => toggleMenu(event, "studevents-dialog", player));
   document.getElementById('close-nordon')?.addEventListener('click', (event) => toggleMenu(event, "nordon-dialog", player));
@@ -163,7 +165,7 @@ export const setupGui = (activeButtons: Set<string>, player: Player) => {
 
   const hasVisited = localStorage.getItem("hasVisited");
   if (!hasVisited) {
-    document.getElementById('help-menu')?.classList.remove("hidden");
+    document.getElementById("help-menu")?.classList.remove("hidden");
     document.getElementById("menu-container")?.classList.remove("hidden");
     localStorage.setItem("hasVisited", "true");
   }

@@ -5,5 +5,5 @@ import type { Position } from "./position";
 export type InteractiveElement = {
   position: Position;
   object: Sign | NPC;
-  type: 'sign' | 'npc';
+  type: 'object' | 'npc';
 } 

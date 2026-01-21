@@ -179,14 +179,15 @@ export const fetchInteractiveElements = async (topLeftPos: Position) => {
           element.height
         );
       }
-      else if (element.type == 'sign') {
+      else if (element.type == 'object') {
         newElement = new Sign(
           await loadSpriteAndTexture(0, 0, element.image),
           element.positionX - topLeftPos.x,
           element.positionY - topLeftPos.y,
           element.textKey,
           element.url,
-          element.details
+          element.details,
+          element.pokeball
         );
       }
 

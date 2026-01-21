@@ -3,6 +3,7 @@ import type { Position } from "../types/position";
 import type { Popup } from "./popup";
 import { t } from "../utils/i18n";
 import { TILE_SIZE } from "../utils/constants";
+import type { AchievementManager } from "./achievements";
 
 export class Sign {
   public sprite: Sprite;
@@ -12,6 +13,7 @@ export class Sign {
   public textKey: string;
   public url?: string;
   public details?: string;
+  public pokeball?: boolean;
 
   constructor(
     sprite: Sprite,
@@ -19,7 +21,8 @@ export class Sign {
     positionY: number = 0,
     textKey: string,
     url?: string,
-    details?: string
+    details?: string,
+    pokeball?: boolean
   ) {
     this.sprite = sprite;
     this.tilePosition = { x: positionX, y: positionY };
@@ -27,6 +30,7 @@ export class Sign {
     this.url = url;
     this.textKey = textKey;
     this.details = details;
+    this.pokeball = pokeball;
 
     this.container = new Container();
     this.container.x = this.position.x;
@@ -35,7 +39,12 @@ export class Sign {
     this.container.addChild(this.sprite);
   }
 
-  public speak = (popup: Popup) => {
-    return popup.changeText(t(this.textKey), this.url, this.details);
+  public speak = (popup: Popup, achievementManager: AchievementManager) => {
+    const canMove = popup.changeText(t(this.textKey), this.url, this.details);
+    if (this.pokeball) {
+      achievementManager.foundPokeballs.add(this.tilePosition);
+      this.textKey = "pokeballFound";
+    }
+    return canMove;
   }
 }

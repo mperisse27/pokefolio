@@ -9,7 +9,7 @@
     <title>Pokéfolio</title>
   </head>
   <body style="font-family: 'my32bit';">
-    <main id="overlay"  class="absolute top-0 left-0 z-10 w-full h-full select-none">
+    <main id="overlay" class="absolute top-0 left-0 z-10 w-full h-full select-none">
       <div class="flex justify-between w-full p-[20px]">
         <div id="zonePopup" class="flex bg-white object-center px-4 py-2 items-center border-8 border-black opacity-0 transition-opacity duration-500 pointer-events-none select-none">
           <h1 id="zoneTitle" class="text-6xl text-center"></h1>
@@ -17,6 +17,9 @@
         <section class="flex space-x-4">
           <button id="sound-toggle" class="gui-button-big">
             <i id="sound-icon" class="fa fa-volume-off" aria-hidden="true"></i>
+          </button>
+          <button id="achievement-toggle" class="gui-button-big">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
           </button>
           <button id="help-toggle" class="gui-button-big">
             <i class="fa fa-question" aria-hidden="true"></i>
@@ -27,15 +30,18 @@
         </section>
       </div>
       <section class="fixed bottom-0 left-0 w-full flex flex-col items-end space-y-1">
-        <nav id="action-buttons" class="h-full z-100 flex flex-col space-y-1 mr-1">
-          <div id="action-line1" class="flex space-x-1">
-          </div>
-          <div id="action-line2" class="flex space-x-1">
-          </div>
-        </nav>
+        <div class="flex justify-between w-full items-center">
+          <div id="snackbar" class="z-50 ml-4 px-4 py-1 bg-gray-800 text-white text-3xl rounded h-fit -translate-x-120 transition-transform duration-500 border-2 border-white"></div>
+          <nav id="action-buttons" class="h-full z-100 flex flex-col space-y-1 mr-1">
+            <div id="action-line1" class="flex space-x-1">
+            </div>
+            <div id="action-line2" class="flex space-x-1">
+            </div>
+          </nav>
+        </div>
         <div
           id="popup"
-          class="bg-white border-4 border-black p-2 hidden z-500 h-26 w-full"
+          class="bg-white border-4 border-black p-2 hidden h-26 w-full"
           style="font-family: 'my32bit';"
         >
           <p id="popup-line1" class="text-4xl text-black"></p>
@@ -101,6 +107,15 @@
           <li data-i18n="run">Shift pour courir</li>
           <li data-i18n="interact">Espace ou Entrée pour interagir</li>
         </div>
+      </section>
+      <section id="achievement-menu" class="flex hidden flex-col bg-black p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 overflow-y-auto max-h-[80%]">
+        <div class="flex justify-between w-full">
+          <h1 data-i18n="achievementsTitle" class="text-6xl"></h1>
+          <button id="close-achievement" type="button" class="cursor-pointer">
+            <i class="fa fa-times fa-2x"></i>
+          </button>
+        </div>
+        <div id="achievements-list" class="flex flex-col w-full space-y-4 mt-4"></div>
       </section>
       <section id="epita-dialog" class="flex hidden flex-col bg-black p-6 rounded-xl w-[80%] text-white justify-start items-start space-y-8 overflow-y-auto max-h-[80%]">
         <div class="flex justify-between w-full">

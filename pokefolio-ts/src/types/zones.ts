@@ -4,7 +4,7 @@ const ZoneTypes = {
   368: { id: "projectsZone" },
   369: { id: "startZone" },
   370: { id: "stairsZone" },
-  372: { id: "lostZone" },
+  372: { id: "wildZone" },
 } as const;
 
 export default ZoneTypes;

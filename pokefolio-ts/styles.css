@@ -33,3 +33,7 @@
   font-size: 3rem;
   color: #ffffff; 
 }
+
+.-translate-x-120 {
+  transform: translateX(-120%);
+}

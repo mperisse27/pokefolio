@@ -12,6 +12,7 @@ import { PlayerAction } from './types/playerAction';
 import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
 import ZoneTypes from './types/zones';
 import { t } from './utils/i18n';
+import { AchievementManager } from './components/achievements';
 
 (async () =>
 {
@@ -56,6 +57,8 @@ import { t } from './utils/i18n';
   let activeButtons: Set<string> = new Set();
   let popupDelayCounter = 0;
 
+  const achievementManager = AchievementManager.getInstance();
+
   app.ticker.add((_) =>
   {
     player.applyMovement();
@@ -63,6 +66,7 @@ import { t } from './utils/i18n';
       player.tilePosition.y += 2;
       player.position.y += 160;
       player.destination.y += 160;
+      achievementManager.stairClimbs += 1;
     }
     if (!popup.container.classList.contains('hidden')) {
       popup.print();
@@ -88,7 +92,10 @@ import { t } from './utils/i18n';
         if (element) {
           const popupHidden = element.type == 'npc' ?
           (element.object as NPC).speak(player, popup) :
-          (element.object as Sign).speak(popup);
+          (element.object as Sign).speak(popup, achievementManager);
+          if (element.type == 'npc' && (element.object as NPC).name == "Electhor") {
+            achievementManager.foundElecthor = true;
+          }
   
           player.canMove = popupHidden;
           popupDelayCounter = 30;
@@ -113,6 +120,8 @@ import { t } from './utils/i18n';
         }
       }
     }
+    achievementManager.checkAchievements();
+    achievementManager.updateAchievementsUI();
   });
 
   window.addEventListener('keydown', (event) => handleKeyboardInput(event, activeKeys));

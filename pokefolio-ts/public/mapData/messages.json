@@ -2,14 +2,14 @@
   {
     "positionX": -39,
     "positionY": -3,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "welcomeSign"
   },
   {
     "positionX": 42,
     "positionY": 14,
-    "type": "sign",
+    "type": "object",
     "url": "https://twitch.tv/matt_la_menacee",
     "image": "/tiles/obstacles/sign-purple.png",
     "textKey": "twitchSign"
@@ -17,7 +17,7 @@
   {
     "positionX": 39,
     "positionY": 12,
-    "type": "sign",
+    "type": "object",
     "url": "https://linkedin.com/in/matteo-perisse",
     "image": "/tiles/obstacles/sign-blue.png",
     "textKey": "linkedinSign"
@@ -25,7 +25,7 @@
   {
     "positionX": 42,
     "positionY": 12,
-    "type": "sign",
+    "type": "object",
     "url": "https://github.com/mperisse27",
     "image": "/tiles/obstacles/sign-black.png",
     "textKey": "githubSign"
@@ -33,7 +33,7 @@
   {
     "positionX": 39,
     "positionY": 14,
-    "type": "sign",
+    "type": "object",
     "url":"mailto:matteo.perisse@epita.fr",
     "image": "/tiles/obstacles/sign-red.png",
     "textKey": "mailSign"
@@ -41,7 +41,7 @@
   {
     "positionX": 40,
     "positionY": 25,
-    "type": "sign",
+    "type": "object",
     "url":"mailto:matteo.perisse@epita.fr",
     "image": "/tiles/obstacles/sign-green.png",
     "textKey": "contactSign",
@@ -50,7 +50,7 @@
   {
     "positionX": -18,
     "positionY": -4,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "epitaSign",
     "details": "epita-dialog"
@@ -58,14 +58,14 @@
   {
     "positionX": -26,
     "positionY": -4,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "poincaSign"
   },
   {
     "positionX": 10,
     "positionY": 10,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "pravaigSign",
     "details": "pravaig-dialog"
@@ -89,7 +89,7 @@
   {
     "positionX": -1,
     "positionY": -4,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "studeventsSign",
     "details": "studevents-dialog"
@@ -130,7 +130,7 @@
   {
     "positionX": -9,
     "positionY": -4,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "nordonSign",
     "details": "nordon-dialog"
@@ -138,35 +138,35 @@
   {
     "positionX": 27,
     "positionY": 8,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "videoGameSign"
   },
   {
     "positionX": 27,
     "positionY": 11,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "chessSign"
   },
   {
     "positionX": 30,
     "positionY": 8,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "climbingSign"
   },
   {
     "positionX": 30,
     "positionY": 11,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "travelSign"
   },
   {
     "positionX": 11,
     "positionY": -4,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "prologinSign",
     "details": "prologin-dialog"
@@ -174,7 +174,7 @@
   {
     "positionX": 37,
     "positionY": 9,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/sign.png",
     "textKey": "choiceSign"
   },
@@ -192,22 +192,25 @@
   {
     "positionX": -33,
     "positionY": 13,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/pokeball.png",
-    "textKey": "pokeball"
+    "textKey": "pokeball",
+    "pokeball": true
   },
   {
     "positionX": -18,
     "positionY": 11,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/pokeball.png",
-    "textKey": "pokeball"
+    "textKey": "pokeball",
+    "pokeball": true
   },
   {
     "positionX": 37,
     "positionY": -13,
-    "type": "sign",
+    "type": "object",
     "image": "/tiles/obstacles/pokeball.png",
-    "textKey": "pokeball"
+    "textKey": "pokeball",
+    "pokeball": true
   }
 ]

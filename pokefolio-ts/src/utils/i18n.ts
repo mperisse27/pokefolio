@@ -22,6 +22,7 @@ const translations = {
     choiceSign: ["Tu es arrivé à un carrefour ! Que veux-tu faire ensuite ?", "↑ Explorer la carte librement", "↓ Voir mes liens de contact"],
 
     pokeball: ["Tu as trouvé une Pokéball !"],
+    pokeballFound: ["Tu as déjà trouvé cette Pokéball !"],
 
     //NPCs
     alixNPC: ["Je me suis occupé du back-end de l'application avec Botumrath."],
@@ -52,9 +53,14 @@ const translations = {
     interact: ["Espace ou Entrée pour interagir"],
     disclaimer: ["Disclaimer: Ceci est un projet personnel et non commercial. Il n'est affilié ni à Nintendo, ni à Game Freak, ni à The Pokémon Company."],
     here: ["ici"],
+    achievementsTitle: ["Succès"],
+    bljAchievement: ["Défier l'escalier infini."],
+    catchAchievement: ["Trouver les 3 Pokéballs."],
+    waterAchievement: ["Trouver Electhor perdu en mer."],
+    achievementUnlocked: ["Succès Débloqué !"],
 
     //Zones
-    lostZone: ["Zone Perdue"],
+    wildZone: ["Terres Sauvages"],
     stairsZone: ["Escalier Infini"],
     scholarZone: ["Chemin des Etudes"],
     projectsZone: ["Route des Projets"],
@@ -62,7 +68,7 @@ const translations = {
     hobbiesZone: ["Place des Loisirs"],
 
     //Dialogs
-    epitaTitle: ["Je suis actuellement en 5e année à l'EPITA, école d'ingénieurs spécialisée en informatique."],
+    epitaTitle: ["Je suis actuellement diplômé de l'EPITA, école d'ingénieurs spécialisée en informatique."],
     epitaMti: ["J'y ai suivi la majeure MTI (Multimédia et Technologies de l'Information), où j'ai développé des compétences solides en développement logiciel, notamment en frontend, mobile et architecture web."],
     epitaProjects: ["Ce cursus m'a permis de participer à de nombreux projets techniques, souvent en équipe, mêlant design, performance, et innovation."],
     epitaFrontend: ["Je me suis spécialisé en développement frontend avec React, Flutter et Angular, tout en maîtrisant le backend pour une approche fullstack, ainsi que l'UI/UX."],
@@ -111,6 +117,7 @@ const translations = {
     choiceSign: ["You are at a crossroads! What do you want to do next?", "↑ Explore the map freely", "↓ See my contact links"],
 
     pokeball: ["You found a Pokéball !"],
+    pokeballFound: ["You already found this Pokéball !"],
 
     //NPCs
     alixNPC: ["I worked on the backend of the application with Botumrath."],
@@ -141,9 +148,14 @@ const translations = {
     interact: ["Space or Enter to interact"],
     disclaimer: ["Disclaimer: This is a personal, non-commercial project. It is not affiliated with Nintendo, Game Freak, or The Pokémon Company."],
     here: ["here"],
+    achievementsTitle: ["Achievements"],
+    bljAchievement: ["Defy the endless staircase."],
+    catchAchievement: ["Find the 3 Pokéballs."],
+    waterAchievement: ["Find the lost Zapdos in the sea."],
+    achievementUnlocked: ["Achievement Unlocked!"],
 
     //Zones
-    lostZone: ["Lost Zone"],
+    wildZone: ["Wild Area"],
     stairsZone: ["Endless Staircase"],
     scholarZone: ["Path of Studies"],
     projectsZone: ["Projects Road"],
@@ -151,7 +163,7 @@ const translations = {
     hobbiesZone: ["Hobbies Square"],
 
     //Details
-    epitaTitle: ["I am currently in my 5th year at EPITA, an engineering school specialized in computer science."],
+    epitaTitle: ["I just graduated EPITA, an engineering school specialized in computer science."],
     epitaMti: ["I followed the MTI major (Multimedia and Information Technologies), where I developed strong skills in software development, particularly in frontend, mobile, and web architecture."],
     epitaProjects: ["This curriculum allowed me to participate in numerous technical projects, often in teams, combining design, performance, and innovation."],
     epitaFrontend: ["I specialized in frontend development with React, Flutter, and Angular, while mastering backend for a fullstack approach, as well as UI/UX."],
