@@ -3,7 +3,7 @@ import { Howl } from 'howler';
 export const bgm = new Howl({
   src: ['/sounds/bgm.mp3'],
   loop: true,
-  volume: 0.2,
+  volume: 0.05,
 });
 
 export const addEventToVolumeSlider = () => {

@@ -13,6 +13,7 @@ import { createWalkableMatrix, isWalkableTile } from './utils/matrixChecks';
 import ZoneTypes from './types/zones';
 import { t } from './utils/i18n';
 import { AchievementManager } from './components/achievements';
+import { bgm } from './components/sounds';
 
 (async () =>
 {
@@ -58,6 +59,8 @@ import { AchievementManager } from './components/achievements';
   let popupDelayCounter = 0;
 
   const achievementManager = AchievementManager.getInstance();
+
+  bgm.play();
 
   app.ticker.add((_) =>
   {
