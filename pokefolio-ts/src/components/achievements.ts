@@ -53,7 +53,6 @@ export class AchievementManager {
     return AchievementManager.instance;
   }
 
-
   public checkAchievements(): void {
     this.achievements.forEach((achievement) => {
       if (!achievement.unlocked && achievement.condition()) {

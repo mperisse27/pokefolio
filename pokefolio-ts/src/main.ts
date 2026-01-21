@@ -3,7 +3,7 @@ import { loadMap, loadTopLeftPosition } from './utils/loader';
 import { Player } from './components/player';
 import { createGroundFromMatrix, createObstaclesFromMatrix, fetchInteractiveElements, initializeApplication, loadPlayerAnimations, loadPlayerSprites } from './utils/sceneSetup';
 import { getActionFromKey, handleKeyboardInput } from './utils/keyboardManager';
-import { setupGui, showZonePopup } from './gui';
+import { closeOpenDialog, setupGui, showZonePopup } from './gui';
 import { Direction, getDirectionFromPlayerAction } from './types/direction';
 import { NPC } from './components/npc';
 import type { Sign } from './components/sign';
@@ -100,6 +100,11 @@ import { AchievementManager } from './components/achievements';
           player.canMove = popupHidden;
           popupDelayCounter = 30;
         }
+      }
+      else {
+        const dialogFound = closeOpenDialog();
+        player.canMove = dialogFound; //An open dialog was find so we allow the player to move again
+        if (dialogFound) popupDelayCounter = 30;
       }
     }
     if (player.canMove) {

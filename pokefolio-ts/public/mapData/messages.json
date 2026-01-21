@@ -72,7 +72,7 @@
   },
   {
     "positionX": 11,
-    "positionY": 9,
+    "positionY": 8,
     "type": "npc",
     "name": "Joris",
     "textKey": "jorisNPC",
@@ -80,7 +80,15 @@
   },
   {
     "positionX": 11,
-    "positionY": 8,
+    "positionY": 10,
+    "type": "npc",
+    "name": "Louis",
+    "textKey": "louisNPC",
+    "direction": "down"
+  },
+  {
+    "positionX": 11,
+    "positionY": 7,
     "type": "npc",
     "name": "Vincent",
     "textKey": "vincentNPC",

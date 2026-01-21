@@ -32,6 +32,7 @@ const translations = {
 
     jorisNPC: ["J'ai refait la base de données avec Matteo, c'était pas une mince affaire !"],
     vincentNPC: ["L'Inde était une sacrée expérience, j'en ai même perdu mes cheveux !"],
+    louisNPC: ["J'ai travaillé avec Matteo sur l'intégration des applications embarquéesdans l'entreprise."],
 
     electhorNPC: ["Electhor !"],
 
@@ -127,6 +128,7 @@ const translations = {
 
     jorisNPC: ["I redesigned the database with Matteo, it was no easy task!"],
     vincentNPC: ["India was a crazy experience, I even lost my hair to it!"],
+    louisNPC: ["I worked with Matteo on the embedding of the apps in the company."],
 
     electhorNPC: ["Zapdos!"],
 

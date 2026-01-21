@@ -38,6 +38,21 @@ function toggleMenu(event: MouseEvent, menuName: string, player?: Player) {
   }
 }
 
+export function closeOpenDialog(): boolean {
+  let found = false;
+  const menuContainer = document.getElementById("menu-container");
+  menuContainer?.childNodes.forEach((child) => {
+    const elem = child as HTMLElement;
+    if (elem.nodeName == "SECTION" && !elem.classList.contains("hidden")) {
+      elem.classList.add("hidden");
+      document.getElementById("overlay")?.classList.add("select-none");
+      menuContainer.classList.add("hidden");
+      found = true;
+    }
+  });
+  return found;
+}
+
 const setupActionButtons = (activeButtons: Set<string>) => {
   const template = document.getElementById('gui-button-template') as HTMLTemplateElement;
   const buttons: { action: string, icon: string, parent: string, toggle: boolean }[] = [
