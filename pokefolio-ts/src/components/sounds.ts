@@ -17,10 +17,26 @@ export const addEventToVolumeSlider = () => {
   }
 };
 
-export const toggleSound = (isSoundOn: boolean) => {
+export const toggleMusic = (isSoundOn: boolean) => {
   if (isSoundOn) {
     bgm.pause();
   } else {
     bgm.play();
   }
 };
+
+export const playSoundEffect = (soundName: string, pauseBGM: boolean = false) => {
+  if (pauseBGM) {
+    bgm.pause();
+  }
+  const soundEffect = new Howl({
+    src: [`/sounds/${soundName}.mp3`],
+    volume: 0.05,
+  });
+  soundEffect.play();
+  if (pauseBGM) {
+    soundEffect.on('end', () => {
+      bgm.play();
+    });
+  } 
+}

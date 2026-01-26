@@ -4,6 +4,7 @@ import type { Popup } from "./popup";
 import { t } from "../utils/i18n";
 import { TILE_SIZE } from "../utils/constants";
 import type { AchievementManager } from "./achievements";
+import { playSoundEffect } from "./sounds";
 
 export class Sign {
   public sprite: Sprite;
@@ -43,7 +44,10 @@ export class Sign {
     const canMove = popup.changeText(t(this.textKey), this.url, this.details);
     if (this.pokeball) {
       achievementManager.foundPokeballs.add(this.tilePosition);
-      this.textKey = "pokeballFound";
+      if (this.textKey !== "pokeballFound") { // This check prevents retriggering the same pokeball
+        playSoundEffect("obtainedItem", true);
+        this.textKey = "pokeballFound";
+      }
     }
     return canMove;
   }

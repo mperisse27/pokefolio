@@ -1,5 +1,5 @@
 import type { Player } from "./components/player";
-import { addEventToVolumeSlider, toggleSound } from "./components/sounds";
+import { addEventToVolumeSlider, toggleMusic } from "./components/sounds";
 import { setLanguage, t, type Lang } from "./utils/i18n";
 
 const addFlagListeners = () => {
@@ -139,7 +139,7 @@ export function toggleSoundButton() {
     soundIcon.classList.remove('fa-volume-off');
     soundIcon.classList.add('fa-volume-up');
   }
-  toggleSound(isSoundOn);
+  toggleMusic(isSoundOn);
 }
 
 export async function showZonePopup(zoneName: string) {

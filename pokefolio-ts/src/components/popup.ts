@@ -1,3 +1,5 @@
+import { playSoundEffect } from "./sounds";
+
 export class Popup {
   public line1: HTMLElement;
   public line2: HTMLElement;
@@ -24,6 +26,7 @@ export class Popup {
    */
   public changeText(text: string[], url?: string, details?: string): boolean {
     if (this.lineCounter == 0) {
+      playSoundEffect("dialogPress");
       this.container.classList.remove("hidden");
       this.fullLine1 = text[0] ?? "";
       this.fullLine2 = text[1] ?? "";
@@ -36,6 +39,7 @@ export class Popup {
       document.getElementById("overlay")?.classList.remove("select-none"); //Remove safety for Shift key
     }
     else if (this.lineCounter < text.length) {
+      playSoundEffect("dialogPress");
       this.line1.textContent = this.line2.textContent;
       this.line2.textContent = "";
       this.fullLine1 = text[this.lineCounter - 1] ?? "";
